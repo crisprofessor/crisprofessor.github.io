@@ -1,4 +1,17 @@
-/* --- Netflix Inspired Style --- */
+/* --- Custom Color Palette & Font Style --- */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@700&display=swap');
+
+/* Palette:
+   Beige: #E0D6CC
+   Yellow: #F5A713
+   Blue: #325D7D
+*/
+/* Fonts:
+   Body: Montserrat
+   Headings: Poppins (Bold - 700 weight) as alternative for Now Bold
+*/
 
 /* Basic Reset & Body Styling */
 * {
@@ -8,43 +21,52 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Common sans-serif font */
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Montserrat', sans-serif; /* Montserrat for body text */
+    /* ------------------- */
     line-height: 1.6;
-    color: #f5f5f1; /* Light gray/off-white text */
-    background-color: #141414; /* Very dark gray background */
+    color: #333;
+    background-color: #f7f5f2;
     margin: 0;
 }
 
 /* Header */
 header {
-    background-color: #141414; /* Match body background */
+    background-color: #325D7D;
     color: #fff;
-    padding: 2rem 0 1rem 0;
+    padding: 1.5rem 0;
     text-align: center;
-    /* Optional: Add a subtle bottom border if needed */
-    /* border-bottom: 1px solid #333; */
+    border-bottom: 5px solid #F5A713;
 }
 
 header h1 {
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Poppins', sans-serif; /* Poppins for main title */
+    font-weight: 700; /* Bold weight from import */
+    /* ------------------- */
     margin-bottom: 0.5rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #E50914; /* Netflix Red */
+    font-size: 2.2rem;
+    color: #fff;
 }
 
 header p {
-    font-size: 1.2rem;
-    color: #aaa; /* Lighter gray for subtitle */
+    font-size: 1.1rem;
+    color: #E0D6CC;
+    /* ---- FONT UPDATE (Optional - Keep Montserrat or use Poppins regular if imported) ---- */
+    font-family: 'Montserrat', sans-serif; /* Keep subtitle in Montserrat */
+    font-weight: 400;
+    /* ------------------- */
 }
 
 /* Navigation */
 nav {
-    background-color: #141414; /* Match body background */
+    background-color: #fff;
     padding: 0.75rem 0;
-    position: sticky; /* Makes the nav stick to the top */
+    position: sticky;
     top: 0;
-    z-index: 1000; /* Ensures nav stays above other content */
-    border-bottom: 1px solid #333; /* Subtle separator */
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 nav ul {
@@ -59,61 +81,68 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #325D7D;
     text-decoration: none;
-    padding: 0.5rem 0; /* Padding top/bottom only */
-    font-weight: 500;
+    padding: 0.5rem 0.2rem;
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Montserrat', sans-serif; /* Montserrat for nav items */
+    font-weight: 500; /* Medium weight for nav */
+    /* ------------------- */
     position: relative;
     transition: color 0.3s ease;
 }
 
-nav ul li a::after { /* Underline effect */
+nav ul li a::after {
     content: '';
     position: absolute;
     width: 0;
     height: 3px;
-    bottom: 0;
+    bottom: -2px;
     left: 0;
-    background-color: #E50914; /* Netflix Red */
+    background-color: #F5A713;
     transition: width 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a:focus {
-    color: #E50914; /* Netflix Red on hover */
+    color: #F5A713;
     outline: none;
 }
 
 nav ul li a:hover::after,
 nav ul li a:focus::after {
-    width: 100%; /* Expand underline on hover */
+    width: 100%;
 }
 
 /* Main Content Area */
 main {
-    max-width: 950px;
+    max-width: 1000px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
 /* Sections */
 section {
-    background-color: transparent; /* Remove white background */
-    margin-bottom: 2.5rem;
-    padding: 1rem 0; /* Adjust padding */
-    border-radius: 0; /* Remove border-radius */
-    box-shadow: none; /* Remove shadow */
-    scroll-margin-top: 80px; /* Offset for sticky nav */
+    background-color: #fff;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    border-top: 4px solid #325D7D;
+    scroll-margin-top: 80px;
 }
 
 section h2 {
-    color: #fff; /* White section titles */
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Poppins', sans-serif; /* Poppins for section titles */
+    font-weight: 700; /* Bold weight */
+    /* ------------------- */
+    color: #325D7D;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
-    font-weight: bold;
-    border-bottom: 3px solid #E50914; /* Red underline */
+    border-bottom: 2px solid #E0D6CC;
     padding-bottom: 0.6rem;
-    display: inline-block; /* Make border only as wide as text */
+    display: inline-block;
 }
 
 /* Specific Section Styling */
@@ -123,65 +152,73 @@ section h2 {
 #news p,
 #contact p {
     margin-bottom: 1rem;
-    color: #d1d1d1; /* Slightly dimmer text for paragraphs */
+    color: #444;
 }
 
 #about a, #publications a, .discipline ul li a {
-    color: #5fa5ff; /* A light blue for inline links */
+    color: #325D7D;
     text-decoration: none;
-    transition: color 0.2s ease;
+    font-weight: 500; /* Medium weight for links */
+    transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 #about a:hover, #publications a:hover, .discipline ul li a:hover {
-    color: #87bfff; /* Lighter blue on hover */
+    color: #F5A713;
     text-decoration: underline;
 }
 
-/* Lattes/ORCID Links */
 #about p a {
-    color: #E50914;
-    font-weight: 500;
+    color: #325D7D;
+    font-weight: 700; /* Bold weight for important links */
 }
 #about p a:hover {
-    text-decoration: underline;
-     color: #f73b4a;
+    color: #F5A713;
 }
 
 /* Teaching Section Articles */
 .discipline {
-    border-left: 4px solid #E50914; /* Red left border */
+    border-left: 4px solid #325D7D;
     padding-left: 1.5rem;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+    background-color: #fdfbf9;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 4px;
 }
 
 .discipline h3 {
-    color: #fff;
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Poppins', sans-serif; /* Poppins for sub-headings */
+    font-weight: 700; /* Bold weight */
+    /* ------------------- */
+    color: #325D7D;
     margin-bottom: 0.75rem;
     font-size: 1.3rem;
 }
 
 .discipline ul {
-    list-style: none; /* Remove default bullets */
+    list-style: none;
     padding-left: 0;
     margin-top: 0.5rem;
 }
 
 .discipline ul li {
     position: relative;
-    padding-left: 1.2rem; /* Space for custom marker */
+    padding-left: 1.2rem;
     margin-bottom: 0.5rem;
+    color: #555;
 }
 
-.discipline ul li::before { /* Custom bullet */
-    content: '•';
+.discipline ul li::before {
+    content: '›';
     position: absolute;
     left: 0;
-    top: 0;
-    color: #E50914; /* Red bullet */
+    top: -1px;
+    color: #F5A713;
     font-weight: bold;
+    font-size: 1.2em;
 }
-
 
 /* Publications & News List */
 #publications ul, #news ul {
@@ -190,25 +227,21 @@ section h2 {
 }
 
 #publications li, #news li {
-    background-color: #1f1f1f; /* Slightly lighter dark background */
-    border: 1px solid #333;
+    background-color: #f9f9f9;
+    border: 1px solid #E0D6CC;
     padding: 1rem 1.2rem;
     margin-bottom: 1rem;
     border-radius: 4px;
-    color: #ccc; /* Dimmer text for list items */
-    transition: background-color 0.3s ease;
-}
-
-#publications li:hover {
-     background-color: #2a2a2a;
+    color: #444;
+    border-left: 5px solid #F5A713;
 }
 
 /* Contact Form */
 #contact-form label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #fff; /* White labels */
+    font-weight: 700; /* Bold label */
+    color: #325D7D;
 }
 
 #contact-form input[type="text"],
@@ -217,11 +250,13 @@ section h2 {
     width: 100%;
     padding: 0.9rem 1rem;
     margin-bottom: 1.2rem;
-    background-color: #333; /* Dark input background */
-    border: 1px solid #555;
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    color: #fff; /* White input text */
-    font-family: inherit;
+    color: #333;
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Montserrat', sans-serif; /* Ensure form inputs use Montserrat */
+    /* ------------------- */
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -230,10 +265,9 @@ section h2 {
 #contact-form input[type="email"]:focus,
 #contact-form textarea:focus {
     outline: none;
-    border-color: #E50914; /* Red border on focus */
-    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.3); /* Subtle red glow */
+    border-color: #F5A713;
+    box-shadow: 0 0 0 3px rgba(245, 167, 19, 0.3);
 }
-
 
 #contact-form textarea {
     resize: vertical;
@@ -241,36 +275,44 @@ section h2 {
 }
 
 #contact-form button {
-    background-color: #E50914; /* Netflix Red button */
-    color: #fff;
+    background-color: #F5A713;
+    color: #333;
     padding: 0.9rem 2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Montserrat', sans-serif; /* Button text */
+    font-weight: 700; /* Bold button text */
+    /* ------------------- */
     font-size: 1.1rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    display: inline-block; /* Fit content width */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
 }
 
 #contact-form button:hover {
-    background-color: #f61a29; /* Brighter red on hover */
+    background-color: #e0960d;
+    transform: translateY(-2px);
 }
 
 .address {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #333; /* Subtle separator */
+    border-top: 1px solid #E0D6CC;
 }
 
 .address h3 {
+    /* ---- FONT UPDATE ---- */
+    font-family: 'Poppins', sans-serif; /* Poppins for this heading too */
+    font-weight: 700;
+    /* ------------------- */
     margin-bottom: 0.75rem;
-    color: #fff;
+    color: #325D7D;
     font-size: 1.3rem;
 }
 
 .address p {
-    color: #ccc;
+    color: #555;
 }
 
 /* Footer */
@@ -278,19 +320,19 @@ footer {
     text-align: center;
     margin-top: 3rem;
     padding: 1.5rem 0;
-    background-color: #0a0a0a; /* Even darker footer */
-    color: #888; /* Gray footer text */
+    background-color: #E0D6CC;
+    color: #555;
     font-size: 0.9rem;
-    border-top: 1px solid #222;
+    border-top: 1px solid #c9beae; /* Slightly darker beige border */
 }
 
 /* Responsive Design Adjustments */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     header p {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     nav ul {
         flex-direction: column;
@@ -299,22 +341,31 @@ footer {
     nav ul li {
         margin: 0.5rem 0;
     }
-    nav ul li a::after { /* Adjust underline for column layout if needed */
+    nav ul li a::after {
         left: 50%;
         transform: translateX(-50%);
     }
      nav ul li a:hover::after,
      nav ul li a:focus::after {
-        width: 80%; /* Make underline slightly less wide in column */
+        width: 80%;
      }
     main {
         margin: 1.5rem auto;
     }
+     section {
+        padding: 1.5rem; /* Adjust padding for smaller screens */
+     }
     section h2 {
         font-size: 1.6rem;
     }
+     .discipline h3 {
+        font-size: 1.2rem;
+     }
+     .address h3 {
+         font-size: 1.2rem;
+     }
     #contact-form button {
-        width: 100%; /* Full width button on smaller screens */
+        width: 100%;
         padding: 1rem;
     }
 }
