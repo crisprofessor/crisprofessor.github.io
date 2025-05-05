@@ -1,3 +1,5 @@
+/* --- Netflix Inspired Style --- */
+
 /* Basic Reset & Body Styling */
 * {
     box-sizing: border-box;
@@ -6,38 +8,43 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Common sans-serif font */
     line-height: 1.6;
-    color: #333;
-    background-color: #f4f4f4;
+    color: #f5f5f1; /* Light gray/off-white text */
+    background-color: #141414; /* Very dark gray background */
     margin: 0;
 }
 
 /* Header */
 header {
-    background-color: #004a91; /* UFF Blue */
+    background-color: #141414; /* Match body background */
     color: #fff;
-    padding: 1.5rem 0;
+    padding: 2rem 0 1rem 0;
     text-align: center;
-    border-bottom: 5px solid #ffc72c; /* UFF Yellow */
+    /* Optional: Add a subtle bottom border if needed */
+    /* border-bottom: 1px solid #333; */
 }
 
 header h1 {
     margin-bottom: 0.5rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #E50914; /* Netflix Red */
 }
 
 header p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #aaa; /* Lighter gray for subtitle */
 }
 
 /* Navigation */
 nav {
-    background-color: #333;
-    padding: 0.5rem 0;
+    background-color: #141414; /* Match body background */
+    padding: 0.75rem 0;
     position: sticky; /* Makes the nav stick to the top */
     top: 0;
     z-index: 1000; /* Ensures nav stays above other content */
+    border-bottom: 1px solid #333; /* Subtle separator */
 }
 
 nav ul {
@@ -54,40 +61,59 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
-    border-radius: 4px;
+    padding: 0.5rem 0; /* Padding top/bottom only */
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #E50914; /* Netflix Red */
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a:focus {
-    background-color: #555;
+    color: #E50914; /* Netflix Red on hover */
     outline: none;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 100%; /* Expand underline on hover */
 }
 
 /* Main Content Area */
 main {
-    max-width: 1000px;
+    max-width: 950px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
 /* Sections */
 section {
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: transparent; /* Remove white background */
+    margin-bottom: 2.5rem;
+    padding: 1rem 0; /* Adjust padding */
+    border-radius: 0; /* Remove border-radius */
+    box-shadow: none; /* Remove shadow */
     scroll-margin-top: 80px; /* Offset for sticky nav */
 }
 
 section h2 {
-    color: #004a91; /* UFF Blue */
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #ffc72c; /* UFF Yellow */
-    padding-bottom: 0.5rem;
-    font-size: 1.6rem;
+    color: #fff; /* White section titles */
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-bottom: 3px solid #E50914; /* Red underline */
+    padding-bottom: 0.6rem;
+    display: inline-block; /* Make border only as wide as text */
 }
 
 /* Specific Section Styling */
@@ -97,42 +123,65 @@ section h2 {
 #news p,
 #contact p {
     margin-bottom: 1rem;
+    color: #d1d1d1; /* Slightly dimmer text for paragraphs */
 }
 
-#about a, #publications a {
-    color: #0056b3;
+#about a, #publications a, .discipline ul li a {
+    color: #5fa5ff; /* A light blue for inline links */
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-#about a:hover, #publications a:hover {
+#about a:hover, #publications a:hover, .discipline ul li a:hover {
+    color: #87bfff; /* Lighter blue on hover */
     text-decoration: underline;
+}
+
+/* Lattes/ORCID Links */
+#about p a {
+    color: #E50914;
+    font-weight: 500;
+}
+#about p a:hover {
+    text-decoration: underline;
+     color: #f73b4a;
 }
 
 /* Teaching Section Articles */
 .discipline {
-    border-left: 4px solid #004a91;
-    padding-left: 1rem;
-    margin-top: 1.5rem;
+    border-left: 4px solid #E50914; /* Red left border */
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .discipline h3 {
-    color: #333;
-    margin-bottom: 0.5rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
 }
 
 .discipline ul {
-    list-style: disc;
-    margin-left: 20px;
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
     margin-top: 0.5rem;
 }
 
-.discipline ul li a {
-    color: #0056b3;
-    text-decoration: none;
+.discipline ul li {
+    position: relative;
+    padding-left: 1.2rem; /* Space for custom marker */
+    margin-bottom: 0.5rem;
 }
-.discipline ul li a:hover {
-    text-decoration: underline;
+
+.discipline ul li::before { /* Custom bullet */
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #E50914; /* Red bullet */
+    font-weight: bold;
 }
+
 
 /* Publications & News List */
 #publications ul, #news ul {
@@ -141,11 +190,17 @@ section h2 {
 }
 
 #publications li, #news li {
-    background-color: #f9f9f9;
-    border: 1px solid #eee;
-    padding: 0.8rem;
-    margin-bottom: 0.8rem;
+    background-color: #1f1f1f; /* Slightly lighter dark background */
+    border: 1px solid #333;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
     border-radius: 4px;
+    color: #ccc; /* Dimmer text for list items */
+    transition: background-color 0.3s ease;
+}
+
+#publications li:hover {
+     background-color: #2a2a2a;
 }
 
 /* Contact Form */
@@ -153,67 +208,89 @@ section h2 {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: #fff; /* White labels */
 }
 
 #contact-form input[type="text"],
 #contact-form input[type="email"],
 #contact-form textarea {
     width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.2rem;
+    background-color: #333; /* Dark input background */
+    border: 1px solid #555;
     border-radius: 4px;
-    font-family: inherit; /* Ensure form elements use the body font */
+    color: #fff; /* White input text */
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: #E50914; /* Red border on focus */
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.3); /* Subtle red glow */
+}
+
+
 #contact-form textarea {
-    resize: vertical; /* Allow vertical resizing */
+    resize: vertical;
+    min-height: 120px;
 }
 
 #contact-form button {
-    background-color: #004a91; /* UFF Blue */
+    background-color: #E50914; /* Netflix Red button */
     color: #fff;
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
     transition: background-color 0.3s ease;
+    display: inline-block; /* Fit content width */
 }
 
 #contact-form button:hover {
-    background-color: #003366; /* Darker Blue */
+    background-color: #f61a29; /* Brighter red on hover */
 }
 
 .address {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333; /* Subtle separator */
 }
 
 .address h3 {
-    margin-bottom: 0.5rem;
-    color: #333;
+    margin-bottom: 0.75rem;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.address p {
+    color: #ccc;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 1.5rem 0;
-    background-color: #ddd;
-    color: #555;
+    background-color: #0a0a0a; /* Even darker footer */
+    color: #888; /* Gray footer text */
     font-size: 0.9rem;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #222;
 }
 
-/* Responsive Design (Basic Example) */
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     header p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     nav ul {
         flex-direction: column;
@@ -222,10 +299,22 @@ footer {
     nav ul li {
         margin: 0.5rem 0;
     }
+    nav ul li a::after { /* Adjust underline for column layout if needed */
+        left: 50%;
+        transform: translateX(-50%);
+    }
+     nav ul li a:hover::after,
+     nav ul li a:focus::after {
+        width: 80%; /* Make underline slightly less wide in column */
+     }
     main {
-        margin: 1rem auto;
+        margin: 1.5rem auto;
     }
     section h2 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
+    }
+    #contact-form button {
+        width: 100%; /* Full width button on smaller screens */
+        padding: 1rem;
     }
 }
