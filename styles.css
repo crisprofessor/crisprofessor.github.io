@@ -1,74 +1,400 @@
-/* === Additions to style.css for JavaScript Enhancements === */
+/* --- Simplified CSS - No External Fonts/Icons --- */
 
-/* --- Active Navigation Link (Scrollspy) --- */
+/* Palette:
+   Beige: #E0D6CC
+   Yellow: #F5A713
+   Blue: #325D7D
+*/
+/* Fonts:
+   Using system default sans-serif fonts
+*/
+
+/* Basic Reset & Body Styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* ---- FONT UPDATE: Using system defaults ---- */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    /* ------------------------------------------ */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f7f5f2;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #325D7D;
+    color: #fff;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-bottom: 5px solid #F5A713;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 2rem; /* Adjusted size slightly */
+    font-weight: bold; /* Use standard bold */
+    color: #fff;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #E0D6CC;
+    font-weight: normal; /* Standard weight */
+}
+
+/* Navigation */
+nav {
+    background-color: #fff;
+    padding: 0.75rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #325D7D;
+    text-decoration: none;
+    padding: 0.5rem 0.2rem;
+    font-weight: bold; /* Make nav links bold */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -2px;
+    left: 0;
+    background-color: #F5A713;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: #F5A713;
+    outline: none;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 100%;
+}
+
+/* Main Content Area */
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Sections */
+section {
+    background-color: #fff;
+    margin-bottom: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    border-top: 4px solid #325D7D;
+    scroll-margin-top: 80px; /* Keep offset if using JS smooth scroll */
+}
+
+section h2 {
+    color: #325D7D;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-bottom: 2px solid #E0D6CC;
+    padding-bottom: 0.6rem;
+    display: inline-block;
+}
+
+/* Specific Section Styling */
+#about p,
+#teaching p,
+#publications p,
+#news p,
+#contact p {
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+#about a, #publications a, .discipline ul li a {
+    color: #325D7D;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+#about a:hover, #publications a:hover, .discipline ul li a:hover {
+    color: #F5A713;
+    text-decoration: underline;
+}
+
+#about p a {
+    color: #325D7D;
+    font-weight: bold;
+}
+#about p a:hover {
+    color: #F5A713;
+}
+
+/* Teaching Section Articles */
+.discipline {
+    border-left: 4px solid #325D7D;
+    padding-left: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    background-color: #fdfbf9;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.discipline h3 {
+    color: #325D7D;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.discipline ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.discipline ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.discipline ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    top: -1px;
+    color: #F5A713;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Publications & News List */
+#publications ul, #news ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#publications li, #news li {
+    background-color: #f9f9f9;
+    border: 1px solid #E0D6CC;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    color: #444;
+    border-left: 5px solid #F5A713;
+}
+
+/* Contact Form */
+#contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #325D7D;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    margin-bottom: 1.2rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #333;
+    font-family: inherit; /* Inherit body font */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: #F5A713;
+    box-shadow: 0 0 0 3px rgba(245, 167, 19, 0.3);
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button {
+    background-color: #F5A713;
+    color: #333;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit; /* Inherit body font */
+    font-weight: bold; /* Bold button text */
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+#contact-form button:hover {
+    background-color: #e0960d;
+    transform: translateY(-2px);
+}
+
+.address {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E0D6CC;
+}
+
+.address h3 {
+    margin-bottom: 0.75rem;
+    color: #325D7D;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.address p {
+    color: #555;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #E0D6CC;
+    color: #555;
+    font-size: 0.9rem;
+    border-top: 1px solid #c9beae;
+}
+
+
+/* === CSS Supporting JavaScript Enhancements === */
+
+/* --- Active Navigation Link --- */
+/* Styles the link when JS adds the 'active' class */
 nav ul li a.active {
-    color: #F5A713; /* Yellow for active link */
-    font-weight: 700; /* Make active link bolder */
+    color: #F5A713;
+    font-weight: bold;
 }
 nav ul li a.active::after {
-    width: 100%; /* Ensure underline is shown for active link */
+    width: 100%;
 }
 
-/* --- Scroll Animation --- */
-.fade-in-section {
+/* --- Scroll Animation (OPTIONAL - Remove if simplifying further) --- */
+/* .fade-in-section {
     opacity: 0;
-    transform: translateY(30px); /* Start slightly lower */
+    transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .fade-in-section.visible {
     opacity: 1;
     transform: translateY(0);
-}
+} */
+/* --- End Optional Scroll Animation --- */
+
 
 /* --- Mobile Navigation --- */
 #mobile-nav-toggle {
     display: none; /* Hidden by default */
     background: none;
     border: none;
-    color: #325D7D; /* Blue icon */
-    font-size: 1.8rem; /* Adjust size */
+    color: #325D7D;
+    /* Removed fixed font-size, will size based on inner content */
     cursor: pointer;
     padding: 0.5rem;
-    position: absolute; /* Position relative to nav */
+    position: absolute;
     right: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1100; /* Above nav list */
+    z-index: 1100;
+    height: 30px; /* Set height for alignment */
+    width: 30px; /* Set width */
 }
 
-/* Optional: Style for CSS-only hamburger if not using Font Awesome */
-/*
+/* --- CSS-only Hamburger Icon --- */
+/* Style for the span inside the button */
 .hamburger-icon {
     display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #325D7D;
+    width: 25px; /* Width of the lines */
+    height: 3px; /* Thickness of the lines */
+    background-color: #325D7D; /* Color of the middle line */
     position: relative;
-    transition: background-color 0s 0.1s linear;
+    transition: background-color 0s 0.1s linear; /* Delay background disappearance */
+    margin: auto; /* Center inside button */
 }
+/* Before and After pseudo-elements create the top and bottom lines */
 .hamburger-icon::before,
 .hamburger-icon::after {
     content: '';
     position: absolute;
     left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: #325D7D;
-    transition: transform 0.2s ease-in-out;
+    width: 100%; /* Same width as middle line */
+    height: 3px; /* Same thickness */
+    background-color: #325D7D; /* Same color */
+    transition: transform 0.2s ease-in-out; /* Animation for transform */
 }
-.hamburger-icon::before { top: -8px; }
-.hamburger-icon::after { top: 8px; }
+.hamburger-icon::before { top: -8px; } /* Position top line */
+.hamburger-icon::after { top: 8px; } /* Position bottom line */
 
-#mobile-nav-toggle.active .hamburger-icon { background-color: transparent; } // Hide middle bar
-#mobile-nav-toggle.active .hamburger-icon::before { transform: translateY(8px) rotate(45deg); }
-#mobile-nav-toggle.active .hamburger-icon::after { transform: translateY(-8px) rotate(-45deg); }
-*/
+/* Styles when the button/menu is active (X shape) */
+#mobile-nav-toggle.active .hamburger-icon {
+    background-color: transparent; /* Hide middle line */
+}
+#mobile-nav-toggle.active .hamburger-icon::before {
+    transform: translateY(8px) rotate(45deg); /* Move top line down and rotate */
+}
+#mobile-nav-toggle.active .hamburger-icon::after {
+    transform: translateY(-8px) rotate(-45deg); /* Move bottom line up and rotate */
+}
+/* --- End CSS-only Hamburger Icon --- */
 
 
-/* Styles applied within the existing @media query */
+/* --- Responsive Styles --- */
 @media (max-width: 768px) {
-    /* Existing responsive styles... */
+    /* Header adjustments */
+    header h1 { font-size: 1.8rem; }
+    header p { font-size: 1rem; }
+
+    /* Main adjustments */
+    main { margin: 1.5rem auto; }
+    section { padding: 1.5rem; } /* Adjust padding */
+    section h2 { font-size: 1.6rem; }
+    .discipline h3 { font-size: 1.2rem; }
+    .address h3 { font-size: 1.2rem; }
 
     /* --- Mobile Nav Specific Styles --- */
     #mobile-nav-toggle {
@@ -76,21 +402,20 @@ nav ul li a.active::after {
     }
 
     nav ul#main-nav-list {
-        /* Hide list by default, position for overlay */
-        display: none; /* Hide initially */
+        display: none;
         position: absolute;
-        top: 100%; /* Position below the nav bar */
+        top: 100%;
         left: 0;
         width: 100%;
-        background-color: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
-        backdrop-filter: blur(5px); /* Optional blur effect */
+        background-color: rgba(255, 255, 255, 0.98);
+        /* backdrop-filter: blur(5px); /* Removed for simplification */
         flex-direction: column;
         align-items: center;
         padding: 1rem 0;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         border-top: 1px solid #eee;
-        max-height: calc(100vh - 70px); /* Limit height */
-        overflow-y: auto; /* Allow scrolling if menu is long */
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
     }
 
     nav ul#main-nav-list.active {
@@ -98,32 +423,34 @@ nav ul li a.active::after {
     }
 
     nav ul li {
-        margin: 0.8rem 0; /* Vertical spacing for mobile */
+        margin: 0.8rem 0;
         width: 100%;
         text-align: center;
     }
 
      nav ul li a {
-         padding: 0.8rem 1rem; /* Larger tap area */
-         display: block; /* Make link fill width */
+         padding: 0.8rem 1rem;
+         display: block;
      }
 
-     nav ul li a::after { /* Adjust underline position for mobile */
+     nav ul li a::after {
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
      }
      nav ul li a:hover::after,
      nav ul li a:focus::after,
-     nav ul li a.active::after { /* Make underline shorter on mobile */
+     nav ul li a.active::after {
         width: 50%;
      }
      /* --- End Mobile Nav --- */
+
+     /* Contact Form Button */
+     #contact-form button {
+        width: 100%;
+        padding: 1rem;
+    }
 }
 
 /* Optional: Prevent body scrolling when mobile menu is open */
-/*
-body.no-scroll {
-    overflow: hidden;
-}
-*/
+/* body.no-scroll { overflow: hidden; } */
