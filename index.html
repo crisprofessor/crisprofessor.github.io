@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prof. Cristiano Travassos - Engenharia Civil UFF</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -13,8 +14,10 @@
         <p>Engenharia Civil | Universidade Federal Fluminense (UFF)</p>
     </header>
 
-    <nav>
-        <ul>
+    <nav id="main-nav">
+        <button id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i> </button>
+        <ul id="main-nav-list">
             <li><a href="#about">Sobre</a></li>
             <li><a href="#teaching">Ensino</a></li>
             <li><a href="#publications">Publicações</a></li>
@@ -24,7 +27,7 @@
     </nav>
 
     <main>
-        <section id="about">
+        <section id="about" class="fade-in-section">
             <h2>Sobre</h2>
             <p>
                 Engenheiro Civil pela Universidade Federal Fluminense (UFF, 2016), Mestre (2018) e Doutor (2023) em Engenharia Civil pela Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio).
@@ -40,7 +43,7 @@
              </p>
         </section>
 
-        <section id="teaching">
+        <section id="teaching" class="fade-in-section">
             <h2>Ensino e Material Didático</h2>
             <p>Esta seção contém materiais didáticos (conceitos, explicações, tutoriais, etc.) relacionados às disciplinas ministradas. (Conteúdo em desenvolvimento)</p>
 
@@ -80,7 +83,7 @@
             </article>
         </section>
 
-        <section id="publications">
+        <section id="publications" class="fade-in-section">
             <h2>Publicações Selecionadas</h2>
             <p>Uma seleção de artigos e trabalhos publicados. Para a lista completa, consulte o <a href="http://lattes.cnpq.br/0197310834738778" target="_blank" rel="noopener noreferrer">Currículo Lattes</a>.</p>
             <ul>
@@ -89,19 +92,19 @@
                 <li>DE OLIVEIRA, ANA CAROLINA FRANCO; CARMO, CRISTIANO SAAD TRAVASSOS DO; CRUZ, ALEXANDRÉ SANTANA; FAISCA, RENATA GONÇALVES. A case study to explore the synergy between HBIM and BEM for maintenance of historical buildings. International Journal Of Building Pathology And Adaptation, v. na, p. 33, 2021.</li>
                 <li>SOTELINO, E. D.; NATIVIDADE, V. G.; CARMO, C. S. T.. Teaching BIM and its impact in young professionals. Journal Of Civil Engineering Education, v. 146, Issue 4, 2020.</li>
                  <li>Andrade, Milena Silva; DO CARMO, CRISTIANO SAAD TRAVASSOS; FAISCA, RENATA GONÇALVES. Technical and Economic Feasibility Study of Greywater Reuse System Using the Bim Methodology. In: Lecture Notes in Civil Engineering. Springer Nature Switzerland, 2024, p. 508-528.</li>
-            </ul>
+                 </ul>
         </section>
 
-        <section id="news">
+        <section id="news" class="fade-in-section">
             <h2>Notícias e Atividades</h2>
             <p>(Conteúdo em desenvolvimento)</p>
             <ul>
                 <li><em>(05/05/2025) - Lançamento do website educacional.</em></li>
                 <li><em>Em breve: Novas atualizações sobre projetos e eventos.</em></li>
-            </ul>
+                 </ul>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="fade-in-section">
             <h2>Contato</h2>
             <p>Para entrar em contato, por favor utilize o formulário abaixo ou as informações de contato institucionais.</p>
 
@@ -138,18 +141,7 @@
          <p>Página gerada em: <span id="current-date"></span></p>
     </footer>
 
-    <script>
-        // Simple script to display the current date in the footer
-        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pt-BR');
-
-        // Basic form submission handler (replace with actual backend logic)
-        // document.getElementById('contact-form').addEventListener('submit', function(event) {
-        //     event.preventDefault(); // Prevent default form submission
-        //     alert('Formulário enviado! (Funcionalidade de envio real precisa ser implementada)');
-        //     // Here you would typically send data to a server using fetch() or XMLHttpRequest
-        //     this.reset(); // Optional: Reset form after submission
-        // });
-    </script>
+    <script src="script.js" defer></script>
 
 </body>
 </html>
