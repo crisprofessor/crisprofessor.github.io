@@ -364,32 +364,89 @@ section:nth-child(even) .item-list li { /* If item list is on a dark background 
     border-bottom: none;
 }
 
-/* Specifics for Research List Items */
-.research-list .research-title {
+/* --- NEW STYLES for Research Section with Cards --- */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax as needed */
+    gap: 1.5rem; /* Space between cards */
+    margin-top: 2rem;
+}
+
+a.research-card-link {
+    text-decoration: none; /* Remove underline from the link wrapping the card */
+    color: inherit; /* Inherit text color for content inside */
+    display: block; /* Ensure the link takes up the grid cell space */
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+a.research-card-link:hover,
+a.research-card-link:focus {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Enhanced shadow on hover */
+    text-decoration: none; /* Ensure no underline on hover of the card link itself */
+}
+a.research-card-link:focus-visible { /* Accessibility focus ring */
+    outline: 2px solid var(--color-yellow-accent);
+    outline-offset: 3px;
+    border-radius: 8px; /* Match card border-radius */
+}
+
+
+.research-card {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden; /* To contain the image if it's larger than the figure */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make cards in a row take the same height */
+    border: 1px solid var(--color-border-beige);
+}
+
+section:nth-child(even) .research-card { /* Research cards on dark section background */
+    background-color: #2a3b4d; /* Slightly lighter dark for card background */
+    border-color: var(--color-border-light);
+}
+
+.research-card-figure {
+    width: 100%;
+    height: 180px; /* Fixed height for the image area, adjust as needed */
+    overflow: hidden; /* Crop image if it's too big */
+    background-color: #ccc; /* Placeholder background for image area */
+}
+
+.research-card-figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale image to cover, cropping if necessary */
     display: block;
-    color: var(--color-blue-primary); /* Default for light section */
+    transition: transform 0.3s ease-in-out;
+}
+
+a.research-card-link:hover .research-card-figure img,
+a.research-card-link:focus .research-card-figure img {
+    transform: scale(1.05); /* Slight zoom on image on card hover */
+}
+
+
+.research-card-content {
+    padding: 1rem 1.25rem;
+    flex-grow: 1; /* Allows content to take available space, useful if description is added */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center title if no other content */
+}
+
+.research-card-title {
+    font-size: 1.15rem; /* Or clamp(1rem, 2.5vw, 1.2rem) */
+    color: var(--color-blue-primary);
     font-family: var(--font-family-heading);
     font-weight: bold;
-    font-size: 1.05em;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0; /* Remove bottom margin if it's just the title */
+    line-height: 1.4;
 }
-section:nth-child(even) .research-list .research-title { /* Title on dark section */
+
+section:nth-child(even) .research-card-title { /* Title color on dark card */
     color: var(--color-beige-content);
-}
-.research-list .research-details {
-    margin-bottom: 0.5rem;
-    font-size: 0.9em;
-    line-height: 1.6;
-    /* text color inherited from section context */
-}
-.research-list .research-team {
-    font-size: 0.85em;
-    font-style: italic;
-    color: var(--color-text-light); /* Lighter text for team/authors on light section */
-    margin-top: 0.25rem;
-}
-section:nth-child(even) .research-list .research-team {
-    color: #a0b0c0; /* Even lighter on dark background */
 }
 
 /* News list specific styles */
