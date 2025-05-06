@@ -1,4 +1,4 @@
-/* --- Minimalist Continuous Webpage Style - V3 --- */
+/* --- Minimalist Continuous Webpage Style - V4 (Option A Header) --- */
 
 /* --- CSS Variables (Color Palette) --- */
 :root {
@@ -9,12 +9,12 @@
     --color-white: #ffffff;
     --color-light-text-on-dark: #f0f0f0;
     --color-text-on-light: #333333;
-    --color-border-light: #4a5c6d;
-    --color-border-beige: #c9bfb5;
+    --color-border-light: #4a5c6d; /* For borders on dark backgrounds */
+    --color-border-beige: #c9bfb5; /* For borders on beige backgrounds */
 
     --font-family-body: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --nav-height: 70px; /* Adjusted for logo */
+    --nav-height: 60px; /* Height of the sticky navigation bar */
 }
 
 /* --- Import Google Fonts --- */
@@ -29,7 +29,7 @@
 
 html {
     scroll-behavior: smooth;
-    /* scroll-padding-top is handled by body padding-top now */
+    /* scroll-padding-top handled by body padding-top due to sticky nav */
 }
 
 body {
@@ -39,7 +39,7 @@ body {
     line-height: 1.7;
     color: var(--color-light-text-on-dark);
     background-color: var(--color-dark-bg);
-    padding-top: var(--nav-height); /* Prevent content from being hidden by fixed nav */
+    padding-top: var(--nav-height); /* Space for the sticky navigation bar */
 }
 
 /* --- Accessibility --- */
@@ -63,7 +63,7 @@ body {
     white-space: nowrap !important; border: 0 !important;
 }
 
-/* --- Layout Container (for content inside sections) --- */
+/* --- Layout Container --- */
 .container {
     max-width: 1100px;
     margin-left: auto;
@@ -73,18 +73,16 @@ body {
 }
 
 /* --- Typography --- */
-h1, h2, h3 {
+h1, h2, h3 { /* h1 is sr-only, styles are for semantic correctness */
     font-family: var(--font-family-heading);
     font-weight: bold;
-    color: var(--color-blue-primary);
     line-height: 1.3;
     margin-bottom: 0.75em;
 }
-/* h1 is sr-only */
 h2 {
     font-size: clamp(1.6rem, 4vw, 2.2rem);
     color: var(--color-beige-content);
-    margin-top: 0;
+    margin-top: 0; /* Sections handle their own top padding */
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--color-blue-primary);
@@ -105,63 +103,77 @@ section a:hover, section a:focus { color: var(--color-yellow-accent); }
 address { font-style: normal; }
 ul { list-style: none; }
 
-/* --- Header (Minimal) --- */
-.site-header {
-    /* Can be left very minimal or have a subtle background if needed */
-    /* padding: 0.5rem 0; */ /* Example if you want some space */
-    /* border-bottom: 1px solid var(--color-border-light); */ /* Optional */
-    /* This is effectively hidden if h1 is sr-only and no other content is present */
+/* --- Prominent Header with Logo (Option A) --- */
+.site-header.prominent-logo-header {
+    background-color: var(--color-dark-bg); /* Consistent with body or slightly different */
+    padding: 1.5rem 0;
+    text-align: center;
+    /* This header scrolls with the page, nav below is sticky */
+}
+.header-logo-link {
+    display: inline-block;
+}
+#site-logo-prominent {
+    display: block;
+    max-height: 75px; /* Adjust as needed */
+    width: auto;
+    margin: 0 auto;
 }
 
-
-/* --- FIXED Navigation with Logo --- */
+/* --- STICKY Navigation (Option A) --- */
 .main-navigation {
-    background-color: rgba(26, 38, 54, 0.92); /* Dark BG with transparency */
-    backdrop-filter: blur(10px); /* Increased blur */
+    background-color: rgba(26, 38, 54, 0.92); /* Dark with transparency */
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border-light);
-    position: fixed; /* Fixed position */
-    top: 0;
-    left: 0;
-    width: 100%; /* Full width */
+    position: fixed; /* STICKY NAV */
+    top: 0;          /* STICKY NAV */
+    left: 0;         /* STICKY NAV */
+    width: 100%;     /* STICKY NAV */
     z-index: 1000;
-    height: var(--nav-height); /* Set fixed height */
+    height: var(--nav-height);
 }
 .nav-container {
     display: flex;
-    justify-content: space-between; /* Logo left, links/toggle right */
+    justify-content: center; /* Center nav links as logo is now in header */
     align-items: center;
-    height: 100%; /* Fill the nav height */
-}
-.logo-nav-container {
-    display: flex;
-    align-items: center;
-}
-#nav-logo {
-    display: block;
-    max-height: calc(var(--nav-height) - 20px); /* Logo height relative to nav, with padding */
-    width: auto;
+    height: 100%;
+    position: relative; /* For mobile toggle if it remains on the right */
 }
 .nav-list {
     display: flex;
-    gap: clamp(0.8rem, 2vw, 1.2rem); /* Adjusted gap */
+    align-items: center; /* Vertically align items */
+    height: 100%;
+    gap: clamp(1.2rem, 3vw, 1.8rem); /* Spacing for centered links */
 }
 .nav-list a {
-    display: block; padding: 0.5rem 0.1rem; font-family: var(--font-family-body);
-    font-weight: 500; color: var(--color-beige-content); text-decoration: none;
-    font-size: 0.9rem; letter-spacing: 0.5px; position: relative;
+    display: flex; /* For vertical alignment of text in link */
+    align-items: center;
+    height: 100%;
+    padding: 0 0.3rem; /* Horizontal padding for links */
+    font-family: var(--font-family-body);
+    font-weight: 500;
+    color: var(--color-beige-content);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    position: relative;
 }
 .nav-list a:hover, .nav-list a:focus, .nav-list a.active { color: var(--color-yellow-accent); text-decoration: none; }
 .nav-list a::after {
-    content: ''; position: absolute; width: 0; height: 3px; bottom: -3px;
-    left: 0; background-color: var(--color-yellow-accent); transition: width 0.3s ease;
+    content: ''; position: absolute; width: 0; height: 3px; bottom: 10px; /* Adjust underline position */
+    left: 50%; transform: translateX(-50%); /* Center underline */
+    background-color: var(--color-yellow-accent); transition: width 0.3s ease;
 }
-.nav-list a:hover::after, .nav-list a:focus::after, .nav-list a.active::after { width: 100%; }
+.nav-list a:hover::after, .nav-list a:focus::after, .nav-list a.active::after { width: 80%; /* Underline width */ }
 
 /* --- Mobile Navigation Toggle --- */
 .mobile-nav-toggle {
     display: none; background: none; border: none; padding: 0.5rem; cursor: pointer;
     width: 30px; height: 30px; z-index: 1001;
-    /* No need for position: absolute as it's now a flex item in nav-container */
+    position: absolute; /* Keep on right side of nav-container */
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .hamburger-icon {
     display: block; width: 25px; height: 3px; background-color: var(--color-beige-content);
@@ -177,33 +189,30 @@ ul { list-style: none; }
 .mobile-nav-toggle.active .hamburger-icon::before { transform: translateY(8px) rotate(45deg); }
 .mobile-nav-toggle.active .hamburger-icon::after { transform: translateY(-8px) rotate(-45deg); }
 
-
 /* --- Main Content & Sections (Full Width Background) --- */
-/* Sections take full width by default. The .container div INSIDE each section handles content width. */
 main {
-    /* Body has padding-top for fixed nav, main starts after it */
+    /* Body padding-top handles space for fixed nav. Main starts below it. */
 }
 section {
     padding-top: 3rem;
     padding-bottom: 3rem;
-    /* Removed horizontal padding from section, will be handled by .container inside */
 }
 section:nth-child(odd) { background-color: var(--color-beige-content); }
 section:nth-child(odd) h2 { color: var(--color-blue-primary); border-bottom-color: var(--color-dark-bg); }
 section:nth-child(odd) p, section:nth-child(odd) li, section:nth-child(odd) address { color: var(--color-text-on-light); }
 section:nth-child(odd) a { color: var(--color-blue-primary); font-weight: 500; }
 section:nth-child(odd) a:hover, section:nth-child(odd) a:focus { color: var(--color-yellow-accent); }
-section:nth-child(even) { background-color: var(--color-dark-bg); } /* Default background */
+section:nth-child(even) { background-color: var(--color-dark-bg); }
 .profile-links { margin-top: 1.5rem; }
 .profile-links span { color: var(--color-blue-primary); }
 section:nth-child(odd) .profile-links span { color: var(--color-text-on-light); }
 
-/* --- Teaching Section Grid --- */
+/* --- Teaching Section Grid (Yellow accents already on cards) --- */
 .teaching-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
 .discipline-card {
     background-color: var(--color-white); color: var(--color-text-on-light); padding: 1.5rem;
     border-radius: 6px; border: 1px solid var(--color-border-beige);
-    border-top: 5px solid var(--color-yellow-accent); /* Yellow top border */
+    border-top: 5px solid var(--color-yellow-accent);
     box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: flex; flex-direction: column;
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
 }
@@ -227,7 +236,7 @@ section:nth-child(even) .publications-list strong, section:nth-child(even) .news
 .publications-list em { color: var(--color-text-light); font-style: italic; }
 section:nth-child(even) .publications-list em { color: #a0b0c0; }
 
-/* --- Contact Section --- */
+/* --- Contact Section (Yellow accent already on details box) --- */
 .contact-wrapper { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2rem; align-items: flex-start; }
 .contact-form-container { flex: 2; min-width: 300px; }
 .contact-details-container { flex: 1; min-width: 260px; padding: 1.5rem; border-radius: 6px; border: 1px solid var(--color-yellow-accent); }
@@ -274,18 +283,16 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-    /* Adjust nav height for mobile if logo is smaller or needs more space */
-    /* :root { --nav-height: 60px; } 
-       body { padding-top: 60px; } */
+    body {
+        padding-top: var(--nav-height); /* Ensure this matches nav height */
+    }
+    .site-header.prominent-logo-header { padding: 1rem 0; }
+    #site-logo-prominent { max-height: 50px; }
 
     .nav-container {
-        /* justify-content: space-between; already set */
+        justify-content: flex-end; /* Ensure toggle is on the right */
     }
-    #nav-logo {
-        max-height: calc(var(--nav-height) - 25px); /* Smaller logo on mobile */
-    }
-    .mobile-nav-toggle { display: block; }
-    .nav-list {
+    .main-navigation .nav-list { /* Ensure specificity if needed */
         display: none; position: absolute; top: 100%; /* Full height of nav bar */
         left: 0; right: 0; width: 100%;
         background-color: rgba(26, 38, 54, 0.98); backdrop-filter: blur(8px);
@@ -293,20 +300,21 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
         box-shadow: 0 4px 6px rgba(0,0,0,0.1); gap: 0;
         max-height: calc(100vh - var(--nav-height)); overflow-y: auto;
     }
-    .nav-list.active { display: flex; }
-    .nav-list li { width: 100%; }
-    .nav-list a { padding: 0.9rem 1.5rem; text-align: left; border-bottom: 1px solid var(--color-border-light); font-size: 1rem; }
-    .nav-list li:last-child a { border-bottom: none; }
-    .nav-list a::after { display: none; }
+    .main-navigation .nav-list.active { display: flex; } /* Show when active */
+    .main-navigation .nav-list li { width: 100%; }
+    .main-navigation .nav-list a { padding: 0.9rem 1.5rem; text-align: left; border-bottom: 1px solid var(--color-border-light); font-size: 1rem; }
+    .main-navigation .nav-list li:last-child a { border-bottom: none; }
+    .main-navigation .nav-list a::after { display: none; }
+
+    .mobile-nav-toggle { display: block; }
 
     .contact-wrapper { flex-direction: column; }
-    section { padding-top: 2rem; padding-bottom: 2rem; } /* Adjust section padding */
+    section { padding: 2rem 0; }
 }
 
 @media (max-width: 480px) {
-    /* Even smaller logo and nav links on very small screens */
-    #nav-logo { max-height: calc(var(--nav-height) - 30px); }
-    .nav-list a { font-size: 0.9rem; padding: 0.8rem 1rem; }
+    #site-logo-prominent { max-height: 40px; }
+    .main-navigation .nav-list a { font-size: 0.9rem; padding: 0.8rem 1rem; }
     h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
     h3 { font-size: clamp(1.1rem, 3vw, 1.3rem); }
 }
