@@ -106,7 +106,7 @@ ul { list-style: none; }
 /* --- Prominent Header with Logo (Option A) --- */
 .site-header.prominent-logo-header {
     background-color: var(--color-dark-bg); /* Consistent with body or slightly different */
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     text-align: center;
     /* This header scrolls with the page, nav below is sticky */
 }
@@ -115,7 +115,7 @@ ul { list-style: none; }
 }
 #site-logo-prominent {
     display: block;
-    max-height: 75px; /* Adjust as needed */
+    max-height: 100px; /* Adjust as needed */
     width: auto;
     margin: 0 auto;
 }
@@ -160,7 +160,7 @@ ul { list-style: none; }
 }
 .nav-list a:hover, .nav-list a:focus, .nav-list a.active { color: var(--color-yellow-accent); text-decoration: none; }
 .nav-list a::after {
-    content: ''; position: absolute; width: 0; height: 3px; bottom: 10px; /* Adjust underline position */
+    content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; /* Adjust underline position */
     left: 50%; transform: translateX(-50%); /* Center underline */
     background-color: var(--color-yellow-accent); transition: width 0.3s ease;
 }
@@ -286,8 +286,8 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
     body {
         padding-top: var(--nav-height); /* Ensure this matches nav height */
     }
-    .site-header.prominent-logo-header { padding: 1rem 0; }
-    #site-logo-prominent { max-height: 50px; }
+    .site-header.prominent-logo-header { padding: 1.5rem 0; }
+    #site-logo-prominent { max-height: 80px; }
 
     .nav-container {
         justify-content: flex-end; /* Ensure toggle is on the right */
@@ -313,7 +313,7 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
 }
 
 @media (max-width: 480px) {
-    #site-logo-prominent { max-height: 40px; }
+    #site-logo-prominent { max-height: 60px; }
     .main-navigation .nav-list a { font-size: 0.9rem; padding: 0.8rem 1rem; }
     h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
     h3 { font-size: clamp(1.1rem, 3vw, 1.3rem); }
