@@ -97,46 +97,41 @@
         </section>
 
         <section id="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading">Contato</h2>
-                <div class="contact-wrapper">
-                    <div class="contact-form-container">
-                        <p>Para dúvidas, sugestões ou colaborações, por favor, utilize o formulário abaixo.</p>
-                        <form id="contact-form" action="#" method="POST">
-                            <div class="form-group">
-                                <label for="name">Nome Completo:</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Seu Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="subject">Assunto:</label>
-                                <input type="text" id="subject" name="subject" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Mensagem:</label>
-                                <textarea id="message" name="message" rows="6" required></textarea>
-                            </div>
-                            <button type="submit" class="button">Enviar Mensagem</button>
-                        </form>
-                    </div>
-                    <div class="contact-details-container">
-                        <h3>Informações Adicionais</h3>
-                        <p><strong>Localização Profissional:</strong></p>
-                        <address>
-                            Universidade Federal Fluminense (UFF)<br>
-                            Escola de Engenharia, Departamento de Engenharia Civil<br>
-                            Rua Passo da Pátria, 156, São Domingos<br>
-                            Niterói, RJ - Brasil, CEP: 24210-240
-                        </address>
-                        <p><em>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</em></p>
+                <div class="container">
+                    <h2 id="contact-heading">Contato</h2>
+                    <div class="contact-wrapper">
+                        <div class="contact-form-container">
+                            <p>Para dúvidas ou sugestões, por favor, preencha os campos abaixo. Sua mensagem será encaminhada.</p>
+                            <form id="contact-form"
+                                  action="mailto:cristianotravassos@id.uff.br"
+                                  method="POST"
+                                  enctype="text/plain">
+                                <div class="form-group">
+                                    <label for="email">Seu Email:</label>
+                                    <input type="email" id="email" name="Email_Remetente" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Mensagem:</label>
+                                    <textarea id="message" name="Mensagem" rows="7" required></textarea>
+                                </div>
+                                <button type="submit" class="button">Enviar Mensagem</button>
+                            </form>
+                        </div>
+                        <div class="contact-details-container">
+                            <h3>Informações Adicionais</h3>
+                            <p><strong>Localização Profissional:</strong></p>
+                            <address>
+                                Universidade Federal Fluminense (UFF)<br>
+                                Escola de Engenharia, Departamento de Engenharia Civil<br>
+                                Rua Passo da Pátria, 156, São Domingos<br>
+                                Niterói, RJ - Brasil, CEP: 24210-240
+                            </address>
+                            <p><em>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</em></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
+            </section>
+        
     </main> <footer class="site-footer">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Prof. Dr. Cristiano Saad Travassos do Carmo. Todos os direitos reservados.</p>
