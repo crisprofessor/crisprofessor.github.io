@@ -1,0 +1,506 @@
+/* --- Minimalist Continuous Webpage Style --- */
+
+/* --- CSS Variables (Color Palette) --- */
+:root {
+    --color-dark-bg: #1A2636;      /* Very Dark Blue/Charcoal - Main Background */
+    --color-blue-primary: #325D7D; /* Blue - Headings, Links, Accents */
+    --color-yellow-accent: #F5A713;/* Yellow - CTAs, Highlights, Hover */
+    --color-beige-content: #E0D6CC;/* Beige - Content backgrounds or text on dark */
+    --color-white: #ffffff;
+    --color-light-text-on-dark: #f0f0f0; /* Light text for dark backgrounds */
+    --color-text-on-light: #333333; /* Dark text for light backgrounds */
+    --color-border-light: #4a5c6d; /* Lighter border for dark theme */
+    --color-border-beige: #c9bfb5; /* Border for beige elements */
+
+    --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --nav-height: 60px; /* Adjust as needed */
+}
+
+/* --- Base & Reset --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-height); /* Offset for sticky nav */
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: 1rem; /* Base font size (16px) */
+    line-height: 1.7;
+    color: var(--color-light-text-on-dark); /* Default text color for dark BG */
+    background-color: var(--color-dark-bg); /* Main page background */
+}
+
+/* --- Accessibility --- */
+.skip-link {
+    position: absolute;
+    top: -100px; /* Hide well off-screen */
+    left: 0;
+    background: var(--color-yellow-accent);
+    color: var(--color-dark-bg);
+    padding: 0.75rem 1rem;
+    z-index: 10000;
+    transition: top 0.3s ease-in-out;
+    font-weight: bold;
+}
+.skip-link:focus {
+    top: 0;
+}
+.sr-only { /* For screen reader text */
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --- Layout Container --- */
+.container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 0.75em;
+}
+h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem); /* Responsive H1 */
+    color: var(--color-white);
+}
+h2 { /* Section Headings */
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--color-beige-content); /* Beige for section titles on dark BG */
+    margin-top: 0; /* Sections will handle their own top padding */
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-blue-primary); /* Blue underline */
+    display: inline-block;
+}
+h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--color-blue-primary); /* Blue for sub-headings within sections */
+}
+p {
+    margin-bottom: 1rem;
+    color: var(--color-light-text-on-dark); /* Default paragraph text on dark BG */
+}
+section p, section li {
+    color: var(--color-text-on-light); /* Darker text for content on beige BG */
+}
+a {
+    color: var(--color-yellow-accent); /* Yellow links stand out on dark BG */
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+a:hover, a:focus {
+    color: var(--color-white);
+    text-decoration: underline;
+    opacity: 0.9;
+}
+section a { /* Links within beige content sections */
+    color: var(--color-blue-primary);
+    font-weight: bold;
+}
+section a:hover, section a:focus {
+    color: var(--color-yellow-accent);
+}
+
+address { font-style: normal; }
+ul { list-style: none; }
+
+/* --- Header --- */
+.site-header {
+    background-color: var(--color-dark-bg); /* Consistent with body or slightly different dark */
+    color: var(--color-white);
+    padding: 2rem 0 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid var(--color-blue-primary);
+}
+.site-header .header-subtitle {
+    color: var(--color-beige-content);
+    font-size: 1.15rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+.site-header .header-affiliation {
+    color: var(--color-blue-primary);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* --- Navigation --- */
+.main-navigation {
+    background-color: rgba(26, 38, 54, 0.85); /* Dark BG with some transparency */
+    backdrop-filter: blur(5px); /* Frosted glass effect for sticky nav */
+    border-bottom: 1px solid var(--color-border-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    min-height: var(--nav-height);
+}
+.nav-container {
+    display: flex;
+    justify-content: flex-end; /* Nav items to the right on desktop */
+    align-items: center;
+    min-height: var(--nav-height);
+    position: relative; /* For mobile toggle positioning */
+}
+.nav-list {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 1.5rem); /* Spacing between nav items */
+}
+.nav-list a {
+    display: block;
+    padding: 0.5rem 0.2rem; /* Adjust padding for vertical alignment */
+    font-weight: bold;
+    color: var(--color-beige-content);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+.nav-list a:hover, .nav-list a:focus, .nav-list a.active {
+    color: var(--color-yellow-accent);
+    text-decoration: none;
+}
+.nav-list a::after { /* Underline effect for hover/active */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: -3px; /* Position below text */
+    left: 0;
+    background-color: var(--color-yellow-accent);
+    transition: width 0.3s ease;
+}
+.nav-list a:hover::after, .nav-list a:focus::after, .nav-list a.active::after {
+    width: 100%;
+}
+
+/* --- Mobile Navigation Toggle --- */
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    z-index: 1001; /* Above nav list when it's absolute */
+    position: absolute; /* Relative to .nav-container */
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-beige-content); /* Icon color */
+    position: relative;
+    transition: background-color 0s 0.1s linear;
+    margin: auto; /* Center icon in button */
+}
+.hamburger-icon::before, .hamburger-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-beige-content);
+    transition: transform 0.2s ease-in-out;
+}
+.hamburger-icon::before { top: -8px; }
+.hamburger-icon::after { top: 8px; }
+.mobile-nav-toggle.active .hamburger-icon { background-color: transparent; } /* Hide middle bar */
+.mobile-nav-toggle.active .hamburger-icon::before { transform: translateY(8px) rotate(45deg); }
+.mobile-nav-toggle.active .hamburger-icon::after { transform: translateY(-8px) rotate(-45deg); }
+
+/* --- Main Content & Sections --- */
+/* Sections will have alternating backgrounds for clear distinction */
+section {
+    padding: 3rem 0; /* Vertical padding for sections */
+}
+/* Alternating section backgrounds for distinction */
+section:nth-child(odd) {
+    background-color: var(--color-beige-content); /* Beige background */
+}
+section:nth-child(odd) h2 {
+    color: var(--color-blue-primary); /* Blue heading on Beige BG */
+    border-bottom-color: var(--color-dark-bg); /* Dark underline */
+}
+section:nth-child(odd) p,
+section:nth-child(odd) li,
+section:nth-child(odd) address {
+    color: var(--color-text-on-light); /* Dark text on Beige BG */
+}
+section:nth-child(odd) a {
+    color: var(--color-blue-primary);
+}
+section:nth-child(odd) a:hover, section:nth-child(odd) a:focus {
+    color: var(--color-yellow-accent);
+}
+
+section:nth-child(even) {
+    background-color: var(--color-dark-bg); /* Dark background (default) */
+    /* Uses default h2, p, a styles for dark background */
+}
+
+.profile-links { margin-top: 1.5rem; }
+.profile-links span { color: var(--color-blue-primary); } /* For the separator */
+section:nth-child(odd) .profile-links span { color: var(--color-text-on-light); }
+
+
+/* --- Teaching Section Grid --- */
+.teaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.discipline-card {
+    background-color: var(--color-white); /* White cards on beige or dark */
+    color: var(--color-text-on-light);
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--color-border-beige);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+section:nth-child(even) .discipline-card { /* Cards on dark section */
+    background-color: #2a3b4d; /* Slightly lighter dark */
+    border-color: var(--color-border-light);
+    color: var(--color-light-text-on-dark);
+}
+section:nth-child(even) .discipline-card h3, section:nth-child(even) .discipline-card p {
+    color: var(--color-light-text-on-dark);
+}
+section:nth-child(even) .discipline-card h3 {
+    color: var(--color-beige-content);
+}
+
+
+.discipline-card h3 {
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--color-blue-primary); /* Blue heading on white/light card */
+}
+.discipline-card p {
+    font-size: 0.95rem;
+    flex-grow: 1; /* Pushes link to bottom if present */
+    margin-bottom: 0;
+    color: var(--color-text-on-light);
+}
+
+
+/* --- Publication/News List --- */
+.publications-list, .news-list {
+    margin-top: 1.5rem;
+}
+.publications-list li, .news-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border-beige); /* Beige separator on light */
+    font-size: 0.95rem;
+}
+section:nth-child(even) .publications-list li,
+section:nth-child(even) .news-list li {
+    border-bottom-color: var(--color-border-light); /* Darker separator on dark */
+    color: var(--color-light-text-on-dark);
+}
+.publications-list li:last-child, .news-list li:last-child {
+    border-bottom: none;
+}
+.publications-list strong, .news-list strong {
+    color: var(--color-blue-primary); /* Blue for emphasis */
+    display: block;
+    margin-bottom: 0.25rem;
+}
+section:nth-child(even) .publications-list strong,
+section:nth-child(even) .news-list strong {
+    color: var(--color-beige-content);
+}
+.publications-list em { color: var(--color-text-light); }
+section:nth-child(even) .publications-list em { color: #a0b0c0; }
+
+
+/* --- Contact Section --- */
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    align-items: flex-start;
+}
+.contact-form-container {
+    flex: 2;
+    min-width: 300px;
+}
+.contact-details-container {
+    flex: 1;
+    min-width: 260px;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+/* Specific styling for contact details based on section background */
+section:nth-child(odd) .contact-details-container { /* On Beige Section */
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-beige);
+}
+section:nth-child(odd) .contact-details-container h3 { color: var(--color-blue-primary); }
+section:nth-child(odd) .contact-details-container p, section:nth-child(odd) .contact-details-container address { color: var(--color-text-on-light); }
+
+section:nth-child(even) .contact-details-container { /* On Dark Section */
+    background-color: #2a3b4d; /* Slightly lighter dark */
+    border: 1px solid var(--color-border-light);
+}
+section:nth-child(even) .contact-details-container h3 { color: var(--color-beige-content); }
+section:nth-child(even) .contact-details-container p, section:nth-child(even) .contact-details-container address { color: var(--color-light-text-on-dark); }
+
+.contact-form-container p { margin-bottom: 1.5rem; }
+
+/* --- Form Styles --- */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+section:nth-child(odd) .form-group label { color: var(--color-blue-primary); }
+section:nth-child(even) .form-group label { color: var(--color-beige-content); }
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="text"], /* Subject */
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-border-beige); /* Default for light bg form */
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: var(--color-white);
+    color: var(--color-text-on-light);
+}
+section:nth-child(even) .form-group input[type="text"],
+section:nth-child(even) .form-group input[type="email"],
+section:nth-child(even) .form-group input[type="text"],
+section:nth-child(even) .form-group textarea {
+    background-color: #2a3b4d; /* Lighter dark input on dark bg */
+    border-color: var(--color-border-light);
+    color: var(--color-light-text-on-dark);
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-yellow-accent);
+    box-shadow: 0 0 0 3px rgba(245, 167, 19, 0.3); /* Yellow focus glow */
+}
+.form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+.button {
+    display: inline-block;
+    background-color: var(--color-yellow-accent);
+    color: var(--color-dark-bg); /* Dark text on yellow button for contrast */
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.button:hover, .button:focus {
+    background-color: #e0960d; /* Darker yellow */
+    color: var(--color-dark-bg);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+/* --- Footer --- */
+.site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: var(--color-dark-bg); /* Consistent with body bg */
+    color: var(--color-beige-content);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--color-border-light);
+}
+.site-footer p {
+    color: var(--color-beige-content);
+    margin-bottom: 0.25rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .nav-container { justify-content: flex-end; }
+    .mobile-nav-toggle { display: block; }
+    .nav-list {
+        display: none;
+        position: absolute;
+        top: 100%; /* Position below nav bar */
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: rgba(26, 38, 54, 0.98); /* Darker, less transparent for mobile */
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        padding: 0.5rem 0;
+        border-top: 1px solid var(--color-border-light);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        gap: 0;
+        max-height: calc(100vh - var(--nav-height)); /* Prevent full screen overflow */
+        overflow-y: auto; /* Scroll if menu is too long */
+    }
+    .nav-list.active {
+        display: flex; /* Show when active */
+    }
+    .nav-list li {
+        width: 100%;
+    }
+    .nav-list a {
+        padding: 0.9rem 1.5rem;
+        text-align: left; /* Align text to left on mobile */
+        border-bottom: 1px solid var(--color-border-light);
+        font-size: 1rem;
+    }
+    .nav-list li:last-child a {
+        border-bottom: none;
+    }
+    .nav-list a::after {
+        display: none; /* No underline effect for mobile nav items */
+    }
+
+    .contact-wrapper {
+        flex-direction: column;
+    }
+    section { padding: 2rem 0; }
+    h2 { font-size: clamp(1.5rem, 5vw, 1.9rem); } /* Slightly larger on mobile for impact */
+}
