@@ -27,7 +27,7 @@
             <ul class="nav-list" id="main-nav-list">
                 <li><a href="#about">Sobre</a></li>
                 <li><a href="#teaching">Ensino</a></li>
-                <li><a href="#publications">Publicações</a></li>
+                <li><a href="#research">Estudos e Pesquisas</a></li> {/* CHANGED HERE */}
                 <li><a href="#news">Notícias</a></li>
                 <li><a href="#contact">Contato</a></li>
             </ul>
@@ -73,22 +73,41 @@
             </div>
         </section>
 
-        <section id="publications" aria-labelledby="publications-heading">
+        {/* RENAMED and REPURPOSED SECTION */}
+        <section id="research" aria-labelledby="research-heading">
             <div class="container">
-                <h2 id="publications-heading">Publicações Selecionadas</h2>
-                <p>Uma seleção de trabalhos acadêmicos. Para a lista completa, acesse o <a href="http://lattes.cnpq.br/0197310834738778" target="_blank" rel="noopener noreferrer">Currículo Lattes</a>.</p>
-                <ul class="publications-list">
-                    <li><strong>2023:</strong> FARIA, P. S.; SOTELINO, E. D.; CARMO, C. S. T.; NASCIMENTO, D. L. M. Evaluating Construction Projects? Alternatives Using Lean Construction and Sustainability Principles in an Information Model Framework. <em>Sustainability</em>, v. 15, p. 16517.</li>
-                    <li><strong>2022:</strong> CARMO, C. S. T.; SOTELINO, E. D. A framework for architecture and structural engineering collaboration in BIM projects through structural optimization. <em>Journal of Information Technology in Construction (ITCon)</em>, v. 27, p. 223-239.</li>
-                    <li><strong>2021:</strong> DE OLIVEIRA, A. C. F.; CARMO, C. S. T.; CRUZ, A. S.; FAISCA, R. G. A case study to explore the synergy between HBIM and BEM for maintenance of historical buildings. <em>International Journal Of Building Pathology And Adaptation</em>.</li>
+                <h2 id="research-heading">Estudos e Pesquisas</h2>
+                <p>Principais linhas de pesquisa, projetos em andamento e interesses de estudo.</p>
+                <ul class="research-list item-list"> {/* Using item-list for general styling, can be more specific if needed */}
+                    <li>
+                        <strong class="research-title">Parametrização de projetos de pontes de seção caixão</strong>
+                        <p class="research-details">Iniciação científica (Convênio PUC-Rio e EGTC Infra S.A.) focada em construção em balanços sucessivos desde a fase conceitual ao BIM 4D. (Em andamento)</p>
+                        <p class="research-team"><em>Integrantes: Cristiano Saad Travassos do Carmo (Coordenador), Elisa Dominguez Sotelino, Matheus Antonio de Sousa.</em></p>
+                    </li>
+                    <li>
+                        <strong class="research-title">BIM e Tecnologia Social para Gestão Socioespacial nas Cidades</strong>
+                        <p class="research-details">Projeto de extensão focado na aplicação de BIM e tecnologia social para melhoria habitacional e gestão em comunidades. (Em andamento)</p>
+                        <p class="research-team"><em>Equipe inclui: Renata Gonçalves Faisca (Coordenador), Cristiano Saad Travassos do Carmo, Elson Antonio do Nascimento, Marcelo Jasmim Meiriño.</em></p>
+                    </li>
+                    <li>
+                        <strong class="research-title">Soluções Híbridas para Incertezas em Planejamento de Construção</strong>
+                        <p class="research-details">Pesquisa de doutorado focada no uso de modelagem estocástica e redes neurais para consideração de incertezas de segurança em métodos de planejamento da construção. (Concluído)</p>
+                        <p class="research-team"><em>Orientadora: Elisa Dominguez Sotelino.</em></p>
+                    </li>
+                    <li>
+                        <strong class="research-title">Consultoria de Implementação BIM</strong>
+                        <p class="research-details">Serviços de consultoria para implementação BIM na Carioca Engenharia. (Em andamento)</p>
+                    </li>
+                    {/* Add more research items as needed */}
                 </ul>
+                <p><em>Para mais detalhes sobre pesquisas e publicações associadas, consulte o <a href="http://lattes.cnpq.br/0197310834738778" target="_blank" rel="noopener noreferrer">Currículo Lattes</a>.</em></p>
             </div>
         </section>
 
         <section id="news" aria-labelledby="news-heading">
             <div class="container">
                 <h2 id="news-heading">Notícias e Atividades</h2>
-                <ul class="news-list">
+                <ul class="news-list item-list"> {/* Using item-list for general styling */}
                     <li><strong>Maio, 2025:</strong> Lançamento da página educacional.</li>
                     <li><strong>Março, 2025:</strong> Última atualização do Currículo Lattes.</li>
                 </ul>
@@ -97,42 +116,44 @@
         </section>
 
         <section id="contact" aria-labelledby="contact-heading">
-                <div class="container">
-                    <h2 id="contact-heading">Contato</h2>
-                    <div class="contact-wrapper">
-                        <div class="contact-form-container">
-                            <p>Para dúvidas ou sugestões, por favor, preencha os campos abaixo. Sua mensagem será encaminhada.</p>
-                            <form id="contact-form"
-                                  action="mailto:cristianotravassos@id.uff.br"
-                                  method="POST"
-                                  enctype="text/plain">
-                                <div class="form-group">
-                                    <label for="email">Seu Email:</label>
-                                    <input type="email" id="email" name="Email_Remetente" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message">Mensagem:</label>
-                                    <textarea id="message" name="Mensagem" rows="7" required></textarea>
-                                </div>
-                                <button type="submit" class="button">Enviar Mensagem</button>
-                            </form>
-                        </div>
-                        <div class="contact-details-container">
-                            <h3>Informações Adicionais</h3>
-                            <p><strong>Localização Profissional:</strong></p>
-                            <address>
-                                Universidade Federal Fluminense (UFF)<br>
-                                Escola de Engenharia, Departamento de Engenharia Civil<br>
-                                Rua Passo da Pátria, 156, São Domingos<br>
-                                Niterói, RJ - Brasil, CEP: 24210-240
-                            </address>
-                            <p><em>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</em></p>
-                        </div>
+            <div class="container">
+                <h2 id="contact-heading">Contato</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-form-container">
+                        <p>Para dúvidas ou sugestões, por favor, preencha os campos abaixo. Sua mensagem será encaminhada.</p>
+                        <form id="contact-form"
+                              action="mailto:cristianotravassos@id.uff.br"
+                              method="POST"
+                              enctype="text/plain">
+                            <div class="form-group">
+                                <label for="email">Seu Email:</label>
+                                <input type="email" id="email" name="Email_Remetente" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mensagem:</label>
+                                <textarea id="message" name="Mensagem" rows="7" required></textarea>
+                            </div>
+                            <button type="submit" class="button">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <div class="contact-details-container">
+                        <h3>Informações Adicionais</h3>
+                        <p><strong>Localização Profissional:</strong></p>
+                        <address>
+                            Universidade Federal Fluminense (UFF)<br>
+                            Escola de Engenharia, Departamento de Engenharia Civil<br>
+                            Rua Passo da Pátria, 156, São Domingos<br>
+                            Niterói, RJ - Brasil, CEP: 24210-240
+                        </address>
+                        <p><em>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</em></p>
                     </div>
                 </div>
-            </section>
-        
-    </main> <footer class="site-footer">
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Prof. Dr. Cristiano Saad Travassos do Carmo. Todos os direitos reservados.</p>
             <p>Desenvolvido como um recurso educacional.</p>
