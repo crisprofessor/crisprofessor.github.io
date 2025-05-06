@@ -1,371 +1,129 @@
-/* --- Custom Color Palette & Font Style --- */
+/* === Additions to style.css for JavaScript Enhancements === */
 
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@700&display=swap');
-
-/* Palette:
-   Beige: #E0D6CC
-   Yellow: #F5A713
-   Blue: #325D7D
-*/
-/* Fonts:
-   Body: Montserrat
-   Headings: Poppins (Bold - 700 weight) as alternative for Now Bold
-*/
-
-/* Basic Reset & Body Styling */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* --- Active Navigation Link (Scrollspy) --- */
+nav ul li a.active {
+    color: #F5A713; /* Yellow for active link */
+    font-weight: 700; /* Make active link bolder */
+}
+nav ul li a.active::after {
+    width: 100%; /* Ensure underline is shown for active link */
 }
 
-body {
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Montserrat', sans-serif; /* Montserrat for body text */
-    /* ------------------- */
-    line-height: 1.6;
-    color: #333;
-    background-color: #f7f5f2;
-    margin: 0;
+/* --- Scroll Animation --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* Header */
-header {
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile Navigation --- */
+#mobile-nav-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    color: #325D7D; /* Blue icon */
+    font-size: 1.8rem; /* Adjust size */
+    cursor: pointer;
+    padding: 0.5rem;
+    position: absolute; /* Position relative to nav */
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1100; /* Above nav list */
+}
+
+/* Optional: Style for CSS-only hamburger if not using Font Awesome */
+/*
+.hamburger-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
     background-color: #325D7D;
-    color: #fff;
-    padding: 1.5rem 0;
-    text-align: center;
-    border-bottom: 5px solid #F5A713;
-}
-
-header h1 {
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Poppins', sans-serif; /* Poppins for main title */
-    font-weight: 700; /* Bold weight from import */
-    /* ------------------- */
-    margin-bottom: 0.5rem;
-    font-size: 2.2rem;
-    color: #fff;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #E0D6CC;
-    /* ---- FONT UPDATE (Optional - Keep Montserrat or use Poppins regular if imported) ---- */
-    font-family: 'Montserrat', sans-serif; /* Keep subtitle in Montserrat */
-    font-weight: 400;
-    /* ------------------- */
-}
-
-/* Navigation */
-nav {
-    background-color: #fff;
-    padding: 0.75rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 1rem;
-}
-
-nav ul li a {
-    color: #325D7D;
-    text-decoration: none;
-    padding: 0.5rem 0.2rem;
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Montserrat', sans-serif; /* Montserrat for nav items */
-    font-weight: 500; /* Medium weight for nav */
-    /* ------------------- */
     position: relative;
-    transition: color 0.3s ease;
+    transition: background-color 0s 0.1s linear;
 }
-
-nav ul li a::after {
+.hamburger-icon::before,
+.hamburger-icon::after {
     content: '';
     position: absolute;
-    width: 0;
+    left: 0;
+    width: 100%;
     height: 3px;
-    bottom: -2px;
-    left: 0;
-    background-color: #F5A713;
-    transition: width 0.3s ease;
+    background-color: #325D7D;
+    transition: transform 0.2s ease-in-out;
 }
+.hamburger-icon::before { top: -8px; }
+.hamburger-icon::after { top: 8px; }
 
-nav ul li a:hover,
-nav ul li a:focus {
-    color: #F5A713;
-    outline: none;
-}
+#mobile-nav-toggle.active .hamburger-icon { background-color: transparent; } // Hide middle bar
+#mobile-nav-toggle.active .hamburger-icon::before { transform: translateY(8px) rotate(45deg); }
+#mobile-nav-toggle.active .hamburger-icon::after { transform: translateY(-8px) rotate(-45deg); }
+*/
 
-nav ul li a:hover::after,
-nav ul li a:focus::after {
-    width: 100%;
-}
 
-/* Main Content Area */
-main {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-/* Sections */
-section {
-    background-color: #fff;
-    margin-bottom: 2rem;
-    padding: 1.5rem 2rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    border-top: 4px solid #325D7D;
-    scroll-margin-top: 80px;
-}
-
-section h2 {
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Poppins', sans-serif; /* Poppins for section titles */
-    font-weight: 700; /* Bold weight */
-    /* ------------------- */
-    color: #325D7D;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    border-bottom: 2px solid #E0D6CC;
-    padding-bottom: 0.6rem;
-    display: inline-block;
-}
-
-/* Specific Section Styling */
-#about p,
-#teaching p,
-#publications p,
-#news p,
-#contact p {
-    margin-bottom: 1rem;
-    color: #444;
-}
-
-#about a, #publications a, .discipline ul li a {
-    color: #325D7D;
-    text-decoration: none;
-    font-weight: 500; /* Medium weight for links */
-    transition: color 0.2s ease, text-decoration 0.2s ease;
-}
-
-#about a:hover, #publications a:hover, .discipline ul li a:hover {
-    color: #F5A713;
-    text-decoration: underline;
-}
-
-#about p a {
-    color: #325D7D;
-    font-weight: 700; /* Bold weight for important links */
-}
-#about p a:hover {
-    color: #F5A713;
-}
-
-/* Teaching Section Articles */
-.discipline {
-    border-left: 4px solid #325D7D;
-    padding-left: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
-    background-color: #fdfbf9;
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    border-radius: 4px;
-}
-
-.discipline h3 {
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Poppins', sans-serif; /* Poppins for sub-headings */
-    font-weight: 700; /* Bold weight */
-    /* ------------------- */
-    color: #325D7D;
-    margin-bottom: 0.75rem;
-    font-size: 1.3rem;
-}
-
-.discipline ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 0.5rem;
-}
-
-.discipline ul li {
-    position: relative;
-    padding-left: 1.2rem;
-    margin-bottom: 0.5rem;
-    color: #555;
-}
-
-.discipline ul li::before {
-    content: '›';
-    position: absolute;
-    left: 0;
-    top: -1px;
-    color: #F5A713;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-/* Publications & News List */
-#publications ul, #news ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-#publications li, #news li {
-    background-color: #f9f9f9;
-    border: 1px solid #E0D6CC;
-    padding: 1rem 1.2rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    color: #444;
-    border-left: 5px solid #F5A713;
-}
-
-/* Contact Form */
-#contact-form label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700; /* Bold label */
-    color: #325D7D;
-}
-
-#contact-form input[type="text"],
-#contact-form input[type="email"],
-#contact-form textarea {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    margin-bottom: 1.2rem;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    color: #333;
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Montserrat', sans-serif; /* Ensure form inputs use Montserrat */
-    /* ------------------- */
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#contact-form input[type="text"]:focus,
-#contact-form input[type="email"]:focus,
-#contact-form textarea:focus {
-    outline: none;
-    border-color: #F5A713;
-    box-shadow: 0 0 0 3px rgba(245, 167, 19, 0.3);
-}
-
-#contact-form textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-#contact-form button {
-    background-color: #F5A713;
-    color: #333;
-    padding: 0.9rem 2rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Montserrat', sans-serif; /* Button text */
-    font-weight: 700; /* Bold button text */
-    /* ------------------- */
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-}
-
-#contact-form button:hover {
-    background-color: #e0960d;
-    transform: translateY(-2px);
-}
-
-.address {
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #E0D6CC;
-}
-
-.address h3 {
-    /* ---- FONT UPDATE ---- */
-    font-family: 'Poppins', sans-serif; /* Poppins for this heading too */
-    font-weight: 700;
-    /* ------------------- */
-    margin-bottom: 0.75rem;
-    color: #325D7D;
-    font-size: 1.3rem;
-}
-
-.address p {
-    color: #555;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    background-color: #E0D6CC;
-    color: #555;
-    font-size: 0.9rem;
-    border-top: 1px solid #c9beae; /* Slightly darker beige border */
-}
-
-/* Responsive Design Adjustments */
+/* Styles applied within the existing @media query */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 1.8rem;
+    /* Existing responsive styles... */
+
+    /* --- Mobile Nav Specific Styles --- */
+    #mobile-nav-toggle {
+        display: block; /* Show toggle button */
     }
-    header p {
-        font-size: 1rem;
-    }
-    nav ul {
+
+    nav ul#main-nav-list {
+        /* Hide list by default, position for overlay */
+        display: none; /* Hide initially */
+        position: absolute;
+        top: 100%; /* Position below the nav bar */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98); /* Slightly transparent white */
+        backdrop-filter: blur(5px); /* Optional blur effect */
         flex-direction: column;
         align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-top: 1px solid #eee;
+        max-height: calc(100vh - 70px); /* Limit height */
+        overflow-y: auto; /* Allow scrolling if menu is long */
     }
+
+    nav ul#main-nav-list.active {
+        display: flex; /* Show the list when active */
+    }
+
     nav ul li {
-        margin: 0.5rem 0;
+        margin: 0.8rem 0; /* Vertical spacing for mobile */
+        width: 100%;
+        text-align: center;
     }
-    nav ul li a::after {
+
+     nav ul li a {
+         padding: 0.8rem 1rem; /* Larger tap area */
+         display: block; /* Make link fill width */
+     }
+
+     nav ul li a::after { /* Adjust underline position for mobile */
+        bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-    }
+     }
      nav ul li a:hover::after,
-     nav ul li a:focus::after {
-        width: 80%;
+     nav ul li a:focus::after,
+     nav ul li a.active::after { /* Make underline shorter on mobile */
+        width: 50%;
      }
-    main {
-        margin: 1.5rem auto;
-    }
-     section {
-        padding: 1.5rem; /* Adjust padding for smaller screens */
-     }
-    section h2 {
-        font-size: 1.6rem;
-    }
-     .discipline h3 {
-        font-size: 1.2rem;
-     }
-     .address h3 {
-         font-size: 1.2rem;
-     }
-    #contact-form button {
-        width: 100%;
-        padding: 1rem;
-    }
+     /* --- End Mobile Nav --- */
 }
+
+/* Optional: Prevent body scrolling when mobile menu is open */
+/*
+body.no-scroll {
+    overflow: hidden;
+}
+*/
