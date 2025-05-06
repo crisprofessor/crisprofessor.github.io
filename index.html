@@ -11,22 +11,16 @@
     <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
     <header class="site-header">
-        <div class="container header-container">
-            <div class="logo-container">
-                <a href="#" aria-label="Página Inicial Professor Cristiano Travassos">
-                    <img src="logo.png" alt="Logo Professor Cristiano Travassos" id="site-logo">
-                </a>
-            </div>
-            <div class="header-text">
-                <h1 class="sr-only">Prof. Dr. Cristiano Saad Travassos do Carmo</h1>
-                <p class="header-subtitle">Engenharia Civil | Transportes | BIM</p>
-                <p class="header-affiliation">Universidade Federal Fluminense (UFF)</p>
-            </div>
-        </div>
+        <h1 class="sr-only">Prof. Dr. Cristiano Saad Travassos do Carmo - Webpage Educacional</h1>
     </header>
 
     <nav class="main-navigation" id="main-nav">
         <div class="container nav-container">
+            <div class="logo-nav-container">
+                <a href="#" aria-label="Página Inicial Professor Cristiano Travassos">
+                    <img src="logo.png" alt="Logo Professor Cristiano Travassos" id="nav-logo">
+                </a>
+            </div>
             <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false" aria-label="Abrir menu de navegação">
                 <span class="hamburger-icon" aria-hidden="true"></span>
             </button>
@@ -41,9 +35,8 @@
     </nav>
 
     <main id="main-content">
-        <div class="container">
-
-            <section id="about" aria-labelledby="about-heading">
+        <section id="about" aria-labelledby="about-heading">
+            <div class="container">
                 <h2 id="about-heading">Sobre</h2>
                 <p>Cristiano Saad Travassos do Carmo possui graduação em Engenharia Civil pela Universidade Federal Fluminense (2016), mestrado (2018) e doutorado (2023) em Engenharia Civil pela Pontifícia Universidade Católica do Rio de Janeiro.</p>
                 <p>Atualmente, é Professor Adjunto A da Universidade Federal Fluminense (UFF) e também desempenha funções na Pontifícia Universidade Católica do Rio de Janeiro. Sua atuação principal é no setor de engenharia civil, com ênfase em transportes.</p>
@@ -52,9 +45,11 @@
                     <span aria-hidden="true"> | </span>
                     <a href="https://orcid.org/0000-0003-1517-2457" target="_blank" rel="noopener noreferrer">ORCID</a>
                 </p>
-            </section>
+            </div>
+        </section>
 
-            <section id="teaching" aria-labelledby="teaching-heading">
+        <section id="teaching" aria-labelledby="teaching-heading">
+            <div class="container">
                 <h2 id="teaching-heading">Ensino e Material Didático</h2>
                 <p>Esta seção é dedicada aos materiais de apoio para as disciplinas ministradas, incluindo conceitos, explicações, tutoriais e, futuramente, animações. (Conteúdo em desenvolvimento)</p>
                 <div class="teaching-grid">
@@ -75,33 +70,40 @@
                         <p>Materiais sobre conceitos BIM, ferramentas, colaboração e aplicações no ciclo de vida de projetos.</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="publications" aria-labelledby="publications-heading">
+        <section id="publications" aria-labelledby="publications-heading">
+            <div class="container">
                 <h2 id="publications-heading">Publicações Selecionadas</h2>
                 <p>Uma seleção de trabalhos acadêmicos. Para a lista completa, acesse o <a href="http://lattes.cnpq.br/0197310834738778" target="_blank" rel="noopener noreferrer">Currículo Lattes</a>.</p>
                 <ul class="publications-list">
                     <li><strong>2023:</strong> FARIA, P. S.; SOTELINO, E. D.; CARMO, C. S. T.; NASCIMENTO, D. L. M. Evaluating Construction Projects? Alternatives Using Lean Construction and Sustainability Principles in an Information Model Framework. <em>Sustainability</em>, v. 15, p. 16517.</li>
                     <li><strong>2022:</strong> CARMO, C. S. T.; SOTELINO, E. D. A framework for architecture and structural engineering collaboration in BIM projects through structural optimization. <em>Journal of Information Technology in Construction (ITCon)</em>, v. 27, p. 223-239.</li>
                     <li><strong>2021:</strong> DE OLIVEIRA, A. C. F.; CARMO, C. S. T.; CRUZ, A. S.; FAISCA, R. G. A case study to explore the synergy between HBIM and BEM for maintenance of historical buildings. <em>International Journal Of Building Pathology And Adaptation</em>.</li>
-                    </ul>
-            </section>
+                </ul>
+            </div>
+        </section>
 
-            <section id="news" aria-labelledby="news-heading">
+        <section id="news" aria-labelledby="news-heading">
+            <div class="container">
                 <h2 id="news-heading">Notícias e Atividades</h2>
                 <ul class="news-list">
                     <li><strong>Maio, 2025:</strong> Lançamento da página educacional.</li>
                     <li><strong>Março, 2025:</strong> Última atualização do Currículo Lattes.</li>
-                    </ul>
+                </ul>
                 <p><em>Esta seção será atualizada com novas informações sobre atividades acadêmicas e projetos.</em></p>
-            </section>
+            </div>
+        </section>
 
-            <section id="contact" aria-labelledby="contact-heading">
+        <section id="contact" aria-labelledby="contact-heading">
+            <div class="container">
                 <h2 id="contact-heading">Contato</h2>
                 <div class="contact-wrapper">
                     <div class="contact-form-container">
                         <p>Para dúvidas, sugestões ou colaborações, por favor, utilize o formulário abaixo.</p>
-                        <form id="contact-form" action="#" method="POST"> <div class="form-group">
+                        <form id="contact-form" action="#" method="POST">
+                            <div class="form-group">
                                 <label for="name">Nome Completo:</label>
                                 <input type="text" id="name" name="name" required>
                             </div>
@@ -129,14 +131,13 @@
                             Rua Passo da Pátria, 156, São Domingos<br>
                             Niterói, RJ - Brasil, CEP: 24210-240
                         </address>
-                        <p>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</p>
+                        <p><em>Para assuntos institucionais, por favor, utilize os canais oficiais da universidade.</em></p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div> </main>
-
-    <footer class="site-footer">
+    </main> <footer class="site-footer">
         <div class="container">
             <p>&copy; <span id="current-year"></span> Prof. Dr. Cristiano Saad Travassos do Carmo. Todos os direitos reservados.</p>
             <p>Desenvolvido como um recurso educacional.</p>
