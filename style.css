@@ -349,3 +349,157 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
     h3 { font-size: clamp(1.1rem, 3vw, 1.3rem); }
     .research-card-title { font-size: 1rem; }
 }
+
+/* --- Additions to style.css for Subpages --- */
+
+/* --- Breadcrumb Navigation on Subpages --- */
+.breadcrumb-nav {
+    padding: 0.75rem 0 1.5rem; /* Space above/below breadcrumbs */
+    font-size: 0.9rem;
+    color: var(--color-light-text-on-dark); /* Default for dark background */
+}
+/* Breadcrumbs on light background sections */
+section:nth-child(odd) .breadcrumb-nav {
+    color: var(--color-text-on-light);
+}
+
+.breadcrumb-nav a {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: underline;
+    opacity: 0.8;
+}
+.breadcrumb-nav a:hover, .breadcrumb-nav a:focus {
+    color: var(--color-yellow-accent); /* Yellow hover */
+    opacity: 1;
+}
+
+/* --- Clickable Teaching Cards on Index Page --- */
+.teaching-card-link {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    height: 100%; /* Ensure card takes full grid cell height */
+}
+.teaching-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.card-internal-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Make link fill the card */
+    text-decoration: none;
+    color: inherit; /* Inherit text color from card */
+}
+.card-internal-link:hover, .card-internal-link:focus {
+    text-decoration: none; /* No underline for the whole card link */
+    color: inherit; /* Don't change text color on card hover */
+}
+.card-internal-link:focus-visible { /* Accessibility focus for the card link */
+     outline: 2px solid var(--color-yellow-accent);
+     outline-offset: 3px;
+     border-radius: 6px; /* Match card border-radius */
+}
+
+
+.card-internal-link h3 {
+    color: var(--color-blue-primary); /* Ensure heading color is consistent */
+    transition: color 0.2s ease;
+}
+/* Ensure correct heading color on dark backgrounds */
+section:nth-child(even) .teaching-card-link h3 {
+    color: var(--color-beige-content);
+}
+
+.teaching-card-link:hover h3,
+.teaching-card-link:focus h3 {
+    color: var(--color-yellow-accent); /* Highlight title on card hover */
+}
+
+.card-internal-link p {
+     flex-grow: 1; /* Pushes indicator to bottom */
+     margin-bottom: 1rem;
+     font-size: 0.95rem;
+     /* Color inherited from card */
+}
+
+.card-link-indicator {
+    display: block;
+    margin-top: auto; /* Push to bottom */
+    font-weight: 500; /* Montserrat Medium */
+    color: var(--color-blue-primary);
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+section:nth-child(even) .card-link-indicator {
+    color: var(--color-beige-content);
+}
+
+.teaching-card-link:hover .card-link-indicator,
+.teaching-card-link:focus .card-link-indicator {
+    color: var(--color-yellow-accent);
+}
+
+
+/* --- Styling for Subpage Content --- */
+.subpage-container {
+    padding-top: 2rem; /* Space below nav */
+    padding-bottom: 3rem;
+}
+/* Ensure subpage content has correct text color on different potential backgrounds */
+/* Assuming subpages might eventually alternate backgrounds too */
+main section:nth-child(odd) .subpage-content p,
+main section:nth-child(odd) .subpage-content li {
+    color: var(--color-text-on-light);
+}
+main section:nth-child(even) .subpage-content p,
+main section:nth-child(even) .subpage-content li {
+    color: var(--color-light-text-on-dark);
+}
+
+/* Style for content modules within subpages */
+.content-module {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-light); /* Separator */
+}
+section:nth-child(odd) .content-module {
+    border-top-color: var(--color-border-beige);
+}
+
+.content-module h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem; /* Slightly smaller than section H2 */
+}
+
+.content-module ul {
+    list-style: disc; /* Use standard bullets for lists */
+    margin-left: 1.5rem; /* Indent bulleted list */
+    margin-bottom: 1rem;
+}
+.content-module ul li {
+    margin-bottom: 0.5rem;
+}
+.content-module ul li a {
+    font-weight: 400; /* Regular Montserrat */
+}
+
+/* Optional: Specific styling for embedded videos */
+.video-container {
+	overflow: hidden;
+	position: relative;
+	width:100%;
+    margin-top: 1rem;
+}
+.video-container::after {
+	padding-top: 56.25%; /* 16:9 Aspect Ratio */
+	display: block;
+	content: '';
+}
+.video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    border: 0;
+}
