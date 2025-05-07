@@ -1,4 +1,4 @@
-/* --- Minimalist Continuous Webpage Style - V7 (Logo Sizing Test) --- */
+/* --- Minimalist Continuous Webpage Style - V8 (Logo Sizing Debug) --- */
 
 /* --- Import Google Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
@@ -17,7 +17,7 @@
 
     --font-family-body: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-family-heading: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    --nav-height: 60px;
+    --nav-height: 60px; /* Height of the sticky navigation bar */
 }
 
 /* --- Base & Reset --- */
@@ -105,17 +105,21 @@ ul { list-style: none; }
 /* --- Prominent Header with Logo (Option A) --- */
 .site-header.prominent-logo-header {
     background-color: var(--color-dark-bg);
-    padding: 2rem 0; /* Increased padding from previous version */
+    padding: 1rem 0; /* Adjusted padding for logo sizing test */
     text-align: center;
+    display: block; /* Ensure it's a block container */
 }
 .header-logo-link {
     display: inline-block;
 }
-#site-logo-prominent {
+/* Target the logo with high specificity for sizing debug */
+header.site-header #site-logo-prominent {
     display: block;
-    height: 150px;  /* << DIRECT HEIGHT SETTING FOR TESTING >> */
-    width: auto;    /* This will maintain aspect ratio based on height */
+    height: 150px !important;  /* << FORCED HEIGHT FOR DESKTOP TESTING >> */
+    width: auto !important;     /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't overflow small containers */
     margin: 0 auto;
+    border: 1px solid red; /* << TEMPORARY DEBUG BORDER >> */
 }
 
 /* --- STICKY Navigation (Option A) --- */
@@ -185,9 +189,7 @@ ul { list-style: none; }
 .mobile-nav-toggle.active .hamburger-icon::after { transform: translateY(-8px) rotate(-45deg); }
 
 /* --- Main Content & Sections (Full Width Background) --- */
-main {
-    /* Body padding-top handles space for fixed nav. */
-}
+main {}
 section {
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -233,68 +235,28 @@ section:nth-child(even) .discipline-card p { color: var(--color-light-text-on-da
     margin-top: 2rem;
 }
 a.research-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
+    text-decoration: none; color: inherit; display: block;
     transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    border-radius: 8px; /* For focus outline to look good */
+    border-radius: 8px;
 }
 a.research-card-link:hover, a.research-card-link:focus {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12);
     text-decoration: none;
 }
-a.research-card-link:focus-visible {
-    outline: 2px solid var(--color-yellow-accent);
-    outline-offset: 3px;
-}
+a.research-card-link:focus-visible { outline: 2px solid var(--color-yellow-accent); outline-offset: 3px; }
 .research-card {
-    background-color: var(--color-white);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    border: 1px solid var(--color-border-beige);
+    background-color: var(--color-white); border-radius: 8px; overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column;
+    height: 100%; border: 1px solid var(--color-border-beige);
 }
-section:nth-child(even) .research-card {
-    background-color: #2a3b4d;
-    border-color: var(--color-border-light);
-}
-.research-card-figure {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    background-color: #ccc;
-}
-.research-card-figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease-in-out;
-}
+section:nth-child(even) .research-card { background-color: #2a3b4d; border-color: var(--color-border-light); }
+.research-card-figure { width: 100%; height: 180px; overflow: hidden; background-color: #ccc; }
+.research-card-figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease-in-out; }
 a.research-card-link:hover .research-card-figure img,
-a.research-card-link:focus .research-card-figure img {
-    transform: scale(1.05);
-}
-.research-card-content {
-    padding: 1rem 1.25rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.research-card-title {
-    font-size: 1.1rem; /* Slightly smaller for cards */
-    color: var(--color-blue-primary);
-    margin-bottom: 0;
-    line-height: 1.4;
-}
-section:nth-child(even) .research-card-title {
-    color: var(--color-beige-content);
-}
+a.research-card-link:focus .research-card-figure img { transform: scale(1.05); }
+.research-card-content { padding: 1rem 1.25rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+.research-card-title { font-size: 1.1rem; color: var(--color-blue-primary); margin-bottom: 0; line-height: 1.4; }
+section:nth-child(even) .research-card-title { color: var(--color-beige-content); }
 
 /* --- News List --- */
 .news-list { margin-top: 1.5rem; }
@@ -350,9 +312,10 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
 /* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     body { padding-top: var(--nav-height); }
-    .site-header.prominent-logo-header { padding: 1.5rem 0; } /* Adjusted from 2rem */
-    #site-logo-prominent {
-        height: 100px; /* << DIRECT HEIGHT FOR TABLET >> */
+    .site-header.prominent-logo-header { padding: 1rem 0; } /* Adjusted padding */
+    header.site-header #site-logo-prominent {
+        height: 120px !important; /* << FORCED HEIGHT FOR TABLET >> */
+        border: 1px solid green; /* << TEMPORARY DEBUG BORDER >> */
     }
     .nav-container { justify-content: flex-end; }
     .mobile-nav-toggle { display: block; }
@@ -378,10 +341,11 @@ section:nth-child(even) .form-group input[type="text"], section:nth-child(even) 
 
 @media (max-width: 480px) {
     .site-header.prominent-logo-header {
-        padding: 1rem 0; /* Adjusted */
+        padding: 0.8rem 0; /* Adjusted padding */
     }
-    #site-logo-prominent {
-        height: 80px; /* << DIRECT HEIGHT FOR MOBILE >> */
+    header.site-header #site-logo-prominent {
+        height: 90px !important; /* << FORCED HEIGHT FOR MOBILE >> */
+        border: 1px solid blue; /* << TEMPORARY DEBUG BORDER >> */
     }
     .main-navigation .nav-list a { font-size: 0.9rem; padding: 0.8rem 1rem; }
     h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
