@@ -1,97 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>Ensino: Projeto e Construção de Estradas - Prof. Cristiano Travassos</title>
-    <link rel="stylesheet" href="style.css">
-    </head>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+
+    <link rel="stylesheet" href="dist/theme/custom-theme.css" id="theme">
+
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <style>
+        .back-to-main-link {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000; /* Above slides but potentially below reveal controls */
+            background-color: rgba(26, 38, 54, 0.8); /* Match nav */
+            color: #E0D6CC; /* Beige */
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; /* Use body font */
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .back-to-main-link:hover,
+        .back-to-main-link:focus {
+            background-color: #F5A713; /* Yellow accent */
+            color: #1A2636; /* Dark text */
+            text-decoration: none;
+        }
+        .back-to-main-link:focus-visible {
+             outline: 2px solid #F5A713;
+             outline-offset: 2px;
+        }
+        /* Adjust reveal.js controls if they overlap with the back button */
+        .reveal .controls {
+            /* Example: move controls slightly to avoid overlap */
+            /* right: 40px; */
+        }
+        /* Optional: Style for class numbers */
+        .class-number {
+            display: block;
+            font-size: 0.8em;
+            color: var(--color-blue-primary); /* Or another subtle color */
+            margin-bottom: 0.5em;
+            font-weight: 500;
+        }
+    </style>
+</head>
 <body>
+    <a href="index.html#teaching" class="back-to-main-link">← Voltar para Ensino</a>
 
-    <a href="#subpage-main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <div class="reveal">
+        <div class="slides">
 
-    <header class="site-header prominent-logo-header">
-        <div class="container">
-            <a href="index.html" aria-label="Página Inicial Professor Cristiano Travassos" class="header-logo-link">
-                <img src="logo.png" alt="Logo Professor Cristiano Travassos" id="site-logo-prominent">
-            </a>
-            <h1 class="sr-only">Prof. Dr. Cristiano Saad Travassos do Carmo - Webpage Educacional</h1>
-        </div>
-    </header>
+            <section>
+                <h2>Projeto e Construção de Estradas</h2>
+                <p>
+                    <small>Prof. Cristiano Travassos</small>
+                </p>
+                 <p><small>Universidade Federal Fluminense (UFF)</small></p>
+            </section>
 
-    <nav class="main-navigation" id="main-nav">
-        <div class="container nav-container">
-            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false" aria-label="Abrir menu de navegação">
-                <span class="hamburger-icon" aria-hidden="true"></span>
-            </button>
-            <ul class="nav-list" id="main-nav-list">
-                <li><a href="index.html#about">Sobre</a></li>
-                <li><a href="index.html#teaching">Ensino</a></li>
-                <li><a href="index.html#research">Pesquisa</a></li>
-                <li><a href="index.html#news">Notícias</a></li>
-                <li><a href="index.html#contact">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
+            <section>
+                <span class="class-number">Aula 1</span>
+                <h3>Introdução à Construção de Rodovias e Ferrovias</h3>
+                <p>(Conteúdo, imagens, conceitos e definições para Aula 1 aqui...)</p>
+                <ul>
+                    <li>Objetivos da disciplina</li>
+                    <li>Histórico e importância</li>
+                    <li>Classificação de vias</li>
+                </ul>
+            </section>
 
-    <main id="subpage-main-content">
-        <div class="subpage-container container">
+            <section>
+                <span class="class-number">Aula 2</span>
+                <h3>Terraplenagem e Equipamentos Utilizados</h3>
+                <p>(Conteúdo sobre corte, aterro, materiais, equipamentos - tratores, escavadeiras, motoniveladoras, etc. aqui...)</p>
+                <img src="placeholder-terraplenagem.png" alt="Equipamento de terraplenagem" style="max-height: 350px; width: auto;">
+            </section>
 
-            <nav aria-label="Breadcrumb" class="breadcrumb-nav">
-                 <a href="index.html">Início</a> &gt; <a href="index.html#teaching">Ensino</a> &gt; Projeto e Construção de Estradas
-            </nav>
+            <section>
+                 <span class="class-number">Aula 3</span>
+                 <h3>Compactação e Controle de Qualidade</h3>
+                 <p>(Teoria da compactação, ensaio Proctor, equipamentos (rolos), controle de grau de compactação aqui...)</p>
+            </section>
 
-            <section class="subpage-content" aria-labelledby="subpage-title">
-                <h2 id="subpage-title">Projeto e Construção de Estradas</h2>
+            <section>
+                 <span class="class-number">Aula 4</span>
+                 <h3>Ensaios Geotécnicos Aplicados a Estradas</h3>
+                 <p>(Granulometria, limites de Atterberg, CBR, etc., e sua aplicação em projetos viários aqui...)</p>
+            </section>
 
-                <p>Bem-vindo à seção de materiais para a disciplina de Projeto e Construção de Estradas. Aqui você encontrará notas de aula, apresentações, vídeos, links úteis e outros recursos.</p>
-                <p>(Conteúdo específico desta disciplina será adicionado aqui).</p>
+            <section>
+                 <span class="class-number">Aula 5</span>
+                 <h3>Propriedades dos Materiais de Base e Sub-base</h3>
+                 <p>(Tipos de materiais (solo, brita), requisitos, estabilização de solos aqui...)</p>
+            </section>
 
-                <div class="content-module">
-                    <h3>Notas de Aula / Apresentações</h3>
-                    <ul>
-                        <li><a href="#" download>Aula 01 - Introdução (PDF)</a></li>
-                        <li><a href="#" download>Aula 02 - Projeto Geométrico (PPTX)</a></li>
-                        <li>(Mais itens aqui...)</li>
-                    </ul>
-                </div>
+            <section>
+                 <span class="class-number">Aula 6</span>
+                 <h3>Drenagem Superficial e Profunda</h3>
+                 <p>(Importância da drenagem, dispositivos (sarjetas, bueiros, drenos), dimensionamento básico aqui...)</p>
+                 <img src="placeholder-drenagem.png" alt="Sistema de drenagem" style="max-height: 350px; width: auto;">
+            </section>
 
-                <div class="content-module">
-                    <h3>Vídeos</h3>
-                    <ul>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">Vídeo: Técnicas de Terraplenagem</a></li>
-                        <li>(Mais vídeos aqui...)</li>
-                    </ul>
-                    </div>
+            <section>
+                 <span class="class-number">Aula 7</span>
+                 <h3>Impacto da Drenagem na Durabilidade do Pavimento</h3>
+                 <p>(Como a água afeta as camadas do pavimento, patologias associadas à má drenagem aqui...)</p>
+            </section>
 
-                <div class="content-module">
-                    <h3>Links Úteis / Referências</h3>
-                    <ul>
-                        <li><a href="URL_DNIT" target="_blank" rel="noopener noreferrer">DNIT - Manuais Técnicos</a></li>
-                        <li>(Mais links aqui...)</li>
-                    </ul>
-                </div>
+            <section>
+                 <span class="class-number">Aula 8</span>
+                 <h3>Pavimentação Flexível</h3>
+                 <p>(Conceitos, materiais asfálticos, dimensionamento (ex: método do DNIT), execução aqui...)</p>
+            </section>
 
-                <div class="content-module">
-                    <h3>Exercícios / Trabalhos</h3>
-                    <ul>
-                        <li><a href="#" download>Lista de Exercícios 01</a></li>
-                        <li><a href="#" download>Enunciado do Trabalho Prático</a></li>
-                    </ul>
-                </div>
+            <section>
+                 <span class="class-number">Aula 9</span>
+                 <h3>Pavimentação Rígida e Novas Tecnologias</h3>
+                 <p>(Concreto de cimento Portland, dimensionamento, juntas, comparação com flexível, novas tecnologias em pavimentação aqui...)</p>
+            </section>
 
-                </section>
+            <section>
+                 <span class="class-number">Aula 10</span>
+                 <h3>Orçamentação e Custos em Infraestrutura Viária</h3>
+                 <p>(Levantamento de quantitativos, composição de custos (SICRO), BDI, cronograma físico-financeiro aqui...)</p>
+            </section>
 
-        </div> </main>
+            <section>
+                 <span class="class-number">Aula 11</span>
+                 <h3>Desenvolvimento de Projeto de Infraestrutura Viária - Introdução</h3>
+                 <p>(Fases do projeto, normas técnicas, estudos preliminares, projeto básico e executivo aqui...)</p>
+            </section>
 
-    <footer class="site-footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> Prof. Dr. Cristiano Saad Travassos do Carmo. Todos os direitos reservados.</p>
-            <p>Desenvolvido como um recurso educacional.</p>
-        </div>
-    </footer>
+            <section>
+                 <span class="class-number">Aula 12</span>
+                 <h3>Dimensionamento e Análise de Projetos Viários</h3>
+                 <p>(Aplicação prática de dimensionamento de pavimento, drenagem, análise de estabilidade de taludes aqui...)</p>
+            </section>
 
-    <script src="script.js" defer></script>
+            <section>
+                 <span class="class-number">Aula 13</span>
+                 <h3>Aplicação de Softwares para Projetos de Estradas</h3>
+                 <p>(Introdução a softwares como AutoCAD Civil 3D, softwares de dimensionamento, BIM aplicado a estradas aqui...)</p>
+            </section>
 
+            <section>
+                 <span class="class-number">Aula 14</span>
+                 <h3>Aprimoramento e Revisão dos Projetos</h3>
+                 <p>(Técnicas de otimização, verificação de interferências (clash detection), análise crítica de projetos aqui...)</p>
+            </section>
+
+            <section>
+                 <span class="class-number">Aula 15</span>
+                 <h3>Apresentação Final dos Projetos e Discussão Técnica</h3>
+                 <p>(Orientações para apresentação dos trabalhos finais, discussão de casos, encerramento da disciplina aqui...)</p>
+            </section>
+
+        </div> </div> <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true, // Allows linking directly to slides
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            controlsLayout: 'edges', // Place controls at screen edges
+            navigationMode: 'linear' // Keep navigation linear
+        });
+    </script>
 </body>
 </html>
