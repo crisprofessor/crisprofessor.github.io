@@ -14,44 +14,49 @@
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
     <style>
-        .back-to-main-link {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            z-index: 1000; /* Above slides but potentially below reveal controls */
-            background-color: rgba(26, 38, 54, 0.8); /* Match nav */
-            color: #E0D6CC; /* Beige */
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif; /* Use body font */
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: background-color 0.2s ease, color 0.2s ease;
+        .back-to-main-link { /* Style for Back button */
+            position: fixed; top: 15px; left: 15px; z-index: 1000;
+            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC;
+            padding: 8px 15px; border-radius: 4px;
+            font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500;
+            text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease;
         }
-        .back-to-main-link:hover,
-        .back-to-main-link:focus {
-            background-color: #F5A713; /* Yellow accent */
-            color: #1A2636; /* Dark text */
-            text-decoration: none;
+        .back-to-main-link:hover, .back-to-main-link:focus {
+            background-color: #F5A713; color: #1A2636; text-decoration: none;
         }
-        .back-to-main-link:focus-visible {
-             outline: 2px solid #F5A713;
-             outline-offset: 2px;
-        }
-        /* Adjust reveal.js controls if they overlap with the back button */
-        .reveal .controls {
-            /* Example: move controls slightly to avoid overlap */
-            /* right: 40px; */
-        }
-        /* Optional: Style for class numbers */
+        .back-to-main-link:focus-visible { outline: 2px solid #F5A713; outline-offset: 2px; }
+
+        /* Helper class for columns inside slides */
+        .columns { display: flex; gap: 20px; align-items: flex-start; }
+        .column { flex: 1; }
+        .column.is-two-thirds { flex: 2; }
+        .column.is-one-third { flex: 1; }
+        .column img { width: 100%; height: auto; } /* Make images responsive within columns */
+
+        /* Style for class numbers */
         .class-number {
-            display: block;
-            font-size: 0.8em;
-            color: var(--color-blue-primary); /* Or another subtle color */
-            margin-bottom: 0.5em;
-            font-weight: 500;
+            display: block; font-size: 0.8em; color: var(--color-blue-primary); /* From theme */
+            margin-bottom: 0.5em; font-weight: 500;
         }
+        /* Responsive video container */
+        .video-container {
+            position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden;
+            max-width: 100%; background: #000; margin: 20px 0;
+        }
+        .video-container iframe, .video-container object, .video-container embed {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        /* Image styling within slides */
+        .reveal section img { /* Overriding default reveal border/shadow if needed */
+           border: none; background: none; box-shadow: none; margin: 15px 0; max-height: 450px; width:auto; max-width: 90%;
+        }
+         /* Quote styling */
+        .reveal blockquote {
+            display: block; position: relative; width: 80%; margin: 20px auto; padding: 15px;
+            font-style: italic; background: rgba(36, 53, 70, 0.1); border-left: 5px solid var(--color-blue-primary);
+        }
+        .reveal blockquote p { margin: 0; }
+        .reveal blockquote cite { display: block; text-align: right; margin-top: 10px; font-size: 0.8em; }
     </style>
 </head>
 <body>
@@ -60,109 +65,209 @@
     <div class="reveal">
         <div class="slides">
 
-            <section>
-                <h2>Projeto e Construção de Estradas</h2>
-                <p>
-                    <small>Prof. Cristiano Travassos</small>
-                </p>
-                 <p><small>Universidade Federal Fluminense (UFF)</small></p>
+            <section data-transition="slide" data-background-color="#1A2636">
+                 <img src="logo.png" alt="Logo Professor Cristiano Travassos" style="max-height: 80px; width: auto; border: none; background: none; box-shadow: none; margin-bottom: 1rem;">
+                <h2 style="color: var(--color-white);">Projeto e Construção de Estradas</h2>
+                <p style="color: var(--color-beige-content);">Prof. Cristiano Travassos</p>
             </section>
 
             <section>
                 <span class="class-number">Aula 1</span>
                 <h3>Introdução à Construção de Rodovias e Ferrovias</h3>
-                <p>(Conteúdo, imagens, conceitos e definições para Aula 1 aqui...)</p>
+                <p>Objetivos gerais da disciplina e metodologia de ensino.</p>
                 <ul>
-                    <li>Objetivos da disciplina</li>
-                    <li>Histórico e importância</li>
-                    <li>Classificação de vias</li>
+                    <li>Importância histórica e econômica da infraestrutura viária.</li>
+                    <li>Diferenças conceituais entre rodovias e ferrovias.</li>
+                    <li>Classificação funcional e técnica das vias.</li>
+                    <li>Normas e órgãos reguladores (DNIT, ANTT).</li>
                 </ul>
-            </section>
+                 </section>
 
             <section>
                 <span class="class-number">Aula 2</span>
-                <h3>Terraplenagem e Equipamentos Utilizados</h3>
-                <p>(Conteúdo sobre corte, aterro, materiais, equipamentos - tratores, escavadeiras, motoniveladoras, etc. aqui...)</p>
-                <img src="placeholder-terraplenagem.png" alt="Equipamento de terraplenagem" style="max-height: 350px; width: auto;">
+                <h3>Terraplenagem e Equipamentos</h3>
+                 <div class="columns">
+                    <div class="column">
+                        <h4>Conceitos:</h4>
+                        <ul>
+                            <li>Corte e Aterro</li>
+                            <li>Empréstimo e Bota-Fora</li>
+                            <li>Fator de Empolamento</li>
+                            <li>Cálculo de Volumes</li>
+                        </ul>
+                        <h4>Equipamentos:</h4>
+                        <p>Tratores, escavadeiras, motoniveladoras, caminhões basculantes.</p>
+                    </div>
+                    <div class="column">
+                        <img src="placeholder-terraplenagem.png" alt="Equipamento de Terraplenagem">
+                        <p style="font-size: 0.7em; text-align: center;">Motoniveladora em operação.</p>
+                    </div>
+                </div>
             </section>
 
             <section>
                  <span class="class-number">Aula 3</span>
                  <h3>Compactação e Controle de Qualidade</h3>
-                 <p>(Teoria da compactação, ensaio Proctor, equipamentos (rolos), controle de grau de compactação aqui...)</p>
+                  <p>A compactação visa aumentar a densidade do solo, melhorando sua resistência e diminuindo a permeabilidade.</p>
+                 <h4>Ensaio Proctor:</h4>
+                 <p>Determina a umidade ótima de compactação para atingir a máxima densidade seca.</p>
+                 <h4>Controle de Qualidade:</h4>
+                 <p>Verificação do Grau de Compactação (GC) em campo usando métodos como o frasco de areia ou densímetro nuclear.</p>
             </section>
 
             <section>
                  <span class="class-number">Aula 4</span>
-                 <h3>Ensaios Geotécnicos Aplicados a Estradas</h3>
-                 <p>(Granulometria, limites de Atterberg, CBR, etc., e sua aplicação em projetos viários aqui...)</p>
+                 <h3>Ensaios Geotécnicos Aplicados</h3>
+                  <ul>
+                    <li>Análise Granulométrica</li>
+                    <li>Limites de Liquidez e Plasticidade (Atterberg)</li>
+                    <li>Índice de Suporte Califórnia (ISC / CBR)</li>
+                    <li>Ensaio de Equivalente de Areia</li>
+                    <li>Importância dos ensaios na caracterização dos materiais.</li>
+                 </ul>
             </section>
 
             <section>
                  <span class="class-number">Aula 5</span>
-                 <h3>Propriedades dos Materiais de Base e Sub-base</h3>
-                 <p>(Tipos de materiais (solo, brita), requisitos, estabilização de solos aqui...)</p>
+                 <h3>Materiais de Base e Sub-base</h3>
+                 <div class="columns">
+                    <div class="column">
+                        <h4>Tipos de Materiais</h4>
+                        <ul>
+                            <li>Solos (selecionados, estabilizados)</li>
+                            <li>Materiais granulares (brita graduada)</li>
+                            <li>Misturas com cimento ou cal</li>
+                            <li>Materiais reciclados (RAP)</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h4>Requisitos Principais</h4>
+                        <ul>
+                            <li>Resistência (CBR/ISC)</li>
+                            <li>Granulometria controlada</li>
+                            <li>Baixa plasticidade</li>
+                            <li>Durabilidade</li>
+                        </ul>
+                    </div>
+                 </div>
             </section>
 
             <section>
                  <span class="class-number">Aula 6</span>
                  <h3>Drenagem Superficial e Profunda</h3>
-                 <p>(Importância da drenagem, dispositivos (sarjetas, bueiros, drenos), dimensionamento básico aqui...)</p>
-                 <img src="placeholder-drenagem.png" alt="Sistema de drenagem" style="max-height: 350px; width: auto;">
+                 <p>Essencial para a vida útil do pavimento. Dispositivos incluem sarjetas, valetas, bueiros, drenos profundos.</p>
+                 <img src="placeholder-drenagem.png" alt="Sistema de drenagem" style="max-height: 500px; width: auto; display: block; margin: 15px auto;">
             </section>
 
             <section>
                  <span class="class-number">Aula 7</span>
-                 <h3>Impacto da Drenagem na Durabilidade do Pavimento</h3>
-                 <p>(Como a água afeta as camadas do pavimento, patologias associadas à má drenagem aqui...)</p>
+                 <h3>Impacto da Drenagem</h3>
+                 <blockquote>
+                    <p>"A presença excessiva de água é um dos principais fatores na degradação prematura das estruturas de pavimento."</p>
+                    <cite>- Autoridade no Assunto / Norma Técnica</cite>
+                 </blockquote>
+                 <p>Discutir patologias: bombeamento de finos, trincas por fadiga acelerada, perda de suporte.</p>
             </section>
 
             <section>
                  <span class="class-number">Aula 8</span>
                  <h3>Pavimentação Flexível</h3>
-                 <p>(Conceitos, materiais asfálticos, dimensionamento (ex: método do DNIT), execução aqui...)</p>
+                 <p>Estrutura composta por revestimento asfáltico, base, sub-base.</p>
+                 <ul>
+                    <li>Materiais asfálticos: CAP, emulsões.</li>
+                    <li>Tipos de misturas: CBUQ, PMF, etc.</li>
+                    <li>Métodos de dimensionamento (Ex: MeDiNa, antigo DNIT).</li>
+                    <li>Processos executivos e controle de qualidade.</li>
+                 </ul>
             </section>
 
             <section>
                  <span class="class-number">Aula 9</span>
                  <h3>Pavimentação Rígida e Novas Tecnologias</h3>
-                 <p>(Concreto de cimento Portland, dimensionamento, juntas, comparação com flexível, novas tecnologias em pavimentação aqui...)</p>
+                 <div class="columns">
+                    <div class="column is-two-thirds">
+                        <h4>Pavimento Rígido (Concreto)</h4>
+                        <ul>
+                            <li>Placas de concreto de cimento Portland.</li>
+                            <li>Importância das juntas de retração/expansão.</li>
+                            <li>Dimensionamento (Ex: método PCA).</li>
+                            <li>Vantagens (durabilidade) e desvantagens (custo inicial).</li>
+                        </ul>
+                        <h4>Novas Tecnologias</h4>
+                        <p>Pavimentos permeáveis, misturas mornas/frias, geossintéticos, etc.</p>
+                     </div>
+                     <div class="column is-one-third">
+                        <img src="placeholder-concreto.png" alt="Pavimento de concreto">
+                     </div>
+                 </div>
             </section>
 
             <section>
                  <span class="class-number">Aula 10</span>
-                 <h3>Orçamentação e Custos em Infraestrutura Viária</h3>
-                 <p>(Levantamento de quantitativos, composição de custos (SICRO), BDI, cronograma físico-financeiro aqui...)</p>
+                 <h3>Orçamentação e Custos</h3>
+                 <ul>
+                    <li>Levantamento de Quantitativos (Projeto Geométrico, Terraplenagem, Pav., Drenagem).</li>
+                    <li>Composição de Custos Unitários (CPU) - Mão de obra, materiais, equipamentos.</li>
+                    <li>Uso de sistemas referenciais (SICRO/DNIT, SINAPI/Caixa).</li>
+                    <li>BDI (Benefícios e Despesas Indiretas).</li>
+                    <li>Cronograma Físico-Financeiro.</li>
+                 </ul>
             </section>
 
             <section>
                  <span class="class-number">Aula 11</span>
-                 <h3>Desenvolvimento de Projeto de Infraestrutura Viária - Introdução</h3>
-                 <p>(Fases do projeto, normas técnicas, estudos preliminares, projeto básico e executivo aqui...)</p>
+                 <h3>Desenvolvimento de Projeto Viário - Introdução</h3>
+                 <p>Abordagem das fases de um projeto de infraestrutura rodoviária/ferroviária:</p>
+                 <ol>
+                    <li>Estudos de Viabilidade Técnica, Econômica e Ambiental (EVTEA)</li>
+                    <li>Anteprojeto / Projeto Básico</li>
+                    <li>Projeto Executivo</li>
+                 </ol>
+                 <p>Importância das normas técnicas e manuais de projeto.</p>
             </section>
 
             <section>
                  <span class="class-number">Aula 12</span>
-                 <h3>Dimensionamento e Análise de Projetos Viários</h3>
-                 <p>(Aplicação prática de dimensionamento de pavimento, drenagem, análise de estabilidade de taludes aqui...)</p>
+                 <h3>Dimensionamento e Análise</h3>
+                 <p>Aplicação prática dos conceitos de dimensionamento:</p>
+                 <ul>
+                    <li>Exemplo de dimensionamento de pavimento flexível/rígido.</li>
+                    <li>Exemplo de dimensionamento de dispositivo de drenagem.</li>
+                    <li>Análise de estabilidade de um talude simples.</li>
+                    <li>Discussão de parâmetros e sensibilidade dos métodos.</li>
+                 </ul>
             </section>
 
             <section>
                  <span class="class-number">Aula 13</span>
-                 <h3>Aplicação de Softwares para Projetos de Estradas</h3>
-                 <p>(Introdução a softwares como AutoCAD Civil 3D, softwares de dimensionamento, BIM aplicado a estradas aqui...)</p>
+                 <h3>Aplicação de Softwares para Projetos</h3>
+                 <p>Introdução ao uso de ferramentas computacionais no auxílio ao projeto.</p>
+                 <h4>Exemplo: Demonstração Civil 3D (Vídeo)</h4>
+                 <div class="video-container">
+                     <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video placeholder" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                 </div>
+                 <p>Outros softwares: softwares de dimensionamento, ferramentas BIM.</p>
             </section>
 
             <section>
                  <span class="class-number">Aula 14</span>
                  <h3>Aprimoramento e Revisão dos Projetos</h3>
-                 <p>(Técnicas de otimização, verificação de interferências (clash detection), análise crítica de projetos aqui...)</p>
+                  <h4>Foco na Qualidade e Otimização:</h4>
+                 <ul>
+                    <li>Verificação de interferências (Coordenação de Projetos / BIM).</li>
+                    <li>Análise crítica de soluções de engenharia adotadas.</li>
+                    <li>Considerações sobre construtibilidade e manutenção.</li>
+                    <li>Documentação final do projeto.</li>
+                 </ul>
             </section>
 
             <section>
                  <span class="class-number">Aula 15</span>
-                 <h3>Apresentação Final dos Projetos e Discussão Técnica</h3>
-                 <p>(Orientações para apresentação dos trabalhos finais, discussão de casos, encerramento da disciplina aqui...)</p>
+                 <h3>Apresentação Final e Discussão Técnica</h3>
+                 <p>Orientações para a apresentação dos projetos desenvolvidos pelos alunos.</p>
+                 <p>Espaço para discussão técnica, análise de desafios e lições aprendidas.</p>
+                 <p>Encerramento da disciplina e próximos passos.</p>
+                 <p><a href="index.html#contact">Feedback sobre a disciplina é bem-vindo!</a></p>
             </section>
 
         </div> </div> <script src="dist/reveal.js"></script>
@@ -171,10 +276,10 @@
     <script src="plugin/highlight/highlight.js"></script>
     <script>
         Reveal.initialize({
-            hash: true, // Allows linking directly to slides
+            hash: true,
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-            controlsLayout: 'edges', // Place controls at screen edges
-            navigationMode: 'linear' // Keep navigation linear
+            controlsLayout: 'edges',
+            navigationMode: 'linear'
         });
     </script>
 </body>
