@@ -4,59 +4,78 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Ensino: Projeto e Construção de Estradas - Prof. Cristiano Travassos</title>
+    <title>Estradas II - TEC00264 - Prof. Cristiano Travassos</title>
 
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
-
     <link rel="stylesheet" href="dist/theme/custom-theme.css" id="theme">
-
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
     <style>
         .back-to-main-link { /* Style for Back button */
             position: fixed; top: 15px; left: 15px; z-index: 1000;
-            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC;
+            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC; /* Using your theme's dark blue and beige */
             padding: 8px 15px; border-radius: 4px;
             font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500;
             text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease;
         }
         .back-to-main-link:hover, .back-to-main-link:focus {
-            background-color: #F5A713; color: #1A2636; text-decoration: none;
+            background-color: #F5A713; color: #1A2636; text-decoration: none; /* Yellow and dark blue from your theme */
         }
         .back-to-main-link:focus-visible { outline: 2px solid #F5A713; outline-offset: 2px; }
 
         /* Helper class for columns inside slides */
-        .columns { display: flex; gap: 20px; align-items: flex-start; }
+        .columns { display: flex; gap: 20px; align-items: flex-start; margin-top: 1em; }
         .column { flex: 1; }
         .column.is-two-thirds { flex: 2; }
         .column.is-one-third { flex: 1; }
-        .column img { width: 100%; height: auto; } /* Make images responsive within columns */
+        .column img { width: 100%; height: auto; margin-bottom: 0.5em; } /* Make images responsive within columns */
 
         /* Style for class numbers */
         .class-number {
-            display: block; font-size: 0.8em; color: var(--color-blue-primary); /* From theme */
+            display: block; font-size: 0.8em; color: #325D7D; /* Your primary blue */
             margin-bottom: 0.5em; font-weight: 500;
         }
         /* Responsive video container */
         .video-container {
             position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden;
-            max-width: 100%; background: #000; margin: 20px 0;
+            max-width: 100%; background: #000; margin: 20px auto; /* Center video container */
         }
         .video-container iframe, .video-container object, .video-container embed {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
-        /* Image styling within slides */
-        .reveal section img { /* Overriding default reveal border/shadow if needed */
-           border: none; background: none; box-shadow: none; margin: 15px 0; max-height: 450px; width:auto; max-width: 90%;
+        /* General image styling within slides, using theme colors where appropriate */
+        .reveal section img {
+           border: none; background: none; box-shadow: none; /* Cleaner look */
+           margin: 15px auto; /* Center images by default if they are block */
+           display: block; /* Helps with centering */
+           max-height: 400px; /* Default max height, can be overridden */
+           width:auto;
+           max-width: 90%; /* Prevent overly wide images */
         }
-         /* Quote styling */
+         /* Quote styling, using theme colors */
         .reveal blockquote {
             display: block; position: relative; width: 80%; margin: 20px auto; padding: 15px;
-            font-style: italic; background: rgba(36, 53, 70, 0.1); border-left: 5px solid var(--color-blue-primary);
+            font-style: italic; background: rgba(224, 214, 204, 0.1); /* Light Beige with transparency */
+            border-left: 5px solid #325D7D; /* Your primary blue */
         }
         .reveal blockquote p { margin: 0; }
         .reveal blockquote cite { display: block; text-align: right; margin-top: 10px; font-size: 0.8em; }
+
+         /* Estilos adicionais para melhor leitura do código */
+        .reveal pre code {
+            max-height: 400px; /* Limita altura de blocos de código */
+            font-size: 0.9em; /* Adjust code font size if needed */
+        }
+        /* Align lists to the left within reveal slides */
+        .reveal ul, .reveal ol {
+            display: block; /* Override reveal.js default of inline-block for lists */
+            text-align: left;
+            margin: 0 0 1em 1.5em; /* Standard list margins */
+        }
+        .reveal ul ul, .reveal ol ol {
+            margin-left: 1.5em; /* Indent nested lists */
+        }
     </style>
 </head>
 <body>
@@ -66,208 +85,370 @@
         <div class="slides">
 
             <section data-transition="slide" data-background-color="#1A2636">
-                 <img src="logo.png" alt="Logo Professor Cristiano Travassos" style="max-height: 80px; width: auto; border: none; background: none; box-shadow: none; margin-bottom: 1rem;">
-                <h2 style="color: var(--color-white);">Projeto e Construção de Estradas</h2>
-                <p style="color: var(--color-beige-content);">Prof. Cristiano Travassos</p>
+                 <h2 style="color: #FFFFFF;">TEC00264 - Estradas II</h2>
+                 <h3 style="color: #F5A713;">Projeto e Construção</h3>
+                 <p style="color: #E0D6CC;">Prof. Cristiano Saad Travassos do Carmo</p>
+                 <p style="color: #E0D6CC; font-size: 0.8em;">Universidade Federal Fluminense (UFF) - Engenharia Civil</p>
             </section>
 
             <section>
                 <span class="class-number">Aula 1</span>
-                <h3>Introdução à Construção de Rodovias e Ferrovias</h3>
-                <p>Objetivos gerais da disciplina e metodologia de ensino.</p>
+                <h3>Introdução à Construção de Infraestrutura Rodoviária e Ferroviária</h3>
                 <ul>
-                    <li>Importância histórica e econômica da infraestrutura viária.</li>
-                    <li>Diferenças conceituais entre rodovias e ferrovias.</li>
-                    <li>Classificação funcional e técnica das vias.</li>
-                    <li>Normas e órgãos reguladores (DNIT, ANTT).</li>
+                    <li>Objetivos da disciplina e metodologia "Altas Aulas".</li>
+                    <li>Importância da infraestrutura de transportes (histórica, econômica, social).</li>
+                    <li>Componentes de rodovias e ferrovias.</li>
+                    <li>Fases de um projeto de infraestrutura (EVTEA, Básico, Executivo).</li>
+                    <li>Normas e órgãos reguladores (DNIT, ANTT, ABNT).</li>
+                    <li>Visão geral do ciclo de vida da obra.</li>
+                    <li><strong>Especialista Convidado:</strong> Gestor de Projetos de Infraestrutura (Visão Geral).</li>
+                    <li><strong>Atividade Prática:</strong> Discussão inicial sobre desafios e oportunidades.</li>
                 </ul>
-                 </section>
+            </section>
 
             <section>
                 <span class="class-number">Aula 2</span>
-                <h3>Terraplenagem e Equipamentos</h3>
-                 <div class="columns">
+                <h3>Terraplenagem I: Cortes, Aterros e Compactação</h3>
+                <div class="columns">
                     <div class="column">
-                        <h4>Conceitos:</h4>
+                        <h4>Conceitos Fundamentais:</h4>
                         <ul>
-                            <li>Corte e Aterro</li>
-                            <li>Empréstimo e Bota-Fora</li>
-                            <li>Fator de Empolamento</li>
-                            <li>Cálculo de Volumes</li>
+                            <li>Movimento de terra: Corte e Aterro.</li>
+                            <li>Empréstimo e Bota-Fora.</li>
+                            <li>Cálculo de Volumes (Método das Seções).</li>
+                            <li>Diagrama de Massas (Brückner) - Introdução.</li>
                         </ul>
-                        <h4>Equipamentos:</h4>
-                        <p>Tratores, escavadeiras, motoniveladoras, caminhões basculantes.</p>
+                         <h4>Compactação:</h4>
+                        <ul>
+                            <li>Objetivos (Resistência, Estabilidade, Permeabilidade).</li>
+                             <li>Ensaio de Proctor (Normal, Intermediário, Modificado).</li>
+                             <li>Umidade Ótima (w<sub>ot</sub>) e Massa Específica Aparente Seca Máxima ($\gamma_{d,max}$).</li>
+                        </ul>
                     </div>
                     <div class="column">
-                        <img src="placeholder-terraplenagem.png" alt="Equipamento de Terraplenagem">
-                        <p style="font-size: 0.7em; text-align: center;">Motoniveladora em operação.</p>
+                         <img src="placeholder-terraplenagem-diagrama.png" alt="Diagrama de Massas" style="max-height: 200px;">
+                         <p style="font-size: 0.7em; text-align: center;">Conceito do Diagrama de Massas</p>
+                         <img src="placeholder-proctor.png" alt="Curva de Compactação Proctor" style="max-height: 200px;">
+                         <p style="font-size: 0.7em; text-align: center;">Curva Típica do Ensaio Proctor</p>
                     </div>
                 </div>
+                 <ul>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro Geotécnico (Terraplenagem/Compactação).</li>
+                    <li><strong>Atividade Prática:</strong> Análise de seções transversais, cálculo de volume e interpretação de curva Proctor.</li>
+                </ul>
+            </section>
+
+             <section>
+                <span class="class-number">Aula 3</span>
+                <h3>Terraplenagem II: Empolamento e Equipamentos</h3>
+                <ul>
+                    <li>Fator de Empolamento (f) e Contração.</li>
+                    <li>Cálculo de volumes considerando empolamento.</li>
+                    <li>Seleção de Equipamentos de Terraplenagem:
+                        <ul>
+                            <li>Escavação: Tratores de esteira, escavadeiras hidráulicas.</li>
+                            <li>Carga: Pás-carregadeiras.</li>
+                            <li>Transporte: Caminhões basculantes, motoscrapers.</li>
+                            <li>Espalhamento e Acabamento: Motoniveladoras, tratores.</li>
+                            <li>Compactação: Rolos (lisos, pé-de-carneiro, pneumáticos, vibratórios).</li>
+                        </ul>
+                    </li>
+                    <li>Produtividade e Custo Horário dos equipamentos (Introdução).</li>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro de Equipamentos/Construção.</li>
+                    <li><strong>Atividade Prática:</strong> Estudo de caso: Seleção de frota para um cenário específico.</li>
+                </ul>
+                 <img src="placeholder-equipamentos.png" alt="Equipamentos de Terraplenagem" style="max-height: 300px;">
             </section>
 
             <section>
-                 <span class="class-number">Aula 3</span>
-                 <h3>Compactação e Controle de Qualidade</h3>
-                  <p>A compactação visa aumentar a densidade do solo, melhorando sua resistência e diminuindo a permeabilidade.</p>
-                 <h4>Ensaio Proctor:</h4>
-                 <p>Determina a umidade ótima de compactação para atingir a máxima densidade seca.</p>
-                 <h4>Controle de Qualidade:</h4>
-                 <p>Verificação do Grau de Compactação (GC) em campo usando métodos como o frasco de areia ou densímetro nuclear.</p>
+                <span class="class-number">Aula 4</span>
+                <h3>Estudos Geotécnicos Aplicados a Estradas</h3>
+                <ul>
+                    <li>Importância da investigação geotécnica.</li>
+                    <li>Principais Ensaios de Campo:
+                        <ul>
+                            <li>Sondagens (SPT, Rotativa).</li>
+                            <li>Ensaios de Permeabilidade in situ.</li>
+                        </ul>
+                    </li>
+                    <li>Principais Ensaios de Laboratório (Revisão e Aplicação):
+                        <ul>
+                            <li>Caracterização: Granulometria, Limites de Atterberg.</li>
+                            <li>Resistência/Suporte: CBR (ISC), Cisalhamento Direto, Triaxial (Conceitos).</li>
+                            <li>Compactação: Proctor.</li>
+                            <li>Permeabilidade.</li>
+                        </ul>
+                    </li>
+                    <li>Interpretação de Relatórios Geotécnicos.</li>
+                    <li><strong>Especialista Convidado:</strong> Consultor Geotécnico.</li>
+                    <li><strong>Atividade Prática:</strong> Análise de um perfil de sondagem SPT e resultados de ensaios para um projeto rodoviário simplificado.</li>
+                </ul>
             </section>
 
             <section>
-                 <span class="class-number">Aula 4</span>
-                 <h3>Ensaios Geotécnicos Aplicados</h3>
-                  <ul>
-                    <li>Análise Granulométrica</li>
-                    <li>Limites de Liquidez e Plasticidade (Atterberg)</li>
-                    <li>Índice de Suporte Califórnia (ISC / CBR)</li>
-                    <li>Ensaio de Equivalente de Areia</li>
-                    <li>Importância dos ensaios na caracterização dos materiais.</li>
-                 </ul>
+                <span class="class-number">Aula 5</span>
+                <h3>Materiais I: Solos e Agregados para Camadas de Pavimento</h3>
+                 <h4>Camadas do Pavimento Flexível:</h4>
+                 <img src="placeholder-pavimento-flex.png" alt="Camadas do Pavimento Flexível" style="max-height: 200px;">
+                <ul>
+                    <li>Funções das camadas: Subleito, Reforço do Subleito, Sub-base, Base.</li>
+                    <li>Materiais Comuns:
+                        <ul>
+                            <li>Solos Naturais (selecionados, melhorados).</li>
+                            <li>Solos Estabilizados Granulometricamente.</li>
+                            <li>Solos Cimento / Solos Cal.</li>
+                            <li>Agregados: Brita Graduada Simples (BGS), Brita Graduada Tratada com Cimento (BGTC).</li>
+                        </ul>
+                    </li>
+                    <li>Requisitos e especificações (DNIT/ABNT) para cada camada (CBR, Expansão, Plasticidade, Granulometria).</li>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro de Materiais (Pavimentação).</li>
+                    <li><strong>Atividade Prática:</strong> Análise de especificações de materiais para diferentes camadas e verificação de conformidade de resultados de ensaios (dados hipotéticos).</li>
+                </ul>
             </section>
 
             <section>
-                 <span class="class-number">Aula 5</span>
-                 <h3>Materiais de Base e Sub-base</h3>
+                <span class="class-number">Aula 6</span>
+                <h3>Materiais II: Materiais Betuminosos e Misturas Asfálticas</h3>
                  <div class="columns">
                     <div class="column">
-                        <h4>Tipos de Materiais</h4>
+                        <h4>Ligantes Asfálticos:</h4>
                         <ul>
-                            <li>Solos (selecionados, estabilizados)</li>
-                            <li>Materiais granulares (brita graduada)</li>
-                            <li>Misturas com cimento ou cal</li>
-                            <li>Materiais reciclados (RAP)</li>
+                             <li>Cimento Asfáltico de Petróleo (CAP): Classificação por penetração e por viscosidade (PG - Superpave).</li>
+                             <li>Asfaltos Modificados (Polímeros, Borracha).</li>
+                             <li>Emulsões Asfálticas: Tipos e aplicações (imprimação, pintura de ligação, tratamentos superficiais).</li>
+                             <li>Principais Ensaios: Penetração, Viscosidade, Ponto de Amolecimento, Ponto de Fulgor.</li>
                         </ul>
                     </div>
                     <div class="column">
-                        <h4>Requisitos Principais</h4>
+                        <h4>Misturas Asfálticas:</h4>
                         <ul>
-                            <li>Resistência (CBR/ISC)</li>
-                            <li>Granulometria controlada</li>
-                            <li>Baixa plasticidade</li>
-                            <li>Durabilidade</li>
+                             <li>Tipos: CBUQ (Concreto Betuminoso Usinado a Quente), PMF (Pré-Misturado a Frio), SMA (Stone Matrix Asphalt), Misturas Mornas (WMA).</li>
+                             <li>Dosagem (Método Marshall / Superpave - Conceitos).</li>
+                             <li>Propriedades: Estabilidade, Fluência, % Vazios, VAM, RBV.</li>
+                        </ul>
+                         <img src="placeholder-usina-asfalto.png" alt="Usina de Asfalto" style="max-height: 150px;">
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>Especialista Convidado:</strong> Tecnologista de Asfalto / Pesquisador da área.</li>
+                    <li><strong>Atividade Prática:</strong> Análise de resultados de ensaios de ligantes e parâmetros de dosagem de misturas asfálticas.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 7</span>
+                <h3>Materiais III: Concreto de Cimento Portland para Pavimentos Rígidos</h3>
+                <ul>
+                    <li>Particularidades do Concreto para Pavimentos:
+                        <ul>
+                            <li>Resistência à Tração na Flexão (Módulo de Ruptura - MR).</li>
+                            <li>Durabilidade (Resistência à Abrasão, Ataque Químico).</li>
+                            <li>Controle da Retração.</li>
+                        </ul>
+                    </li>
+                    <li>Materiais Constituintes: Cimento, Agregados (especificidades), Água, Aditivos.</li>
+                    <li>Dosagem do Concreto para Pavimentos.</li>
+                    <li>Concreto Compactado com Rolo (CCR).</li>
+                    <li>Comparativo com Concreto Estrutural.</li>
+                    <li><strong>Especialista Convidado:</strong> Tecnologista de Concreto / Eng. Estruturas (Pavimentos).</li>
+                    <li><strong>Atividade Prática:</strong> Discussão sobre especificações de materiais e parâmetros de dosagem para concreto de pavimento.</li>
+                </ul>
+                 <img src="placeholder-pavimento-rigido.png" alt="Execução de Pavimento Rígido" style="max-height: 280px;">
+            </section>
+
+             <section>
+                <span class="class-number">Aula 8</span>
+                <h3>Drenagem I: Sistemas de Drenagem Superficial</h3>
+                <p>Objetivo: Coletar e conduzir a água que escoa sobre a plataforma e áreas adjacentes.</p>
+                <ul>
+                    <li>Componentes:
+                        <ul>
+                            <li>Valetas de Proteção de Corte e Aterro.</li>
+                            <li>Sarjetas e Meios-fios.</li>
+                            <li>Descidas d'água.</li>
+                            <li>Caixas Coletoras ("Bocas de Lobo").</li>
+                            <li>Bueiros (Tubulares de Concreto - BTC, Metálicos Corrugados - BMC, Celulares de Concreto - BCC).</li>
+                            <li>Dissipadores de energia.</li>
+                        </ul>
+                    </li>
+                    <li>Conceitos de Dimensionamento Hidrológico e Hidráulico (Vazão de projeto, capacidade de escoamento).</li>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro Hidráulico/Sanitarista (Drenagem).</li>
+                    <li><strong>Atividade Prática:</strong> Dimensionamento hidráulico simplificado de uma sarjeta ou análise da capacidade de um bueiro.</li>
+                </ul>
+                 <img src="placeholder-bueiro.png" alt="Bueiro em Construção" style="max-height: 280px;">
+            </section>
+
+             <section>
+                <span class="class-number">Aula 9</span>
+                <h3>Drenagem II: Sistemas de Drenagem Profunda (Subsuperficial)</h3>
+                <p>Objetivo: Rebaixar o lençol freático e interceptar fluxos subterrâneos que possam afetar a estrutura do pavimento ou a estabilidade de taludes.</p>
+                <ul>
+                    <li>Componentes:
+                        <ul>
+                            <li>Drenos Longitudinais Profundos (Trincheiras Drenantes).</li>
+                            <li>Drenos Espinha de Peixe.</li>
+                            <li>Drenos Horizontais Profundos (DHP).</li>
+                            <li>Colchões Drenantes.</li>
+                        </ul>
+                    </li>
+                     <li>Materiais: Tubos drenantes (perfurados), material filtrante (areia, geotêxtil), material drenante (brita, rachão).</li>
+                     <li>Critérios de Filtro e Drenagem.</li>
+                     <li>Importância para a estabilidade e durabilidade.</li>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro Geotécnico/Hidráulico (Drenagem).</li>
+                    <li><strong>Atividade Prática:</strong> Análise de projetos típicos de drenos profundos e discussão de casos de falha por problemas de drenagem subsuperficial.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 10</span>
+                <h3>Desmonte de Rocha</h3>
+                <ul>
+                    <li>Necessidade do desmonte em obras viárias.</li>
+                    <li>Métodos de Desmonte:
+                        <ul>
+                            <li>Mecânico (Rippers, Rompedores Hidráulicos) - Para rochas alteradas ou fraturadas.</li>
+                            <li>Por Explosivos (Desmonte a Fogo).</li>
+                        </ul>
+                    </li>
+                     <li>Desmonte com Explosivos:
+                        <ul>
+                             <li>Tipos de explosivos e acessórios (espoletas, estopim, cordel).</li>
+                             <li>Plano de Fogo: Malha de perfuração, carregamento, sequência de detonação.</li>
+                             <li>Segurança: Vibrações (ultralançamento), ruído, poeira. Legislação e controle.</li>
+                              <li>Monitoramento sismográfico.</li>
+                        </ul>
+                    </li>
+                    <li>Alternativas (Plasma, etc.) - Menos comuns.</li>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro de Minas / Especialista em Desmonte com Explosivos.</li>
+                    <li><strong>Atividade Prática:</strong> Análise de um plano de fogo simplificado, discussão sobre normas de segurança e impactos ambientais. (Role-playing sobre diálogo de segurança pré-detonação).</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 11</span>
+                <h3>Pavimentos I: Dimensionamento de Pavimentos Flexíveis</h3>
+                 <h4>Método do DNIT (Baseado no CBR):</h4>
+                <ul>
+                    <li>Parâmetros de Entrada: Número N (tráfego), CBR do subleito.</li>
+                    <li>Coeficientes Estruturais (K) dos materiais.</li>
+                    <li>Ábacos ou equações para determinação das espessuras das camadas (Sub-base, Base, Revestimento).</li>
+                     <li>Considerações sobre vida útil de projeto.</li>
+                </ul>
+                 <h4>Método MeDiNa (Mecânico-Empírico):</h4>
+                 <ul>
+                     <li>Conceito: Análise de tensões e deformações na estrutura do pavimento.</li>
+                     <li>Modelos de Fadiga (trincamento) e Deformação Permanente.</li>
+                     <li>Parâmetros de entrada mais complexos (módulos de elasticidade, coeficientes de Poisson, dados de tráfego detalhados).</li>
+                     <li>Uso de Software específico.</li>
+                 </ul>
+                 <ul>
+                     <li><strong>Especialista Convidado:</strong> Engenheiro Projetista de Pavimentos (Flexíveis).</li>
+                     <li>**Atividade Prática:** Exercício guiado de dimensionamento simplificado pelo método do DNIT (CBR). Discussão sobre as limitações e a evolução para métodos mecanicistas.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 12</span>
+                <h3>Pavimentos II: Dimensionamento de Pavimentos Rígidos</h3>
+                 <h4>Método da PCA (Portland Cement Association):</h4>
+                 <ul>
+                     <li>Análise de tensões devido ao carregamento e gradientes térmicos.</li>
+                     <li>Fadiga do concreto e Erosão da fundação como critérios de ruptura.</li>
+                     <li>Parâmetros de Entrada: Tráfego (eixos equivalentes), Módulo de Ruptura (MR) do concreto, Módulo de Reação (k) da fundação (ensaio de placa).</li>
+                     <li>Uso de ábacos ou softwares para determinar a espessura da placa.</li>
+                 </ul>
+                 <h4>Outros Aspectos:</h4>
+                 <ul>
+                     <li>Dimensionamento de Barras de Transferência e Ligação.</li>
+                     <li>Tipos de Juntas (Serradas, Construção, Expansão).</li>
+                     <li>Comparativo Técnico-Econômico: Flexível vs. Rígido (Custos iniciais, vida útil, manutenção).</li>
+                 </ul>
+                 <ul>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro Projetista de Pavimentos (Rígidos).</li>
+                    <li>**Atividade Prática:** Análise de parâmetros de entrada para dimensionamento de pavimento rígido e discussão sobre cenários de aplicação mais adequados para cada tipo.</li>
+                </ul>
+            </section>
+
+             <section>
+                <span class="class-number">Aula 13</span>
+                <h3>Execução e Controle de Qualidade de Pavimentos</h3>
+                 <h4>Pavimentação Asfáltica:</h4>
+                 <ul>
+                     <li>Produção da mistura em usina (controle de temperatura, traço).</li>
+                     <li>Transporte (caminhões basculantes cobertos).</li>
+                     <li>Espalhamento (vibroacabadoras).</li>
+                     <li>Compactação (rolos pneumáticos e vibratórios - sequência e número de passadas).</li>
+                     <li>Controle de Qualidade: Temperatura, espessura, grau de compactação (GC), ensaios de extração.</li>
+                 </ul>
+                  <h4>Pavimentação Rígida:</h4>
+                 <ul>
+                     <li>Preparo da sub-base.</li>
+                     <li>Formas (deslizantes ou fixas).</li>
+                     <li>Lançamento, adensamento e acabamento do concreto.</li>
+                     <li>Cura do concreto.</li>
+                     <li>Execução das juntas (serragem).</li>
+                     <li>Controle de Qualidade: Resistência do concreto (corpos de prova), espessura, planicidade (IRI).</li>
+                 </ul>
+                 <ul>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro Residente/Fiscal de Obras de Pavimentação.</li>
+                    <li>**Atividade Prática:** Análise de vídeos de processos executivos e discussão sobre pontos críticos de controle em cada tipo de pavimentação.</li>
+                </ul>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 14</span>
+                <h3>Custos e Orçamentos em Obras de Estradas</h3>
+                 <div class="columns">
+                    <div class="column">
+                        <h4>Estrutura do Orçamento:</h4>
+                        <ul>
+                            <li>Levantamento de Quantitativos (Planilhas).</li>
+                            <li>Custos Diretos:
+                                <ul>
+                                     <li>Materiais (preços + frete).</li>
+                                     <li>Mão de Obra (salários + encargos).</li>
+                                     <li>Equipamentos (custo horário produtivo e improdutivo).</li>
+                                </ul>
+                            </li>
+                            <li>Composição de Custos Unitários (CPU).</li>
                         </ul>
                     </div>
-                 </div>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 6</span>
-                 <h3>Drenagem Superficial e Profunda</h3>
-                 <p>Essencial para a vida útil do pavimento. Dispositivos incluem sarjetas, valetas, bueiros, drenos profundos.</p>
-                 <img src="placeholder-drenagem.png" alt="Sistema de drenagem" style="max-height: 500px; width: auto; display: block; margin: 15px auto;">
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 7</span>
-                 <h3>Impacto da Drenagem</h3>
-                 <blockquote>
-                    <p>"A presença excessiva de água é um dos principais fatores na degradação prematura das estruturas de pavimento."</p>
-                    <cite>- Autoridade no Assunto / Norma Técnica</cite>
-                 </blockquote>
-                 <p>Discutir patologias: bombeamento de finos, trincas por fadiga acelerada, perda de suporte.</p>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 8</span>
-                 <h3>Pavimentação Flexível</h3>
-                 <p>Estrutura composta por revestimento asfáltico, base, sub-base.</p>
-                 <ul>
-                    <li>Materiais asfálticos: CAP, emulsões.</li>
-                    <li>Tipos de misturas: CBUQ, PMF, etc.</li>
-                    <li>Métodos de dimensionamento (Ex: MeDiNa, antigo DNIT).</li>
-                    <li>Processos executivos e controle de qualidade.</li>
-                 </ul>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 9</span>
-                 <h3>Pavimentação Rígida e Novas Tecnologias</h3>
-                 <div class="columns">
-                    <div class="column is-two-thirds">
-                        <h4>Pavimento Rígido (Concreto)</h4>
+                    <div class="column">
+                         <h4>Custos Indiretos e Preço Final:</h4>
                         <ul>
-                            <li>Placas de concreto de cimento Portland.</li>
-                            <li>Importância das juntas de retração/expansão.</li>
-                            <li>Dimensionamento (Ex: método PCA).</li>
-                            <li>Vantagens (durabilidade) e desvantagens (custo inicial).</li>
+                             <li>Administração Local, Canteiro, Mobilização/Desmobilização.</li>
+                             <li>BDI (Benefícios e Despesas Indiretas): Lucro, Impostos, Administração Central, Riscos.</li>
+                             <li>Planilha Orçamentária Final.</li>
+                             <li>Uso de Sistemas Referenciais: SICRO (DNIT), SINAPI (Caixa).</li>
+                             <li>Cronograma Físico-Financeiro (Curva S).</li>
                         </ul>
-                        <h4>Novas Tecnologias</h4>
-                        <p>Pavimentos permeáveis, misturas mornas/frias, geossintéticos, etc.</p>
-                     </div>
-                     <div class="column is-one-third">
-                        <img src="placeholder-concreto.png" alt="Pavimento de concreto">
-                     </div>
-                 </div>
+                    </div>
+                </div>
+                <ul>
+                    <li><strong>Especialista Convidado:</strong> Engenheiro de Custos/Orçamentista (Infraestrutura).</li>
+                    <li><strong>Atividade Prática:</strong> Elaboração de uma CPU simples e montagem de uma planilha orçamentária expedita para um serviço de pavimentação ou terraplenagem, utilizando tabelas de referência.</li>
+                </ul>
             </section>
 
             <section>
-                 <span class="class-number">Aula 10</span>
-                 <h3>Orçamentação e Custos</h3>
-                 <ul>
-                    <li>Levantamento de Quantitativos (Projeto Geométrico, Terraplenagem, Pav., Drenagem).</li>
-                    <li>Composição de Custos Unitários (CPU) - Mão de obra, materiais, equipamentos.</li>
-                    <li>Uso de sistemas referenciais (SICRO/DNIT, SINAPI/Caixa).</li>
-                    <li>BDI (Benefícios e Despesas Indiretas).</li>
-                    <li>Cronograma Físico-Financeiro.</li>
-                 </ul>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 11</span>
-                 <h3>Desenvolvimento de Projeto Viário - Introdução</h3>
-                 <p>Abordagem das fases de um projeto de infraestrutura rodoviária/ferroviária:</p>
-                 <ol>
-                    <li>Estudos de Viabilidade Técnica, Econômica e Ambiental (EVTEA)</li>
-                    <li>Anteprojeto / Projeto Básico</li>
-                    <li>Projeto Executivo</li>
-                 </ol>
-                 <p>Importância das normas técnicas e manuais de projeto.</p>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 12</span>
-                 <h3>Dimensionamento e Análise</h3>
-                 <p>Aplicação prática dos conceitos de dimensionamento:</p>
-                 <ul>
-                    <li>Exemplo de dimensionamento de pavimento flexível/rígido.</li>
-                    <li>Exemplo de dimensionamento de dispositivo de drenagem.</li>
-                    <li>Análise de estabilidade de um talude simples.</li>
-                    <li>Discussão de parâmetros e sensibilidade dos métodos.</li>
-                 </ul>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 13</span>
-                 <h3>Aplicação de Softwares para Projetos</h3>
-                 <p>Introdução ao uso de ferramentas computacionais no auxílio ao projeto.</p>
-                 <h4>Exemplo: Demonstração Civil 3D (Vídeo)</h4>
-                 <div class="video-container">
-                     <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube video placeholder" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                 </div>
-                 <p>Outros softwares: softwares de dimensionamento, ferramentas BIM.</p>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 14</span>
-                 <h3>Aprimoramento e Revisão dos Projetos</h3>
-                  <h4>Foco na Qualidade e Otimização:</h4>
-                 <ul>
-                    <li>Verificação de interferências (Coordenação de Projetos / BIM).</li>
-                    <li>Análise crítica de soluções de engenharia adotadas.</li>
-                    <li>Considerações sobre construtibilidade e manutenção.</li>
-                    <li>Documentação final do projeto.</li>
-                 </ul>
-            </section>
-
-            <section>
-                 <span class="class-number">Aula 15</span>
-                 <h3>Apresentação Final e Discussão Técnica</h3>
-                 <p>Orientações para a apresentação dos projetos desenvolvidos pelos alunos.</p>
-                 <p>Espaço para discussão técnica, análise de desafios e lições aprendidas.</p>
-                 <p>Encerramento da disciplina e próximos passos.</p>
-                 <p><a href="index.html#contact">Feedback sobre a disciplina é bem-vindo!</a></p>
+                <span class="class-number">Aula 15</span>
+                <h3>Revisão Geral, Novas Tecnologias e Tendências</h3>
+                <ul>
+                    <li>Recapitulação dos principais tópicos da disciplina.</li>
+                    <li>Discussão sobre Inovações e Tendências:
+                        <ul>
+                            <li>Sustentabilidade na Construção Viária (materiais reciclados, menor consumo de energia).</li>
+                            <li>Automação e Robótica em equipamentos.</li>
+                            <li>Monitoramento Inteligente (sensores, IoT).</li>
+                            <li>BIM aplicado a projetos de infraestrutura.</li>
+                            <li>Pavimentos Inteligentes / Estradas do Futuro.</li>
+                        </ul>
+                    </li>
+                    <li>Importância da atualização contínua na engenharia.</li>
+                    <li>Espaço final para dúvidas e discussões.</li>
+                    <li><strong>Especialista Convidado:</strong> (Professor ou convidado sobre Inovação em Transportes).</li>
+                    <li>**Atividade Prática:** Debate final sobre os desafios e o futuro da Engenharia de Estradas no Brasil e no mundo. Feedback sobre a disciplina.</li>
+                </ul>
             </section>
 
         </div> </div> <script src="dist/reveal.js"></script>
@@ -275,11 +456,18 @@
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
         Reveal.initialize({
-            hash: true,
+            hash: true, // Enables deep linking to slides
+            // Learn about plugins: https://revealjs.com/plugins/
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-            controlsLayout: 'edges',
-            navigationMode: 'linear'
+            controlsLayout: 'edges', // Place controls at screen edges
+            navigationMode: 'linear', // Simplify navigation (no vertical slides initially)
+            // slideNumber: true, // Optional: Show slide numbers
+            // width: "95%", // Optional: Adjust slide width
+            // height: "95%", // Optional: Adjust slide height
         });
     </script>
 </body>
