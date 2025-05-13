@@ -12,70 +12,104 @@
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
     <style>
-        .back-to-main-link { /* Style for Back button */
+        .back-to-main-link {
             position: fixed; top: 15px; left: 15px; z-index: 1000;
-            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC; /* Using your theme's dark blue and beige */
+            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC;
             padding: 8px 15px; border-radius: 4px;
             font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500;
             text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease;
         }
         .back-to-main-link:hover, .back-to-main-link:focus {
-            background-color: #F5A713; color: #1A2636; text-decoration: none; /* Yellow and dark blue from your theme */
+            background-color: #F5A713; color: #1A2636; text-decoration: none;
         }
         .back-to-main-link:focus-visible { outline: 2px solid #F5A713; outline-offset: 2px; }
 
-        /* Helper class for columns inside slides */
-        .columns { display: flex; gap: 20px; align-items: flex-start; margin-top: 1em; }
+        .columns { display: flex; gap: 20px; align-items: flex-start; }
         .column { flex: 1; }
         .column.is-two-thirds { flex: 2; }
         .column.is-one-third { flex: 1; }
-        .column img { width: 100%; height: auto; margin-bottom: 0.5em; } /* Make images responsive within columns */
+        .column img { width: 100%; height: auto; }
 
-        /* Style for class numbers */
         .class-number {
-            display: block; font-size: 0.8em; color: #325D7D; /* Your primary blue */
+            display: block; font-size: 0.8em; color: #4A90E2;
             margin-bottom: 0.5em; font-weight: 500;
         }
-        /* Responsive video container */
         .video-container {
-            position: relative; padding-bottom: 56.25%; /* 16:9 */ height: 0; overflow: hidden;
-            max-width: 100%; background: #000; margin: 20px auto; /* Center video container */
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+            max-width: 100%; background: #000; margin: 20px 0;
         }
         .video-container iframe, .video-container object, .video-container embed {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
-        /* General image styling within slides, using theme colors where appropriate */
         .reveal section img {
-           border: none; background: none; box-shadow: none; /* Cleaner look */
-           margin: 15px auto; /* Center images by default if they are block */
-           display: block; /* Helps with centering */
-           max-height: 400px; /* Default max height, can be overridden */
-           width:auto;
-           max-width: 90%; /* Prevent overly wide images */
+           border: none; background: none; box-shadow: none; margin: 15px 0; max-height: 450px; width:auto; max-width: 90%;
         }
-         /* Quote styling, using theme colors */
         .reveal blockquote {
             display: block; position: relative; width: 80%; margin: 20px auto; padding: 15px;
-            font-style: italic; background: rgba(224, 214, 204, 0.1); /* Light Beige with transparency */
-            border-left: 5px solid #325D7D; /* Your primary blue */
+            font-style: italic; background: rgba(36, 53, 70, 0.1); border-left: 5px solid #4A90E2;
         }
         .reveal blockquote p { margin: 0; }
         .reveal blockquote cite { display: block; text-align: right; margin-top: 10px; font-size: 0.8em; }
-
-         /* Estilos adicionais para melhor leitura do código */
         .reveal pre code {
-            max-height: 400px; /* Limita altura de blocos de código */
-            font-size: 0.9em; /* Adjust code font size if needed */
+            max-height: 400px;
         }
-        /* Align lists to the left within reveal slides */
-        .reveal ul, .reveal ol {
-            display: block; /* Override reveal.js default of inline-block for lists */
+
+        /* === ESTILOS REFINADOS PARA O SLIDE DA AULA 1 === */
+        .intro-slide-container {
+            display: flex; /* Usar flexbox para o container principal do slide */
+            width: 100%;
+            height: calc(100vh - 100px); /* Ajustar altura, descontando algum padding/margem do reveal */
+            align-items: stretch; /* Esticar os filhos para preencher a altura */
+        }
+
+        .intro-slide-left-column {
+            flex: 0 0 30%; /* Coluna da esquerda com largura fixa ou percentual menor */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Coloca a figura no topo e o texto na base */
+            padding-right: 20px; /* Espaço entre as colunas */
             text-align: left;
-            margin: 0 0 1em 1.5em; /* Standard list margins */
         }
-        .reveal ul ul, .reveal ol ol {
-            margin-left: 1.5em; /* Indent nested lists */
+
+        .intro-slide-left-column .hist-figure img {
+            max-width: 100%;
+            height: auto; /* Manter proporção */
+            max-height: 280px; /* Altura máxima para a figura histórica */
+            object-fit: contain;
+            display: block; /* Para remover espaço extra abaixo da imagem */
         }
+
+        .intro-slide-left-column .text-content {
+            margin-top: auto; /* Empurra o texto para baixo */
+        }
+        .intro-slide-left-column .text-content h3 {
+            font-size: 1.1em; /* Ajuste o tamanho da fonte conforme necessário */
+            margin-bottom: 0.3em;
+        }
+        .intro-slide-left-column .text-content p {
+            font-size: 0.9em;  /* Ajuste o tamanho da fonte conforme necessário */
+            margin-bottom: 0.2em;
+        }
+        .intro-slide-left-column .text-content .source {
+            font-size: 0.65em;
+            color: #b0b0b0; /* Cor mais suave para a fonte */
+            margin-top: 10px;
+        }
+
+        .intro-slide-right-column {
+            flex: 1; /* Coluna da direita ocupa o restante do espaço */
+            display: flex;
+            align-items: center; /* Centraliza o mapa verticalmente */
+            justify-content: center; /* Centraliza o mapa horizontalmente */
+        }
+
+        .intro-slide-right-column .map-figure img {
+            max-width: 100%;
+            max-height: 90%; /* Para que o mapa não ultrapasse a altura da coluna */
+            object-fit: contain;
+        }
+        /* === FIM DOS ESTILOS REFINADOS === */
+
     </style>
 </head>
 <body>
@@ -93,36 +127,40 @@
 
             <section>
                 <span class="class-number">Aula 1</span>
+                <div class="intro-slide-container">
+                    <div class="intro-slide-left-column">
+                        <div class="hist-figure">
+                            <img src="image_872d2c.jpg" alt="Figura Histórica - Conselheiro Rebelo">
+                        </div>
+                        <div class="text-content">
+                            <h3>Plano Rebelo (1838)</h3>
+                            <p>"três estradas reais"</p>
+                            <p class="source">Fonte: PNL 2035 (BRASIL, 2021)</p>
+                        </div>
+                    </div>
+                    <div class="intro-slide-right-column">
+                        <div class="map-figure">
+                             <img src="image_872d2c.jpg" alt="Mapa das Estradas Reais - Plano Rebelo">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <span class="class-number">Aula 1 (Continuação)</span>
                 <h3>Introdução à Construção de Infraestrutura Rodoviária e Ferroviária</h3>
-                <ul>
+                 <ul>
                     <li>Objetivos da disciplina e metodologia "Altas Aulas".</li>
-                    <li>Importância da infraestrutura de transportes (histórica, econômica, social).</li>
+                    <li>Importância da infraestrutura de transportes (econômica, social).</li>
                     <li>Componentes de rodovias e ferrovias.</li>
                     <li>Fases de um projeto de infraestrutura (EVTEA, Básico, Executivo).</li>
                     <li>Normas e órgãos reguladores (DNIT, ANTT, ABNT).</li>
                     <li>Visão geral do ciclo de vida da obra.</li>
-                    <li><strong>Especialista Convidado:</strong> Gestor de Projetos de Infraestrutura (Visão Geral).</li>
-                    <li><strong>Atividade Prática:</strong> Discussão inicial sobre desafios e oportunidades.</li>
+                    <li>**Especialista Convidado:** Gestor de Projetos de Infraestrutura (Visão Geral).</li>
+                    <li>**Atividade Prática:** Discussão inicial sobre desafios e oportunidades.</li>
                 </ul>
             </section>
 
-            <section>
-                <span class="class-number">Aula 1</span>
-                <div class="intro-slide-layout">
-                    <div class="hist-figure">
-                        <img src="Picture2.png" alt="Figura Histórica - Conselheiro Rebelo">
-                    </div>
-                    <div class="map-figure">
-                        <img src="Picture1.png" alt="Mapa das Estradas Reais - Plano Rebelo">
-                    </div>
-                    <div class="text-content">
-                        <h3>Plano Rebelo (1838)</h3>
-                        <p>"três estradas reais"</p>
-                        <p class="source">Fonte: PNL 2035 (BRASIL, 2021)</p>
-                    </div>
-                </div>
-            </section>
-            
             <section>
                 <span class="class-number">Aula 2</span>
                 <h3>Terraplenagem I: Cortes, Aterros e Compactação</h3>
@@ -139,19 +177,19 @@
                         <ul>
                             <li>Objetivos (Resistência, Estabilidade, Permeabilidade).</li>
                              <li>Ensaio de Proctor (Normal, Intermediário, Modificado).</li>
-                             <li>Umidade Ótima (w<sub>ot</sub>) e Massa Específica Aparente Seca Máxima ($\gamma_{d,max}$).</li>
+                            <li>Umidade Ótima (wot) e Massa Específica Aparente Seca Máxima ($\gamma_{d,max}$).</li>
                         </ul>
                     </div>
                     <div class="column">
-                         <img src="placeholder-terraplenagem-diagrama.png" alt="Diagrama de Massas" style="max-height: 200px;">
+                         <img src="placeholder-terraplenagem-diagrama.png" alt="Diagrama de Massas">
                          <p style="font-size: 0.7em; text-align: center;">Conceito do Diagrama de Massas</p>
-                         <img src="placeholder-proctor.png" alt="Curva de Compactação Proctor" style="max-height: 200px;">
+                         <img src="placeholder-proctor.png" alt="Curva de Compactação Proctor">
                          <p style="font-size: 0.7em; text-align: center;">Curva Típica do Ensaio Proctor</p>
                     </div>
                 </div>
                  <ul>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro Geotécnico (Terraplenagem/Compactação).</li>
-                    <li><strong>Atividade Prática:</strong> Análise de seções transversais, cálculo de volume e interpretação de curva Proctor.</li>
+                    <li>**Especialista Convidado:** Engenheiro Geotécnico (Terraplenagem/Compactação).</li>
+                    <li>**Atividade Prática:** Análise de seções transversais, cálculo de volume e interpretação de curva Proctor.</li>
                 </ul>
             </section>
 
@@ -171,10 +209,10 @@
                         </ul>
                     </li>
                     <li>Produtividade e Custo Horário dos equipamentos (Introdução).</li>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro de Equipamentos/Construção.</li>
-                    <li><strong>Atividade Prática:</strong> Estudo de caso: Seleção de frota para um cenário específico.</li>
+                    <li>**Especialista Convidado:** Engenheiro de Equipamentos/Construção.</li>
+                    <li>**Atividade Prática:** Estudo de caso: Seleção de frota para um cenário específico.</li>
                 </ul>
-                 <img src="placeholder-equipamentos.png" alt="Equipamentos de Terraplenagem" style="max-height: 300px;">
+                 <img src="placeholder-equipamentos.png" alt="Equipamentos de Terraplenagem" style="max-height: 350px; width: auto; display: block; margin: 15px auto;">
             </section>
 
             <section>
@@ -197,8 +235,8 @@
                         </ul>
                     </li>
                     <li>Interpretação de Relatórios Geotécnicos.</li>
-                    <li><strong>Especialista Convidado:</strong> Consultor Geotécnico.</li>
-                    <li><strong>Atividade Prática:</strong> Análise de um perfil de sondagem SPT e resultados de ensaios para um projeto rodoviário simplificado.</li>
+                    <li>**Especialista Convidado:** Consultor Geotécnico.</li>
+                    <li>**Atividade Prática:** Análise de um perfil de sondagem SPT e resultados de ensaios para um projeto rodoviário simplificado.</li>
                 </ul>
             </section>
 
@@ -206,7 +244,7 @@
                 <span class="class-number">Aula 5</span>
                 <h3>Materiais I: Solos e Agregados para Camadas de Pavimento</h3>
                  <h4>Camadas do Pavimento Flexível:</h4>
-                 <img src="placeholder-pavimento-flex.png" alt="Camadas do Pavimento Flexível" style="max-height: 200px;">
+                 <img src="placeholder-pavimento-flex.png" alt="Camadas do Pavimento Flexível" style="max-height: 250px; width: auto; display: block; margin: 15px auto;">
                 <ul>
                     <li>Funções das camadas: Subleito, Reforço do Subleito, Sub-base, Base.</li>
                     <li>Materiais Comuns:
@@ -218,8 +256,8 @@
                         </ul>
                     </li>
                     <li>Requisitos e especificações (DNIT/ABNT) para cada camada (CBR, Expansão, Plasticidade, Granulometria).</li>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro de Materiais (Pavimentação).</li>
-                    <li><strong>Atividade Prática:</strong> Análise de especificações de materiais para diferentes camadas e verificação de conformidade de resultados de ensaios (dados hipotéticos).</li>
+                    <li>**Especialista Convidado:** Engenheiro de Materiais (Pavimentação).</li>
+                    <li>**Atividade Prática:** Análise de especificações de materiais para diferentes camadas e verificação de conformidade de resultados de ensaios (dados hipotéticos).</li>
                 </ul>
             </section>
 
@@ -231,24 +269,24 @@
                         <h4>Ligantes Asfálticos:</h4>
                         <ul>
                              <li>Cimento Asfáltico de Petróleo (CAP): Classificação por penetração e por viscosidade (PG - Superpave).</li>
-                             <li>Asfaltos Modificados (Polímeros, Borracha).</li>
-                             <li>Emulsões Asfálticas: Tipos e aplicações (imprimação, pintura de ligação, tratamentos superficiais).</li>
-                             <li>Principais Ensaios: Penetração, Viscosidade, Ponto de Amolecimento, Ponto de Fulgor.</li>
+                            <li>Asfaltos Modificados (Polímeros, Borracha).</li>
+                            <li>Emulsões Asfálticas: Tipos e aplicações (imprimação, pintura de ligação, tratamentos superficiais).</li>
+                            <li>Principais Ensaios: Penetração, Viscosidade, Ponto de Amolecimento, Ponto de Fulgor.</li>
                         </ul>
                     </div>
                     <div class="column">
                         <h4>Misturas Asfálticas:</h4>
                         <ul>
                              <li>Tipos: CBUQ (Concreto Betuminoso Usinado a Quente), PMF (Pré-Misturado a Frio), SMA (Stone Matrix Asphalt), Misturas Mornas (WMA).</li>
-                             <li>Dosagem (Método Marshall / Superpave - Conceitos).</li>
-                             <li>Propriedades: Estabilidade, Fluência, % Vazios, VAM, RBV.</li>
+                            <li>Dosagem (Método Marshall / Superpave - Conceitos).</li>
+                            <li>Propriedades: Estabilidade, Fluência, % Vazios, VAM, RBV.</li>
                         </ul>
-                         <img src="placeholder-usina-asfalto.png" alt="Usina de Asfalto" style="max-height: 150px;">
+                        <img src="placeholder-usina-asfalto.png" alt="Usina de Asfalto" style="max-height: 200px; width: auto;">
                     </div>
                 </div>
                 <ul>
-                    <li><strong>Especialista Convidado:</strong> Tecnologista de Asfalto / Pesquisador da área.</li>
-                    <li><strong>Atividade Prática:</strong> Análise de resultados de ensaios de ligantes e parâmetros de dosagem de misturas asfálticas.</li>
+                    <li>**Especialista Convidado:** Tecnologista de Asfalto / Pesquisador da área.</li>
+                    <li>**Atividade Prática:** Análise de resultados de ensaios de ligantes e parâmetros de dosagem de misturas asfálticas.</li>
                 </ul>
             </section>
 
@@ -267,10 +305,10 @@
                     <li>Dosagem do Concreto para Pavimentos.</li>
                     <li>Concreto Compactado com Rolo (CCR).</li>
                     <li>Comparativo com Concreto Estrutural.</li>
-                    <li><strong>Especialista Convidado:</strong> Tecnologista de Concreto / Eng. Estruturas (Pavimentos).</li>
-                    <li><strong>Atividade Prática:</strong> Discussão sobre especificações de materiais e parâmetros de dosagem para concreto de pavimento.</li>
+                    <li>**Especialista Convidado:** Tecnologista de Concreto / Eng. Estruturas (Pavimentos).</li>
+                    <li>**Atividade Prática:** Discussão sobre especificações de materiais e parâmetros de dosagem para concreto de pavimento.</li>
                 </ul>
-                 <img src="placeholder-pavimento-rigido.png" alt="Execução de Pavimento Rígido" style="max-height: 280px;">
+                <img src="placeholder-pavimento-rigido.png" alt="Execução de Pavimento Rígido" style="max-height: 300px; width: auto; display: block; margin: 15px auto;">
             </section>
 
              <section>
@@ -289,10 +327,10 @@
                         </ul>
                     </li>
                     <li>Conceitos de Dimensionamento Hidrológico e Hidráulico (Vazão de projeto, capacidade de escoamento).</li>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro Hidráulico/Sanitarista (Drenagem).</li>
-                    <li><strong>Atividade Prática:</strong> Dimensionamento hidráulico simplificado de uma sarjeta ou análise da capacidade de um bueiro.</li>
+                    <li>**Especialista Convidado:** Engenheiro Hidráulico/Sanitarista (Drenagem).</li>
+                    <li>**Atividade Prática:** Dimensionamento hidráulico simplificado de uma sarjeta ou análise da capacidade de um bueiro.</li>
                 </ul>
-                 <img src="placeholder-bueiro.png" alt="Bueiro em Construção" style="max-height: 280px;">
+                 <img src="placeholder-bueiro.png" alt="Bueiro em Construção" style="max-height: 300px; width: auto; display: block; margin: 15px auto;">
             </section>
 
              <section>
@@ -311,8 +349,8 @@
                      <li>Materiais: Tubos drenantes (perfurados), material filtrante (areia, geotêxtil), material drenante (brita, rachão).</li>
                      <li>Critérios de Filtro e Drenagem.</li>
                      <li>Importância para a estabilidade e durabilidade.</li>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro Geotécnico/Hidráulico (Drenagem).</li>
-                    <li><strong>Atividade Prática:</strong> Análise de projetos típicos de drenos profundos e discussão de casos de falha por problemas de drenagem subsuperficial.</li>
+                    <li>**Especialista Convidado:** Engenheiro Geotécnico/Hidráulico (Drenagem).</li>
+                    <li>**Atividade Prática:** Análise de projetos típicos de drenos profundos e discussão de casos de falha por problemas de drenagem subsuperficial.</li>
                 </ul>
             </section>
 
@@ -330,14 +368,14 @@
                      <li>Desmonte com Explosivos:
                         <ul>
                              <li>Tipos de explosivos e acessórios (espoletas, estopim, cordel).</li>
-                             <li>Plano de Fogo: Malha de perfuração, carregamento, sequência de detonação.</li>
-                             <li>Segurança: Vibrações (ultralançamento), ruído, poeira. Legislação e controle.</li>
-                              <li>Monitoramento sismográfico.</li>
+                            <li>Plano de Fogo: Malha de perfuração, carregamento, sequência de detonação.</li>
+                            <li>Segurança: Vibrações (ultralançamento), ruído, poeira. Legislação e controle.</li>
+                             <li>Monitoramento sismográfico.</li>
                         </ul>
                     </li>
                     <li>Alternativas (Plasma, etc.) - Menos comuns.</li>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro de Minas / Especialista em Desmonte com Explosivos.</li>
-                    <li><strong>Atividade Prática:</strong> Análise de um plano de fogo simplificado, discussão sobre normas de segurança e impactos ambientais. (Role-playing sobre diálogo de segurança pré-detonação).</li>
+                    <li>**Especialista Convidado:** Engenheiro de Minas / Especialista em Desmonte com Explosivos.</li>
+                    <li>**Atividade Prática:** Análise de um plano de fogo simplificado, discussão sobre normas de segurança e impactos ambientais. (Role-playing sobre diálogo de segurança pré-detonação).</li>
                 </ul>
             </section>
 
@@ -359,7 +397,7 @@
                      <li>Uso de Software específico.</li>
                  </ul>
                  <ul>
-                     <li><strong>Especialista Convidado:</strong> Engenheiro Projetista de Pavimentos (Flexíveis).</li>
+                     <li>**Especialista Convidado:** Engenheiro Projetista de Pavimentos (Flexíveis).</li>
                      <li>**Atividade Prática:** Exercício guiado de dimensionamento simplificado pelo método do DNIT (CBR). Discussão sobre as limitações e a evolução para métodos mecanicistas.</li>
                 </ul>
             </section>
@@ -381,7 +419,7 @@
                      <li>Comparativo Técnico-Econômico: Flexível vs. Rígido (Custos iniciais, vida útil, manutenção).</li>
                  </ul>
                  <ul>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro Projetista de Pavimentos (Rígidos).</li>
+                    <li>**Especialista Convidado:** Engenheiro Projetista de Pavimentos (Rígidos).</li>
                     <li>**Atividade Prática:** Análise de parâmetros de entrada para dimensionamento de pavimento rígido e discussão sobre cenários de aplicação mais adequados para cada tipo.</li>
                 </ul>
             </section>
@@ -407,7 +445,7 @@
                      <li>Controle de Qualidade: Resistência do concreto (corpos de prova), espessura, planicidade (IRI).</li>
                  </ul>
                  <ul>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro Residente/Fiscal de Obras de Pavimentação.</li>
+                    <li>**Especialista Convidado:** Engenheiro Residente/Fiscal de Obras de Pavimentação.</li>
                     <li>**Atividade Prática:** Análise de vídeos de processos executivos e discussão sobre pontos críticos de controle em cada tipo de pavimentação.</li>
                 </ul>
             </section>
@@ -422,9 +460,9 @@
                             <li>Levantamento de Quantitativos (Planilhas).</li>
                             <li>Custos Diretos:
                                 <ul>
-                                     <li>Materiais (preços + frete).</li>
-                                     <li>Mão de Obra (salários + encargos).</li>
-                                     <li>Equipamentos (custo horário produtivo e improdutivo).</li>
+                                    <li>Materiais (preços + frete).</li>
+                                    <li>Mão de Obra (salários + encargos).</li>
+                                    <li>Equipamentos (custo horário produtivo e improdutivo).</li>
                                 </ul>
                             </li>
                             <li>Composição de Custos Unitários (CPU).</li>
@@ -434,16 +472,16 @@
                          <h4>Custos Indiretos e Preço Final:</h4>
                         <ul>
                              <li>Administração Local, Canteiro, Mobilização/Desmobilização.</li>
-                             <li>BDI (Benefícios e Despesas Indiretas): Lucro, Impostos, Administração Central, Riscos.</li>
-                             <li>Planilha Orçamentária Final.</li>
-                             <li>Uso de Sistemas Referenciais: SICRO (DNIT), SINAPI (Caixa).</li>
-                             <li>Cronograma Físico-Financeiro (Curva S).</li>
+                            <li>BDI (Benefícios e Despesas Indiretas): Lucro, Impostos, Administração Central, Riscos.</li>
+                            <li>Planilha Orçamentária Final.</li>
+                            <li>Uso de Sistemas Referenciais: SICRO (DNIT), SINAPI (Caixa).</li>
+                            <li>Cronograma Físico-Financeiro (Curva S).</li>
                         </ul>
                     </div>
                 </div>
                 <ul>
-                    <li><strong>Especialista Convidado:</strong> Engenheiro de Custos/Orçamentista (Infraestrutura).</li>
-                    <li><strong>Atividade Prática:</strong> Elaboração de uma CPU simples e montagem de uma planilha orçamentária expedita para um serviço de pavimentação ou terraplenagem, utilizando tabelas de referência.</li>
+                    <li>**Especialista Convidado:** Engenheiro de Custos/Orçamentista (Infraestrutura).</li>
+                    <li>**Atividade Prática:** Elaboração de uma CPU simples e montagem de uma planilha orçamentária expedita para um serviço de pavimentação ou terraplenagem, utilizando tabelas de referência.</li>
                 </ul>
             </section>
 
@@ -463,28 +501,24 @@
                     </li>
                     <li>Importância da atualização contínua na engenharia.</li>
                     <li>Espaço final para dúvidas e discussões.</li>
-                    <li><strong>Especialista Convidado:</strong> (Professor ou convidado sobre Inovação em Transportes).</li>
+                    <li>**Especialista:** (Professor ou convidado sobre Inovação em Transportes).</li>
                     <li>**Atividade Prática:** Debate final sobre os desafios e o futuro da Engenharia de Estradas no Brasil e no mundo. Feedback sobre a disciplina.</li>
                 </ul>
             </section>
 
-        </div> </div> <script src="dist/reveal.js"></script>
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
     <script src="plugin/notes/notes.js"></script>
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script>
-        // More info about initialization & config:
-        // - https://revealjs.com/initialization/
-        // - https://revealjs.com/config/
         Reveal.initialize({
-            hash: true, // Enables deep linking to slides
-            // Learn about plugins: https://revealjs.com/plugins/
+            hash: true,
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-            controlsLayout: 'edges', // Place controls at screen edges
-            navigationMode: 'linear', // Simplify navigation (no vertical slides initially)
-            // slideNumber: true, // Optional: Show slide numbers
-            // width: "95%", // Optional: Adjust slide width
-            // height: "95%", // Optional: Adjust slide height
+            controlsLayout: 'edges',
+            navigationMode: 'linear'
         });
     </script>
 </body>
