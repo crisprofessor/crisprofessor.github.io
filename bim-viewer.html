@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador BIM com IFC.js</title>
+    <!-- 
+    ====================================================
+    ESTILOS CSS INLINE
+    Todos os estilos estão incluídos diretamente no HTML
+    para criar um arquivo único e autocontido
+    ====================================================
+    -->
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=nNOGVvc19hEXm0PR_hF9etInAdiTrRF9i3Btvw12TuBMm9Lamg7pvRvYEGfkVLlWfQqH8Awne-XbQUtiGzoAcJnZbofHRT-cwCMnfB8dQgtOraE8JmNYPWb-q9AkJMoJIp-CtPUI-bx61PEbTMc3PRSdDFdRdamWgfjpBSnP8y5NadVi3pRQ7Ro3dImSAY1x5ElvBFWp0jRuMh3zjnlHnfabHgR3moYB96r4nQxOVYsAUAeOkmbG3Ohl9VasGDYkOY-AFvV1J88VfUQI-z4nwNxiBXWXmtalYdYhoRPRvZc_PRpBi45CUhdRIfoTsyq2pGigG37SROfCRvTrOe7XIGgI0gVJK7vKg-KZeUcTjuykcDcOfync-hhl1lBAeVV8ryqT2Z0Sj3OHL7YTk3h91HaoOimpWnr8H_fNpy-MR2RmdCOeZ3Uq-teGxC8jD-LM-GVYk7i2paMs3yhJmxigrIQiQQPMyzVJfTISjgq6WQsHNwwdDxbxP9X6y2pP_6GFQAJ_o5Nof0awG1XacMR_3aSTnbvEhlVy-3laBV3K-JZWKM9kz9FxcCRXfeS-TBMOeip5XTqGvXZ40X91k1pEFBgJas6RzfZ0Ll2BmFzSh2aF0R4T7vwVpwzCBT8wM5hd5U4sqHtxzUlisQqJ5s34TC3205CgJ6gQaeY8s1SwNNL7lunhK1vytPTGk8mYRm8tkGhw4_vwVhWGwhYUjHHEE2BQRP3REBQbqfOWk2sRXn_ZVM121MnsMvXfwXQzIgBM1aTW--Xbp_o_INmZp_kRnyIA7WnsT4dLBqaSrnswMwbsIcgCfZsuMMJmV3OWbb5f8V11DiZ1q9w5XPzweYw4LoLlpry74fIDIln8Npq6qCZdTSetYAdCqnTQI4PhGfi1" charset="UTF-8"></script><style>
+        /* Reset básico e configurações globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Configuração do layout principal */
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+        
+        /* Estilo do cabeçalho */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Container principal com layout flexível */
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 1rem;
+            gap: 1rem;
+        }
+        
+        /* Área de controles (botões e status) */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Container do visualizador 3D */
+        .viewer-container {
+            flex: 1;
+            position: relative;
+            background-color: #e9e9e9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Elemento canvas do visualizador */
+        #viewer {
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* Estilo para o componente de input de arquivo */
+        .file-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Personalização do input de arquivo para melhor UX */
+        .custom-file-input {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Esconde o input nativo de arquivo */
+        .custom-file-input input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        /* Estilo do botão principal */
+        .btn {
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        /* Efeito hover no botão */
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Exibição do nome do arquivo selecionado */
+        .file-name {
+            margin-left: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        /* Área de mensagens de status */
+        .status-message {
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        /* Indicador de carregamento (overlay) */
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Animação de spinner para feedback visual */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Keyframes para animação do spinner */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Estilo do rodapé */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Responsividade para dispositivos móveis */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .controls {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho da aplicação -->
+    <header>
+        <h1>Visualizador BIM com IFC.js</h1>
+    </header>
+    
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Área de controles e status -->
+        <div class="controls">
+            <div class="file-input">
+                <div class="custom-file-input">
+                    <button class="btn" id="file-btn">Selecionar arquivo IFC</button>
+                    <input type="file" id="file-input" accept=".ifc" />
+                </div>
+                <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
+            </div>
+            <div class="status-message" id="status-message"></div>
+        </div>
+        
+        <!-- Container do visualizador 3D -->
+        <div class="viewer-container">
+            <div id="viewer"></div>
+            <!-- Overlay de carregamento -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Carregando modelo...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Rodapé da aplicação -->
+    <footer>
+        <p>Visualizador BIM desenvolvido com IFC.js e web-ifc-viewer</p>
+    </footer>
+
+    <!-- 
+    ====================================================
+    SCRIPTS EXTERNOS VIA CDN
+    Bibliotecas necessárias para o visualizador BIM
+    ====================================================
+    -->
+    <!-- Three.js - Biblioteca 3D base -->
+    <script src="https://unpkg.com/three@0.135.0/build/three.min.js"></script>
+    <!-- Web-IFC-Viewer - API para visualização de modelos IFC -->
+    <script src="https://unpkg.com/web-ifc-viewer@1.0.218/dist/ifc-viewer-api.js"></script>
+    
+    <!-- 
+    ====================================================
+    SCRIPT PRINCIPAL DO VISUALIZADOR BIM
+    Toda a lógica de inicialização e interação está inline
+    ====================================================
+    -->
+    <script>
+        /**
+         * INICIALIZAÇÃO DO VISUALIZADOR BIM
+         * 
+         * Este script configura um visualizador BIM completo usando a biblioteca web-ifc-viewer.
+         * Permite carregar arquivos IFC do dispositivo local e interagir com o modelo 3D.
+         */
+        
+        // Inicialização do visualizador IFC
+        const container = document.getElementById('viewer');
+        const viewer = new IfcViewerAPI({
+            container,
+            backgroundColor: new THREE.Color(0xf5f5f5) // Cor de fundo clara
+        });
+        
+        /**
+         * CONFIGURAÇÃO DO CAMINHO WASM
+         * 
+         * O arquivo WASM contém o código compilado C++ necessário para processar arquivos IFC.
+         * Aqui configuramos o caminho para buscar esses arquivos via CDN.
+         */
+        viewer.IFC.setWasmPath("https://unpkg.com/web-ifc@0.0.40/");
+        
+        // Inicialização dos elementos visuais auxiliares
+        viewer.axes.setAxes(); // Adiciona eixos de referência (X, Y, Z)
+        viewer.grid.setGrid(); // Adiciona grade de referência no plano horizontal
+        
+        // Referências aos elementos da interface
+        const fileInput = document.getElementById('file-input');
+        const fileBtn = document.getElementById('file-btn');
+        const fileName = document.getElementById('file-name');
+        const statusMessage = document.getElementById('status-message');
+        const loadingElement = document.getElementById('loading');
+        
+        /**
+         * CONFIGURAÇÃO DE INTERATIVIDADE
+         * 
+         * Estas funções permitem interagir com o modelo IFC:
+         * - Pré-seleção de elementos ao passar o mouse
+         * - Seleção de elementos com duplo clique
+         * - Visualização de propriedades no console
+         */
+        
+        // Pré-seleção de elementos ao mover o mouse
+        window.onmousemove = () => viewer.IFC.selector.prePickIfcItem();
+        
+        // Seleção de elementos com duplo clique e exibição de propriedades
+        window.ondblclick = async () => {
+            // Seleciona o elemento sob o cursor
+            const result = await viewer.IFC.selector.pickIfcItem(true);
+            if (!result) return;
+            
+            // Extrai identificadores do elemento selecionado
+            const { modelID, id } = result;
+            
+            // Obtém e exibe as propriedades do elemento no console
+            const props = await viewer.IFC.getProperties(modelID, id, true);
+            console.log(props);
+        };
+        
+        /**
+         * CONFIGURAÇÃO DE PLANOS DE CORTE
+         * 
+         * Permite criar planos de corte para visualizar o interior do modelo
+         */
+        viewer.clipper.active = true;
+        
+        /**
+         * ATALHOS DE TECLADO
+         * 
+         * P - Cria um plano de corte na posição atual da câmera
+         * O - Remove o último plano de corte criado
+         * ESC - Cancela a seleção atual
+         */
+        window.onkeydown = (event) => {
+            if (event.code === 'KeyP') {
+                // Cria um plano de corte
+                viewer.clipper.createPlane();
+            } else if (event.code === 'KeyO') {
+                // Remove o último plano de corte
+                viewer.clipper.deletePlane();
+            } else if (event.code === 'Escape') {
+                // Cancela a seleção atual
+                viewer.IFC.selector.unpickIfcItems();
+            }
+        };
+        
+        /**
+         * MANIPULAÇÃO DO INPUT DE ARQUIVO
+         * 
+         * Configura o botão personalizado para abrir o seletor de arquivo
+         */
+        fileBtn.onclick = () => {
+            fileInput.click();
+        };
+        
+        /**
+         * CARREGAMENTO DO ARQUIVO IFC
+         * 
+         * Este evento é acionado quando o usuário seleciona um arquivo IFC.
+         * Gerencia todo o processo de carregamento, incluindo feedback visual.
+         */
+        fileInput.addEventListener('change', async (event) => {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            // Atualiza a interface com informações do arquivo
+            fileName.textContent = file.name;
+            statusMessage.textContent = 'Preparando para carregar o modelo...';
+            statusMessage.style.color = '#3498db';
+            
+            // Exibe o indicador de carregamento
+            loadingElement.style.display = 'flex';
+            
+            try {
+                // Limpa qualquer modelo anterior
+                await viewer.dispose();
+                
+                // Reinicializa o visualizador com as mesmas configurações
+                const viewer = new IfcViewerAPI({
+                    container,
+                    backgroundColor: new THREE.Color(0xf5f5f5)
+                });
+                
+                // Reconfigura o caminho WASM
+                viewer.IFC.setWasmPath("https://unpkg.com/web-ifc@0.0.40/");
+                
+                // Reinicializa elementos visuais
+                viewer.axes.setAxes();
+                viewer.grid.setGrid();
+                
+                // Cria uma URL para o arquivo selecionado
+                const ifcURL = URL.createObjectURL(file);
+                
+                // Atualiza o status
+                statusMessage.textContent = 'Carregando modelo...';
+                
+                // Carrega o modelo IFC
+                const model = await viewer.IFC.loadIfcUrl(ifcURL);
+                
+                // Adiciona sombras para melhor visualização
+                viewer.shadowDropper.renderShadow(model.modelID);
+                
+                // Atualiza o status para sucesso
+                statusMessage.textContent = 'Modelo carregado com sucesso!';
+                statusMessage.style.color = '#27ae60';
+                
+                // Reconfigura os eventos de interação
+                window.onmousemove = () => viewer.IFC.selector.prePickIfcItem();
+                window.ondblclick = async () => {
+                    const result = await viewer.IFC.selector.pickIfcItem(true);
+                    if (!result) return;
+                    const { modelID, id } = result;
+                    const props = await viewer.IFC.getProperties(modelID, id, true);
+                    console.log(props);
+                };
+                
+                // Reativa o clipper
+                viewer.clipper.active = true;
+                
+            } catch (error) {
+                // Tratamento de erros durante o carregamento
+                console.error(error);
+                statusMessage.textContent = 'Erro ao carregar o modelo: ' + error.message;
+                statusMessage.style.color = '#e74c3c';
+            } finally {
+                // Esconde o indicador de carregamento
+                loadingElement.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
