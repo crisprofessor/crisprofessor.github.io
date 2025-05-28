@@ -503,3 +503,100 @@ section:nth-child(odd) .content-module {
 	height: 100%;
     border: 0;
 }
+
+/* --- Additions to style.css for PDF Embed Subpages --- */
+
+/* --- Breadcrumb Navigation on Subpages --- */
+/* (Keep this style from previous steps if you already have it) */
+.breadcrumb-nav {
+    padding: 0.75rem 0 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-light-text-on-dark);
+}
+/* Breadcrumbs on light background sections (if subpage has alternating backgrounds) */
+section:nth-child(odd) .breadcrumb-nav,
+.subpage-container .breadcrumb-nav { /* Specific for subpages if they have a light bg */
+    color: var(--color-text-on-light);
+}
+.breadcrumb-nav a { color: inherit; text-decoration: underline; opacity: 0.8; }
+.breadcrumb-nav a:hover, .breadcrumb-nav a:focus { color: var(--color-yellow-accent); opacity: 1; }
+
+
+/* --- Styling for Subpage Content Area --- */
+.subpage-container {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+/* Make sure subpage H2 matches section H2 styling */
+.subpage-content #subpage-title {
+    color: var(--color-beige-content); /* Default for dark page BG */
+    border-bottom: 2px solid var(--color-blue-primary);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.6rem, 4vw, 2.2rem); /* Match section h2 */
+}
+/* If subpage itself might have a light background */
+body:not(:global(body.dark-theme)) .subpage-content #subpage-title, /* Example if you add themes */
+.subpage-container.light-background .subpage-content #subpage-title { /* If subpage container is light */
+    color: var(--color-blue-primary);
+    border-bottom-color: var(--color-dark-bg);
+}
+
+
+/* --- Styling for Lecture Items on Subpages --- */
+.lecture-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border-light); /* Separator between lectures on dark bg */
+}
+/* If subpage container is light */
+.subpage-container.light-background .lecture-item {
+    border-bottom: 1px solid var(--color-border-beige);
+}
+
+.lecture-item:last-child {
+    border-bottom: none;
+}
+
+.lecture-item h3 {
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    color: var(--color-beige-content); /* For dark page BG */
+    margin-bottom: 0.75rem;
+}
+/* If subpage container is light */
+.subpage-container.light-background .lecture-item h3 {
+    color: var(--color-blue-primary);
+}
+
+.lecture-item p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    /* Color inherited from body or subpage-container context */
+}
+
+.pdf-embed-container {
+    width: 100%;
+    max-width: 900px; /* Adjust for desired PDF width */
+    height: 550px; /* Default height for the PDF viewer */
+    margin: 1rem auto 1.5rem; /* Center and space */
+    border: 1px solid var(--color-border-light);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    overflow: hidden; /* In case iframe content tries to break out */
+}
+.subpage-container.light-background .pdf-embed-container {
+    border: 1px solid var(--color-border-beige);
+}
+
+
+.pdf-embed-container iframe {
+    display: block; /* Remove extra space below iframe */
+    border: none; /* Remove iframe border */
+    width: 100%;
+    height: 100%;
+}
+
+.download-button {
+    margin-top: 0.5rem; /* Space above download button */
+    display: inline-block; /* Allows margin-top */
+}
