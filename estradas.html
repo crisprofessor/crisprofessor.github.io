@@ -1,525 +1,248 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-    <title>Estradas II - TEC00264 - Prof. Cristiano Travassos</title>
-
-    <link rel="stylesheet" href="dist/reset.css">
-    <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/custom-theme.css" id="theme">
-    <link rel="stylesheet" href="plugin/highlight/monokai.css">
-
-    <style>
-        .back-to-main-link {
-            position: fixed; top: 15px; left: 15px; z-index: 1000;
-            background-color: rgba(26, 38, 54, 0.8); color: #E0D6CC;
-            padding: 8px 15px; border-radius: 4px;
-            font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 500;
-            text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .back-to-main-link:hover, .back-to-main-link:focus {
-            background-color: #F5A713; color: #1A2636; text-decoration: none;
-        }
-        .back-to-main-link:focus-visible { outline: 2px solid #F5A713; outline-offset: 2px; }
-
-        .columns { display: flex; gap: 20px; align-items: flex-start; }
-        .column { flex: 1; }
-        .column.is-two-thirds { flex: 2; }
-        .column.is-one-third { flex: 1; }
-        .column img { width: 100%; height: auto; }
-
-        .class-number {
-            display: block; font-size: 0.8em; color: #4A90E2;
-            margin-bottom: 0.5em; font-weight: 500;
-        }
-        .video-container {
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-            max-width: 100%; background: #000; margin: 20px 0;
-        }
-        .video-container iframe, .video-container object, .video-container embed {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-        .reveal section img {
-           border: none; background: none; box-shadow: none; margin: 15px 0; max-height: 450px; width:auto; max-width: 90%;
-        }
-        .reveal blockquote {
-            display: block; position: relative; width: 80%; margin: 20px auto; padding: 15px;
-            font-style: italic; background: rgba(36, 53, 70, 0.1); border-left: 5px solid #4A90E2;
-        }
-        .reveal blockquote p { margin: 0; }
-        .reveal blockquote cite { display: block; text-align: right; margin-top: 10px; font-size: 0.8em; }
-        .reveal pre code {
-            max-height: 400px;
-        }
-
-        /* === ESTILOS REFINADOS PARA O SLIDE DA AULA 1 === */
-        .intro-slide-container {
-            display: flex; /* Usar flexbox para o container principal do slide */
-            width: 100%;
-            height: calc(100vh - 100px); /* Ajustar altura, descontando algum padding/margem do reveal */
-            align-items: stretch; /* Esticar os filhos para preencher a altura */
-        }
-
-        .intro-slide-left-column {
-            flex: 0 0 30%; /* Coluna da esquerda com largura fixa ou percentual menor */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Coloca a figura no topo e o texto na base */
-            padding-right: 20px; /* Espaço entre as colunas */
-            text-align: left;
-        }
-
-        .intro-slide-left-column .hist-figure img {
-            max-width: 100%;
-            height: auto; /* Manter proporção */
-            max-height: 280px; /* Altura máxima para a figura histórica */
-            object-fit: contain;
-            display: block; /* Para remover espaço extra abaixo da imagem */
-        }
-
-        .intro-slide-left-column .text-content {
-            margin-top: auto; /* Empurra o texto para baixo */
-        }
-        .intro-slide-left-column .text-content h3 {
-            font-size: 1.1em; /* Ajuste o tamanho da fonte conforme necessário */
-            margin-bottom: 0.3em;
-        }
-        .intro-slide-left-column .text-content p {
-            font-size: 0.9em;  /* Ajuste o tamanho da fonte conforme necessário */
-            margin-bottom: 0.2em;
-        }
-        .intro-slide-left-column .text-content .source {
-            font-size: 0.65em;
-            color: #b0b0b0; /* Cor mais suave para a fonte */
-            margin-top: 10px;
-        }
-
-        .intro-slide-right-column {
-            flex: 1; /* Coluna da direita ocupa o restante do espaço */
-            display: flex;
-            align-items: center; /* Centraliza o mapa verticalmente */
-            justify-content: center; /* Centraliza o mapa horizontalmente */
-        }
-
-        .intro-slide-right-column .map-figure img {
-            max-width: 100%;
-            max-height: 90%; /* Para que o mapa não ultrapasse a altura da coluna */
-            object-fit: contain;
-        }
-        /* === FIM DOS ESTILOS REFINADOS === */
-
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensino: Projeto e Construção de Estradas - Prof. Cristiano Travassos</title>
+    <link rel="stylesheet" href="style.css"> {/* Links to your main CSS file */}
 </head>
 <body>
-    <a href="index.html#teaching" class="back-to-main-link">← Voltar para Ensino</a>
 
-    <div class="reveal">
-        <div class="slides">
+    <a href="#subpage-main-content" class="skip-link">Pular para o conteúdo principal</a>
 
-            <section data-transition="slide" data-background-color="#1A2636">
-                 <h2 style="color: #FFFFFF;">TEC00264 - Estradas II</h2>
-                 <h3 style="color: #F5A713;">Projeto e Construção</h3>
-                 <p style="color: #E0D6CC;">Prof. Cristiano Saad Travassos do Carmo</p>
-                 <p style="color: #E0D6CC; font-size: 0.8em;">Universidade Federal Fluminense (UFF) - Engenharia Civil</p>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 1</span>
-                <div class="intro-slide-container">
-                    <div class="intro-slide-left-column">
-                        <div class="hist-figure">
-                            <img src="Picture2.png" alt="Figura Histórica - Conselheiro Rebelo">
-                        </div>
-                        <div class="text-content">
-                            <h3>Plano Rebelo (1838)</h3>
-                            <p>"três estradas reais"</p>
-                            <p class="source">Fonte: PNL 2035 (BRASIL, 2021)</p>
-                        </div>
-                    </div>
-                    <div class="intro-slide-right-column">
-                        <div class="map-figure">
-                             <img src="Picture1.png" alt="Mapa das Estradas Reais - Plano Rebelo">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 1 (Continuação)</span>
-                <h3>Introdução à Construção de Infraestrutura Rodoviária e Ferroviária</h3>
-                 <ul>
-                    <li>Objetivos da disciplina e metodologia "Altas Aulas".</li>
-                    <li>Importância da infraestrutura de transportes (econômica, social).</li>
-                    <li>Componentes de rodovias e ferrovias.</li>
-                    <li>Fases de um projeto de infraestrutura (EVTEA, Básico, Executivo).</li>
-                    <li>Normas e órgãos reguladores (DNIT, ANTT, ABNT).</li>
-                    <li>Visão geral do ciclo de vida da obra.</li>
-                    <li>**Especialista Convidado:** Gestor de Projetos de Infraestrutura (Visão Geral).</li>
-                    <li>**Atividade Prática:** Discussão inicial sobre desafios e oportunidades.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 2</span>
-                <h3>Terraplenagem I: Cortes, Aterros e Compactação</h3>
-                <div class="columns">
-                    <div class="column">
-                        <h4>Conceitos Fundamentais:</h4>
-                        <ul>
-                            <li>Movimento de terra: Corte e Aterro.</li>
-                            <li>Empréstimo e Bota-Fora.</li>
-                            <li>Cálculo de Volumes (Método das Seções).</li>
-                            <li>Diagrama de Massas (Brückner) - Introdução.</li>
-                        </ul>
-                         <h4>Compactação:</h4>
-                        <ul>
-                            <li>Objetivos (Resistência, Estabilidade, Permeabilidade).</li>
-                             <li>Ensaio de Proctor (Normal, Intermediário, Modificado).</li>
-                            <li>Umidade Ótima (wot) e Massa Específica Aparente Seca Máxima ($\gamma_{d,max}$).</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                         <img src="placeholder-terraplenagem-diagrama.png" alt="Diagrama de Massas">
-                         <p style="font-size: 0.7em; text-align: center;">Conceito do Diagrama de Massas</p>
-                         <img src="placeholder-proctor.png" alt="Curva de Compactação Proctor">
-                         <p style="font-size: 0.7em; text-align: center;">Curva Típica do Ensaio Proctor</p>
-                    </div>
-                </div>
-                 <ul>
-                    <li>**Especialista Convidado:** Engenheiro Geotécnico (Terraplenagem/Compactação).</li>
-                    <li>**Atividade Prática:** Análise de seções transversais, cálculo de volume e interpretação de curva Proctor.</li>
-                </ul>
-            </section>
-
-             <section>
-                <span class="class-number">Aula 3</span>
-                <h3>Terraplenagem II: Empolamento e Equipamentos</h3>
-                <ul>
-                    <li>Fator de Empolamento (f) e Contração.</li>
-                    <li>Cálculo de volumes considerando empolamento.</li>
-                    <li>Seleção de Equipamentos de Terraplenagem:
-                        <ul>
-                            <li>Escavação: Tratores de esteira, escavadeiras hidráulicas.</li>
-                            <li>Carga: Pás-carregadeiras.</li>
-                            <li>Transporte: Caminhões basculantes, motoscrapers.</li>
-                            <li>Espalhamento e Acabamento: Motoniveladoras, tratores.</li>
-                            <li>Compactação: Rolos (lisos, pé-de-carneiro, pneumáticos, vibratórios).</li>
-                        </ul>
-                    </li>
-                    <li>Produtividade e Custo Horário dos equipamentos (Introdução).</li>
-                    <li>**Especialista Convidado:** Engenheiro de Equipamentos/Construção.</li>
-                    <li>**Atividade Prática:** Estudo de caso: Seleção de frota para um cenário específico.</li>
-                </ul>
-                 <img src="placeholder-equipamentos.png" alt="Equipamentos de Terraplenagem" style="max-height: 350px; width: auto; display: block; margin: 15px auto;">
-            </section>
-
-            <section>
-                <span class="class-number">Aula 4</span>
-                <h3>Estudos Geotécnicos Aplicados a Estradas</h3>
-                <ul>
-                    <li>Importância da investigação geotécnica.</li>
-                    <li>Principais Ensaios de Campo:
-                        <ul>
-                            <li>Sondagens (SPT, Rotativa).</li>
-                            <li>Ensaios de Permeabilidade in situ.</li>
-                        </ul>
-                    </li>
-                    <li>Principais Ensaios de Laboratório (Revisão e Aplicação):
-                        <ul>
-                            <li>Caracterização: Granulometria, Limites de Atterberg.</li>
-                            <li>Resistência/Suporte: CBR (ISC), Cisalhamento Direto, Triaxial (Conceitos).</li>
-                            <li>Compactação: Proctor.</li>
-                            <li>Permeabilidade.</li>
-                        </ul>
-                    </li>
-                    <li>Interpretação de Relatórios Geotécnicos.</li>
-                    <li>**Especialista Convidado:** Consultor Geotécnico.</li>
-                    <li>**Atividade Prática:** Análise de um perfil de sondagem SPT e resultados de ensaios para um projeto rodoviário simplificado.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 5</span>
-                <h3>Materiais I: Solos e Agregados para Camadas de Pavimento</h3>
-                 <h4>Camadas do Pavimento Flexível:</h4>
-                 <img src="placeholder-pavimento-flex.png" alt="Camadas do Pavimento Flexível" style="max-height: 250px; width: auto; display: block; margin: 15px auto;">
-                <ul>
-                    <li>Funções das camadas: Subleito, Reforço do Subleito, Sub-base, Base.</li>
-                    <li>Materiais Comuns:
-                        <ul>
-                            <li>Solos Naturais (selecionados, melhorados).</li>
-                            <li>Solos Estabilizados Granulometricamente.</li>
-                            <li>Solos Cimento / Solos Cal.</li>
-                            <li>Agregados: Brita Graduada Simples (BGS), Brita Graduada Tratada com Cimento (BGTC).</li>
-                        </ul>
-                    </li>
-                    <li>Requisitos e especificações (DNIT/ABNT) para cada camada (CBR, Expansão, Plasticidade, Granulometria).</li>
-                    <li>**Especialista Convidado:** Engenheiro de Materiais (Pavimentação).</li>
-                    <li>**Atividade Prática:** Análise de especificações de materiais para diferentes camadas e verificação de conformidade de resultados de ensaios (dados hipotéticos).</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 6</span>
-                <h3>Materiais II: Materiais Betuminosos e Misturas Asfálticas</h3>
-                 <div class="columns">
-                    <div class="column">
-                        <h4>Ligantes Asfálticos:</h4>
-                        <ul>
-                             <li>Cimento Asfáltico de Petróleo (CAP): Classificação por penetração e por viscosidade (PG - Superpave).</li>
-                            <li>Asfaltos Modificados (Polímeros, Borracha).</li>
-                            <li>Emulsões Asfálticas: Tipos e aplicações (imprimação, pintura de ligação, tratamentos superficiais).</li>
-                            <li>Principais Ensaios: Penetração, Viscosidade, Ponto de Amolecimento, Ponto de Fulgor.</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>Misturas Asfálticas:</h4>
-                        <ul>
-                             <li>Tipos: CBUQ (Concreto Betuminoso Usinado a Quente), PMF (Pré-Misturado a Frio), SMA (Stone Matrix Asphalt), Misturas Mornas (WMA).</li>
-                            <li>Dosagem (Método Marshall / Superpave - Conceitos).</li>
-                            <li>Propriedades: Estabilidade, Fluência, % Vazios, VAM, RBV.</li>
-                        </ul>
-                        <img src="placeholder-usina-asfalto.png" alt="Usina de Asfalto" style="max-height: 200px; width: auto;">
-                    </div>
-                </div>
-                <ul>
-                    <li>**Especialista Convidado:** Tecnologista de Asfalto / Pesquisador da área.</li>
-                    <li>**Atividade Prática:** Análise de resultados de ensaios de ligantes e parâmetros de dosagem de misturas asfálticas.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 7</span>
-                <h3>Materiais III: Concreto de Cimento Portland para Pavimentos Rígidos</h3>
-                <ul>
-                    <li>Particularidades do Concreto para Pavimentos:
-                        <ul>
-                            <li>Resistência à Tração na Flexão (Módulo de Ruptura - MR).</li>
-                            <li>Durabilidade (Resistência à Abrasão, Ataque Químico).</li>
-                            <li>Controle da Retração.</li>
-                        </ul>
-                    </li>
-                    <li>Materiais Constituintes: Cimento, Agregados (especificidades), Água, Aditivos.</li>
-                    <li>Dosagem do Concreto para Pavimentos.</li>
-                    <li>Concreto Compactado com Rolo (CCR).</li>
-                    <li>Comparativo com Concreto Estrutural.</li>
-                    <li>**Especialista Convidado:** Tecnologista de Concreto / Eng. Estruturas (Pavimentos).</li>
-                    <li>**Atividade Prática:** Discussão sobre especificações de materiais e parâmetros de dosagem para concreto de pavimento.</li>
-                </ul>
-                <img src="placeholder-pavimento-rigido.png" alt="Execução de Pavimento Rígido" style="max-height: 300px; width: auto; display: block; margin: 15px auto;">
-            </section>
-
-             <section>
-                <span class="class-number">Aula 8</span>
-                <h3>Drenagem I: Sistemas de Drenagem Superficial</h3>
-                <p>Objetivo: Coletar e conduzir a água que escoa sobre a plataforma e áreas adjacentes.</p>
-                <ul>
-                    <li>Componentes:
-                        <ul>
-                            <li>Valetas de Proteção de Corte e Aterro.</li>
-                            <li>Sarjetas e Meios-fios.</li>
-                            <li>Descidas d'água.</li>
-                            <li>Caixas Coletoras ("Bocas de Lobo").</li>
-                            <li>Bueiros (Tubulares de Concreto - BTC, Metálicos Corrugados - BMC, Celulares de Concreto - BCC).</li>
-                            <li>Dissipadores de energia.</li>
-                        </ul>
-                    </li>
-                    <li>Conceitos de Dimensionamento Hidrológico e Hidráulico (Vazão de projeto, capacidade de escoamento).</li>
-                    <li>**Especialista Convidado:** Engenheiro Hidráulico/Sanitarista (Drenagem).</li>
-                    <li>**Atividade Prática:** Dimensionamento hidráulico simplificado de uma sarjeta ou análise da capacidade de um bueiro.</li>
-                </ul>
-                 <img src="placeholder-bueiro.png" alt="Bueiro em Construção" style="max-height: 300px; width: auto; display: block; margin: 15px auto;">
-            </section>
-
-             <section>
-                <span class="class-number">Aula 9</span>
-                <h3>Drenagem II: Sistemas de Drenagem Profunda (Subsuperficial)</h3>
-                <p>Objetivo: Rebaixar o lençol freático e interceptar fluxos subterrâneos que possam afetar a estrutura do pavimento ou a estabilidade de taludes.</p>
-                <ul>
-                    <li>Componentes:
-                        <ul>
-                            <li>Drenos Longitudinais Profundos (Trincheiras Drenantes).</li>
-                            <li>Drenos Espinha de Peixe.</li>
-                            <li>Drenos Horizontais Profundos (DHP).</li>
-                            <li>Colchões Drenantes.</li>
-                        </ul>
-                    </li>
-                     <li>Materiais: Tubos drenantes (perfurados), material filtrante (areia, geotêxtil), material drenante (brita, rachão).</li>
-                     <li>Critérios de Filtro e Drenagem.</li>
-                     <li>Importância para a estabilidade e durabilidade.</li>
-                    <li>**Especialista Convidado:** Engenheiro Geotécnico/Hidráulico (Drenagem).</li>
-                    <li>**Atividade Prática:** Análise de projetos típicos de drenos profundos e discussão de casos de falha por problemas de drenagem subsuperficial.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 10</span>
-                <h3>Desmonte de Rocha</h3>
-                <ul>
-                    <li>Necessidade do desmonte em obras viárias.</li>
-                    <li>Métodos de Desmonte:
-                        <ul>
-                            <li>Mecânico (Rippers, Rompedores Hidráulicos) - Para rochas alteradas ou fraturadas.</li>
-                            <li>Por Explosivos (Desmonte a Fogo).</li>
-                        </ul>
-                    </li>
-                     <li>Desmonte com Explosivos:
-                        <ul>
-                             <li>Tipos de explosivos e acessórios (espoletas, estopim, cordel).</li>
-                            <li>Plano de Fogo: Malha de perfuração, carregamento, sequência de detonação.</li>
-                            <li>Segurança: Vibrações (ultralançamento), ruído, poeira. Legislação e controle.</li>
-                             <li>Monitoramento sismográfico.</li>
-                        </ul>
-                    </li>
-                    <li>Alternativas (Plasma, etc.) - Menos comuns.</li>
-                    <li>**Especialista Convidado:** Engenheiro de Minas / Especialista em Desmonte com Explosivos.</li>
-                    <li>**Atividade Prática:** Análise de um plano de fogo simplificado, discussão sobre normas de segurança e impactos ambientais. (Role-playing sobre diálogo de segurança pré-detonação).</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 11</span>
-                <h3>Pavimentos I: Dimensionamento de Pavimentos Flexíveis</h3>
-                 <h4>Método do DNIT (Baseado no CBR):</h4>
-                <ul>
-                    <li>Parâmetros de Entrada: Número N (tráfego), CBR do subleito.</li>
-                    <li>Coeficientes Estruturais (K) dos materiais.</li>
-                    <li>Ábacos ou equações para determinação das espessuras das camadas (Sub-base, Base, Revestimento).</li>
-                     <li>Considerações sobre vida útil de projeto.</li>
-                </ul>
-                 <h4>Método MeDiNa (Mecânico-Empírico):</h4>
-                 <ul>
-                     <li>Conceito: Análise de tensões e deformações na estrutura do pavimento.</li>
-                     <li>Modelos de Fadiga (trincamento) e Deformação Permanente.</li>
-                     <li>Parâmetros de entrada mais complexos (módulos de elasticidade, coeficientes de Poisson, dados de tráfego detalhados).</li>
-                     <li>Uso de Software específico.</li>
-                 </ul>
-                 <ul>
-                     <li>**Especialista Convidado:** Engenheiro Projetista de Pavimentos (Flexíveis).</li>
-                     <li>**Atividade Prática:** Exercício guiado de dimensionamento simplificado pelo método do DNIT (CBR). Discussão sobre as limitações e a evolução para métodos mecanicistas.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 12</span>
-                <h3>Pavimentos II: Dimensionamento de Pavimentos Rígidos</h3>
-                 <h4>Método da PCA (Portland Cement Association):</h4>
-                 <ul>
-                     <li>Análise de tensões devido ao carregamento e gradientes térmicos.</li>
-                     <li>Fadiga do concreto e Erosão da fundação como critérios de ruptura.</li>
-                     <li>Parâmetros de Entrada: Tráfego (eixos equivalentes), Módulo de Ruptura (MR) do concreto, Módulo de Reação (k) da fundação (ensaio de placa).</li>
-                     <li>Uso de ábacos ou softwares para determinar a espessura da placa.</li>
-                 </ul>
-                 <h4>Outros Aspectos:</h4>
-                 <ul>
-                     <li>Dimensionamento de Barras de Transferência e Ligação.</li>
-                     <li>Tipos de Juntas (Serradas, Construção, Expansão).</li>
-                     <li>Comparativo Técnico-Econômico: Flexível vs. Rígido (Custos iniciais, vida útil, manutenção).</li>
-                 </ul>
-                 <ul>
-                    <li>**Especialista Convidado:** Engenheiro Projetista de Pavimentos (Rígidos).</li>
-                    <li>**Atividade Prática:** Análise de parâmetros de entrada para dimensionamento de pavimento rígido e discussão sobre cenários de aplicação mais adequados para cada tipo.</li>
-                </ul>
-            </section>
-
-             <section>
-                <span class="class-number">Aula 13</span>
-                <h3>Execução e Controle de Qualidade de Pavimentos</h3>
-                 <h4>Pavimentação Asfáltica:</h4>
-                 <ul>
-                     <li>Produção da mistura em usina (controle de temperatura, traço).</li>
-                     <li>Transporte (caminhões basculantes cobertos).</li>
-                     <li>Espalhamento (vibroacabadoras).</li>
-                     <li>Compactação (rolos pneumáticos e vibratórios - sequência e número de passadas).</li>
-                     <li>Controle de Qualidade: Temperatura, espessura, grau de compactação (GC), ensaios de extração.</li>
-                 </ul>
-                  <h4>Pavimentação Rígida:</h4>
-                 <ul>
-                     <li>Preparo da sub-base.</li>
-                     <li>Formas (deslizantes ou fixas).</li>
-                     <li>Lançamento, adensamento e acabamento do concreto.</li>
-                     <li>Cura do concreto.</li>
-                     <li>Execução das juntas (serragem).</li>
-                     <li>Controle de Qualidade: Resistência do concreto (corpos de prova), espessura, planicidade (IRI).</li>
-                 </ul>
-                 <ul>
-                    <li>**Especialista Convidado:** Engenheiro Residente/Fiscal de Obras de Pavimentação.</li>
-                    <li>**Atividade Prática:** Análise de vídeos de processos executivos e discussão sobre pontos críticos de controle em cada tipo de pavimentação.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 14</span>
-                <h3>Custos e Orçamentos em Obras de Estradas</h3>
-                 <div class="columns">
-                    <div class="column">
-                        <h4>Estrutura do Orçamento:</h4>
-                        <ul>
-                            <li>Levantamento de Quantitativos (Planilhas).</li>
-                            <li>Custos Diretos:
-                                <ul>
-                                    <li>Materiais (preços + frete).</li>
-                                    <li>Mão de Obra (salários + encargos).</li>
-                                    <li>Equipamentos (custo horário produtivo e improdutivo).</li>
-                                </ul>
-                            </li>
-                            <li>Composição de Custos Unitários (CPU).</li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                         <h4>Custos Indiretos e Preço Final:</h4>
-                        <ul>
-                             <li>Administração Local, Canteiro, Mobilização/Desmobilização.</li>
-                            <li>BDI (Benefícios e Despesas Indiretas): Lucro, Impostos, Administração Central, Riscos.</li>
-                            <li>Planilha Orçamentária Final.</li>
-                            <li>Uso de Sistemas Referenciais: SICRO (DNIT), SINAPI (Caixa).</li>
-                            <li>Cronograma Físico-Financeiro (Curva S).</li>
-                        </ul>
-                    </div>
-                </div>
-                <ul>
-                    <li>**Especialista Convidado:** Engenheiro de Custos/Orçamentista (Infraestrutura).</li>
-                    <li>**Atividade Prática:** Elaboração de uma CPU simples e montagem de uma planilha orçamentária expedita para um serviço de pavimentação ou terraplenagem, utilizando tabelas de referência.</li>
-                </ul>
-            </section>
-
-            <section>
-                <span class="class-number">Aula 15</span>
-                <h3>Revisão Geral, Novas Tecnologias e Tendências</h3>
-                <ul>
-                    <li>Recapitulação dos principais tópicos da disciplina.</li>
-                    <li>Discussão sobre Inovações e Tendências:
-                        <ul>
-                            <li>Sustentabilidade na Construção Viária (materiais reciclados, menor consumo de energia).</li>
-                            <li>Automação e Robótica em equipamentos.</li>
-                            <li>Monitoramento Inteligente (sensores, IoT).</li>
-                            <li>BIM aplicado a projetos de infraestrutura.</li>
-                            <li>Pavimentos Inteligentes / Estradas do Futuro.</li>
-                        </ul>
-                    </li>
-                    <li>Importância da atualização contínua na engenharia.</li>
-                    <li>Espaço final para dúvidas e discussões.</li>
-                    <li>**Especialista:** (Professor ou convidado sobre Inovação em Transportes).</li>
-                    <li>**Atividade Prática:** Debate final sobre os desafios e o futuro da Engenharia de Estradas no Brasil e no mundo. Feedback sobre a disciplina.</li>
-                </ul>
-            </section>
-
+    {/* Re-use the main header from index.html for consistency */}
+    <header class="site-header prominent-logo-header">
+        <div class="container">
+            <a href="index.html" aria-label="Página Inicial Professor Cristiano Travassos" class="header-logo-link">
+                <img src="logo.png" alt="Logo Professor Cristiano Travassos" id="site-logo-prominent">
+            </a>
+            <h1 class="sr-only">Prof. Dr. Cristiano Saad Travassos do Carmo - Webpage Educacional</h1>
         </div>
-    </div>
+    </header>
 
-    <script src="dist/reveal.js"></script>
-    <script src="plugin/notes/notes.js"></script>
-    <script src="plugin/markdown/markdown.js"></script>
-    <script src="plugin/highlight/highlight.js"></script>
-    <script>
-        Reveal.initialize({
-            hash: true,
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-            controlsLayout: 'edges',
-            navigationMode: 'linear'
-        });
-    </script>
+    {/* Re-use the main navigation from index.html for consistency */}
+    <nav class="main-navigation" id="main-nav">
+        <div class="container nav-container">
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-controls="main-nav-list" aria-expanded="false" aria-label="Abrir menu de navegação">
+                <span class="hamburger-icon" aria-hidden="true"></span>
+            </button>
+            <ul class="nav-list" id="main-nav-list">
+                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="index.html#teaching">Ensino</a></li>
+                <li><a href="index.html#research">Pesquisa</a></li>
+                <li><a href="index.html#news">Notícias</a></li>
+                <li><a href="index.html#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main id="subpage-main-content">
+        <div class="subpage-container container">
+
+            <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+                 <a href="index.html">Início</a> &gt; <a href="index.html#teaching">Ensino</a> &gt; Projeto e Construção de Estradas
+            </nav>
+
+            <section class="subpage-content" aria-labelledby="subpage-title">
+                <h2 id="subpage-title">Projeto e Construção de Estradas (TEC00264)</h2>
+                <p>Abaixo você encontrará os materiais de aula para a disciplina, disponíveis para visualização e download em formato PDF. As apresentações em sala de aula utilizarão o formato original (.pptx) com recursos adicionais.</p>
+
+                {/* --- Aula 1 --- */}
+                <article class="lecture-item" id="aula1">
+                    <h3>Aula 1: Introdução à Construção de Infraestrutura Rodoviária e Ferroviária</h3>
+                    <p>Objetivos, importância, componentes, fases de projeto, normas e ciclo de vida da obra.</p>
+                    <div class="pdf-embed-container">
+                        {/* IMPORTANT: Replace with the actual path to your PDF file */}
+                        <iframe src="slides/estradas-aula01-introducao.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula01-introducao.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula01-introducao.pdf" download class="button download-button">Baixar Slides Aula 1 (PDF)</a>
+                </article>
+
+                {/* --- Aula 2 --- */}
+                <article class="lecture-item" id="aula2">
+                    <h3>Aula 2: Terraplenagem I: Cortes, Aterros e Compactação</h3>
+                    <p>Conceitos, cálculo de volumes, diagrama de massas, ensaio de Proctor.</p>
+                    <div class="pdf-embed-container">
+                        {/* IMPORTANT: Replace with the actual path to your PDF file */}
+                        <iframe src="slides/estradas-aula02-terraplenagem1.pdf" type="application/pdf" width="100%" height="500px">
+                             <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula02-terraplenagem1.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula02-terraplenagem1.pdf" download class="button download-button">Baixar Slides Aula 2 (PDF)</a>
+                </article>
+
+                {/* --- Aula 3 --- */}
+                <article class="lecture-item" id="aula3">
+                    <h3>Aula 3: Terraplenagem II: Empolamento e Equipamentos</h3>
+                    <p>Fator de empolamento, seleção de equipamentos, produtividade e custos.</p>
+                    <div class="pdf-embed-container">
+                         {/* IMPORTANT: Replace with the actual path to your PDF file */}
+                        <iframe src="slides/estradas-aula03-terraplenagem2.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula03-terraplenagem2.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula03-terraplenagem2.pdf" download class="button download-button">Baixar Slides Aula 3 (PDF)</a>
+                </article>
+
+                {/* --- Aula 4: Ensaios Geotécnicos Aplicados a Estradas --- */}
+                <article class="lecture-item" id="aula4">
+                    <h3>Aula 4: Estudos Geotécnicos Aplicados a Estradas</h3>
+                    <p>Investigação geotécnica, ensaios de campo e laboratório, interpretação de relatórios.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula04-geotecnia.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula04-geotecnia.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula04-geotecnia.pdf" download class="button download-button">Baixar Slides Aula 4 (PDF)</a>
+                </article>
+
+                {/* --- Aula 5: Materiais I: Solos e Agregados --- */}
+                <article class="lecture-item" id="aula5">
+                    <h3>Aula 5: Materiais I: Solos e Agregados para Camadas de Pavimento</h3>
+                    <p>Camadas do pavimento, materiais comuns (solos, agregados), estabilização, requisitos e especificações.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula05-materiais1.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula05-materiais1.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula05-materiais1.pdf" download class="button download-button">Baixar Slides Aula 5 (PDF)</a>
+                </article>
+
+                {/* --- Aula 6: Materiais II: Materiais Betuminosos --- */}
+                <article class="lecture-item" id="aula6">
+                    <h3>Aula 6: Materiais II: Materiais Betuminosos e Misturas Asfálticas</h3>
+                    <p>Ligantes asfálticos (CAP, modificados, emulsões), ensaios, tipos de misturas asfálticas, dosagem.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula06-materiais2.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula06-materiais2.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula06-materiais2.pdf" download class="button download-button">Baixar Slides Aula 6 (PDF)</a>
+                </article>
+
+                {/* --- Aula 7: Materiais III: Concreto de Cimento Portland --- */}
+                <article class="lecture-item" id="aula7">
+                    <h3>Aula 7: Materiais III: Concreto de Cimento Portland para Pavimentos Rígidos</h3>
+                    <p>Particularidades do concreto para pavimentos, materiais constituintes, dosagem, CCR.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula07-materiais3.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula07-materiais3.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula07-materiais3.pdf" download class="button download-button">Baixar Slides Aula 7 (PDF)</a>
+                </article>
+
+                {/* --- Aula 8: Drenagem I: Sistemas de Drenagem Superficial --- */}
+                <article class="lecture-item" id="aula8">
+                    <h3>Aula 8: Drenagem I: Sistemas de Drenagem Superficial</h3>
+                    <p>Componentes (valetas, sarjetas, bueiros), conceitos de dimensionamento.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula08-drenagem1.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula08-drenagem1.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula08-drenagem1.pdf" download class="button download-button">Baixar Slides Aula 8 (PDF)</a>
+                </article>
+
+                {/* --- Aula 9: Drenagem II: Sistemas de Drenagem Profunda --- */}
+                <article class="lecture-item" id="aula9">
+                    <h3>Aula 9: Drenagem II: Sistemas de Drenagem Profunda (Subsuperficial)</h3>
+                    <p>Componentes (drenos longitudinais, espinha de peixe, DHP), materiais, critérios.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula09-drenagem2.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula09-drenagem2.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula09-drenagem2.pdf" download class="button download-button">Baixar Slides Aula 9 (PDF)</a>
+                </article>
+
+                {/* --- Aula 10: Desmonte de Rocha --- */}
+                <article class="lecture-item" id="aula10">
+                    <h3>Aula 10: Desmonte de Rocha</h3>
+                    <p>Necessidade, métodos (mecânico, explosivos), plano de fogo, segurança.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula10-desmonte.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula10-desmonte.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula10-desmonte.pdf" download class="button download-button">Baixar Slides Aula 10 (PDF)</a>
+                </article>
+
+                {/* --- Aula 11: Pavimentos I: Dimensionamento de Pavimentos Flexíveis --- */}
+                <article class="lecture-item" id="aula11">
+                    <h3>Aula 11: Pavimentos I: Dimensionamento de Pavimentos Flexíveis</h3>
+                    <p>Método do DNIT (CBR), Método MeDiNa (Mecânico-Empírico).</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula11-pavflex.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula11-pavflex.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula11-pavflex.pdf" download class="button download-button">Baixar Slides Aula 11 (PDF)</a>
+                </article>
+
+                {/* --- Aula 12: Pavimentos II: Dimensionamento de Pavimentos Rígidos --- */}
+                <article class="lecture-item" id="aula12">
+                    <h3>Aula 12: Pavimentos II: Dimensionamento de Pavimentos Rígidos</h3>
+                    <p>Método da PCA, dimensionamento de barras, juntas, comparativo.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula12-pavrig.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula12-pavrig.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula12-pavrig.pdf" download class="button download-button">Baixar Slides Aula 12 (PDF)</a>
+                </article>
+
+                {/* --- Aula 13: Execução e Controle de Qualidade de Pavimentos --- */}
+                <article class="lecture-item" id="aula13">
+                    <h3>Aula 13: Execução e Controle de Qualidade de Pavimentos</h3>
+                    <p>Processos executivos e controle de qualidade para pavimentação asfáltica e rígida.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula13-execucao.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula13-execucao.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula13-execucao.pdf" download class="button download-button">Baixar Slides Aula 13 (PDF)</a>
+                </article>
+
+                {/* --- Aula 14: Custos e Orçamentos em Obras de Estradas --- */}
+                <article class="lecture-item" id="aula14">
+                    <h3>Aula 14: Custos e Orçamentos em Obras de Estradas</h3>
+                    <p>Estrutura do orçamento, custos diretos e indiretos, BDI, SICRO/SINAPI, cronograma.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula14-custos.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula14-custos.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula14-custos.pdf" download class="button download-button">Baixar Slides Aula 14 (PDF)</a>
+                </article>
+
+                {/* --- Aula 15: Revisão Geral, Novas Tecnologias e Tendências --- */}
+                <article class="lecture-item" id="aula15">
+                    <h3>Aula 15: Revisão Geral, Novas Tecnologias e Tendências</h3>
+                    <p>Recapitulação, inovações (sustentabilidade, automação, BIM), estradas do futuro.</p>
+                     <div class="pdf-embed-container">
+                        <iframe src="slides/estradas-aula15-revisao.pdf" type="application/pdf" width="100%" height="500px">
+                            <p>Seu navegador não suporta PDFs embutidos. Você pode <a href="slides/estradas-aula15-revisao.pdf">baixar o PDF aqui</a>.</p>
+                        </iframe>
+                    </div>
+                    <a href="slides/estradas-aula15-revisao.pdf" download class="button download-button">Baixar Slides Aula 15 (PDF)</a>
+                </article>
+
+                </section>
+
+        </div> </main>
+
+    {/* Re-use the main footer for consistency */}
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> Prof. Dr. Cristiano Saad Travassos do Carmo. Todos os direitos reservados.</p>
+            <p>Desenvolvido como um recurso educacional.</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+
 </body>
 </html>
