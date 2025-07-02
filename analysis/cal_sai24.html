@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infográfico: Pontos de Melhoria - Engenharia Civil (TEC/UFF)</title>
+    <title>Infográfico: Foco na Melhoria - Engenharia Civil (TEC/UFF)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,12 +19,12 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+            height: 280px;
+            max-height: 350px;
         }
         @media (min-width: 768px) {
             .chart-container {
-                height: 350px;
+                height: 300px;
             }
         }
         .flow-step {
@@ -39,32 +39,15 @@
 <body class="bg-[#F4F4F4] text-[#0A2463]">
     
     <header class="bg-[#0A2463] text-white p-8 text-center shadow-lg">
-        <h1 class="text-4xl md:text-5xl font-black tracking-tight">Análise Estratégica: Engenharia Civil (TEC)</h1>
-        <p class="mt-4 text-lg text-gray-300">Um Diagnóstico Baseado na Avaliação Institucional UFF 2024/1 para Impulsionar a Melhoria Contínua</p>
+        <h1 class="text-4xl md:text-5xl font-black tracking-tight">Plano de Ação: Engenharia Civil (TEC)</h1>
+        <p class="mt-4 text-lg text-gray-300">Análise Focada em Ações de Responsabilidade Departamental | Avaliação UFF 2024/1</p>
     </header>
 
     <main class="container mx-auto p-4 md:p-8">
 
-        <section id="introduction" class="text-center mb-12">
-            <p class="max-w-3xl mx-auto text-lg leading-relaxed">
-                Este infográfico sintetiza as percepções da nossa comunidade acadêmica, transformando dados em um plano de ação. A análise foca nos pontos que exigem nossa atenção para elevar a qualidade do Departamento de Engenharia Civil, que hoje conta com:
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 max-w-lg mx-auto">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-6xl font-black text-[#D8315B]">45</p>
-                    <p class="text-xl font-bold mt-2">Docentes</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-6xl font-black text-[#D8315B]">599</p>
-                    <p class="text-xl font-bold mt-2">Discentes</p>
-                </div>
-            </div>
-        </section>
-
         <section id="participation" class="mb-16">
             <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-center mb-2">Ponto 1: O Desafio do Engajamento</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">O primeiro passo para a melhoria é ouvir. A baixa adesão às avaliações é um ponto crítico que limita a representatividade dos dados. Precisamos ampliar as vozes que moldam nosso futuro.</p>
+                <h2 class="text-3xl font-bold text-center mb-8">Ponto 1: Engajamento e Cultura de Avaliação</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="text-xl font-bold text-center mb-4">Participação Docente</h3>
@@ -80,24 +63,23 @@
                     </div>
                 </div>
                 <div class="mt-8 bg-blue-50 border-l-4 border-[#3E92CC] p-4 rounded-r-lg">
-                    <h4 class="font-bold">Ação Sugerida:</h4>
-                    <p>Desenvolver uma campanha de comunicação focada na importância da avaliação, mostrando como os resultados se transformam em melhorias concretas para o curso e para a comunidade.</p>
+                    <h4 class="font-bold">Ação Departamental Sugerida:</h4>
+                    <p>Criar uma campanha de comunicação interna (e-mails, murais, avisos em aula) para o próximo ciclo de avaliação, explicando como o feedback será usado para melhorias diretas no departamento.</p>
                 </div>
             </div>
         </section>
         
-        <section id="infrastructure" class="mb-16">
+        <section id="pedagogy" class="mb-16">
             <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-center mb-2">Ponto 2: Fragilidades na Infraestrutura Física e Digital</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">A qualidade do ambiente de estudo e trabalho é fundamental. As avaliações apontam para a necessidade urgente de investimentos em áreas básicas, tanto físicas quanto digitais, que impactam diretamente o dia a dia de todos.</p>
-                <div class="chart-container" style="height: 400px; max-height: 500px;">
-                    <canvas id="infrastructureChart"></canvas>
+                <h2 class="text-3xl font-bold text-center mb-8">Ponto 2: Qualidade e Inovação Pedagógica</h2>
+                <div class="chart-container" style="height: 300px; max-height: 400px;">
+                    <canvas id="pedagogyChart"></canvas>
                 </div>
                  <div class="mt-8 bg-blue-50 border-l-4 border-[#3E92CC] p-4 rounded-r-lg">
-                    <h4 class="font-bold">Ações Sugeridas:</h4>
+                    <h4 class="font-bold">Ações Departamentais Sugeridas:</h4>
                     <ul class="list-disc list-inside mt-2">
-                        <li><b>Física:</b> Elaborar um plano de ação para reforma e adequação, priorizando as áreas mais críticas como banheiros e acessibilidade para pessoas com deficiência (PCD).</li>
-                        <li><b>Digital:</b> Realizar um diagnóstico técnico e resolver os problemas de conectividade Wi-Fi no campus de forma prioritária.</li>
+                        <li>Promover workshops e grupos de discussão entre docentes para compartilhamento de boas práticas pedagógicas.</li>
+                        <li>Incentivar a utilização de novas metodologias e tecnologias de ensino que estimulem o pensamento crítico e a participação ativa dos alunos.</li>
                     </ul>
                 </div>
             </div>
@@ -105,52 +87,41 @@
 
         <section id="academic" class="mb-16">
             <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-center mb-2">Ponto 3: Gestão Acadêmica e Planejamento Curricular</h2>
-                <p class="text-center text-gray-600 max-w-2xl mx-auto mb-8">Uma estrutura curricular bem planejada é a base para o sucesso do estudante. Os dados mostram que a organização atual do curso pode estar dificultando a trajetória acadêmica.</p>
+                <h2 class="text-3xl font-bold text-center mb-8">Ponto 3: Planejamento e Estrutura Curricular</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-red-50 border-l-4 border-[#D8315B] p-6 rounded-r-lg">
+                    <div class="bg-red-50 border-l-4 border-[#D8315B] p-6 rounded-r-lg flex flex-col justify-center">
                         <h3 class="font-bold text-xl mb-2">Horário das Disciplinas</h3>
-                        <p class="text-4xl font-black text-[#D8315B]">-0,03</p>
-                        <p class="mt-2 text-gray-700">Índice discente que indica **insatisfação**. Os alunos sentem que a organização dos horários não favorece a integralização do curso no tempo esperado.</p>
+                        <p class="text-5xl font-black text-[#D8315B]">-0,03</p>
+                        <p class="mt-2 text-gray-700">Índice discente que indica **insatisfação**. A percepção é que a alocação de horários atual dificulta a integralização curricular.</p>
                     </div>
-                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
-                        <h3 class="font-bold text-xl mb-2">Conhecimentos Prévios</h3>
-                        <p class="text-4xl font-black text-yellow-600">0,55</p>
-                        <p class="mt-2 text-gray-700">Índice de autoavaliação discente que sugere uma **potencial lacuna** entre o conteúdo de disciplinas que são pré-requisitos e as disciplinas subsequentes.</p>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg flex flex-col justify-center">
+                        <h3 class="font-bold text-xl mb-2">Conexão entre Disciplinas</h3>
+                        <p class="text-5xl font-black text-yellow-600">0,55</p>
+                        <p class="mt-2 text-gray-700">Índice sobre "conhecimentos prévios" que sugere uma **potencial lacuna** entre o conteúdo de disciplinas que são pré-requisitos e as subsequentes.</p>
                     </div>
                 </div>
                  <div class="mt-8 bg-blue-50 border-l-4 border-[#3E92CC] p-4 rounded-r-lg">
-                    <h4 class="font-bold">Ações Sugeridas:</h4>
+                    <h4 class="font-bold">Ações Departamentais Sugeridas:</h4>
                      <ul class="list-disc list-inside mt-2">
-                        <li>Revisar a alocação de horários e a oferta de disciplinas para otimizar o fluxo curricular, evitando conflitos e gargalos.</li>
-                        <li>Analisar a matriz de pré-requisitos para garantir uma progressão de aprendizado coesa e sem lacunas de conhecimento.</li>
+                        <li>Revisar a oferta e o sequenciamento de disciplinas no Colegiado do Curso para otimizar o fluxo e evitar gargalos.</li>
+                        <li>Analisar a matriz de pré-requisitos e as ementas para fortalecer a conexão de conteúdo entre as matérias.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="conclusion" class="text-center">
-            <h2 class="text-3xl font-bold mb-4">Rumo à Melhoria Contínua</h2>
-            <p class="max-w-3xl mx-auto text-lg mb-8">Os dados nos mostram o caminho. A partir desta análise, podemos trabalhar juntos — direção, docentes e discentes — para construir um departamento ainda mais forte e eficiente.</p>
-            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
-                <div class="flow-step bg-white p-4 rounded-lg shadow-md w-48 text-center">
-                    <p class="text-4xl">📊</p>
-                    <p class="font-bold mt-2">Análise de Dados</p>
+        <section id="dept-infrastructure" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-center mb-8">Ponto 4: Infraestrutura Acadêmica Departamental</h2>
+                <div class="chart-container" style="height: 300px; max-height: 400px;">
+                    <canvas id="deptInfrastructureChart"></canvas>
                 </div>
-                <div class="text-2xl font-bold text-[#3E92CC]">&rarr;</div>
-                <div class="flow-step bg-white p-4 rounded-lg shadow-md w-48 text-center">
-                    <p class="text-4xl">🎯</p>
-                    <p class="font-bold mt-2">Identificar Problemas</p>
-                </div>
-                <div class="text-2xl font-bold text-[#3E92CC]">&rarr;</div>
-                <div class="flow-step bg-white p-4 rounded-lg shadow-md w-48 text-center">
-                    <p class="text-4xl">🤝</p>
-                    <p class="font-bold mt-2">Ação Colaborativa</p>
-                </div>
-                <div class="text-2xl font-bold text-[#3E92CC]">&rarr;</div>
-                <div class="flow-step bg-white p-4 rounded-lg shadow-md w-48 text-center">
-                    <p class="text-4xl">📈</p>
-                    <p class="font-bold mt-2">Melhoria Contínua</p>
+                 <div class="mt-8 bg-blue-50 border-l-4 border-[#3E92CC] p-4 rounded-r-lg">
+                    <h4 class="font-bold">Ações Departamentais Sugeridas:</h4>
+                     <ul class="list-disc list-inside mt-2">
+                        <li>Realizar um levantamento detalhado das necessidades de modernização dos laboratórios e salas de aula práticas.</li>
+                        <li>Mapear as demandas dos espaços de trabalho dos professores para planejar melhorias e otimizar o uso dos ambientes.</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -163,10 +134,10 @@
     </footer>
 
     <script>
-        const brilliantBluesPalette = {
-            problem: '#D8315B', // Accent Red/Pink
-            attention: '#FBB13C', // Accent Yellow/Orange (not in original, but good for warnings)
-            neutral: '#3E92CC', // Main Blue
+        const appPalette = {
+            problem: '#D8315B',
+            attention: '#FBB13C',
+            neutral: '#3E92CC',
             background: '#F4F4F4',
             text: '#0A2463',
             white: '#FFFFFF',
@@ -190,24 +161,20 @@
             }
         };
 
-        function wrapLabel(label, maxLength = 16) {
-            if (label.length <= maxLength) {
-                return label;
-            }
+        function wrapLabel(label, maxLength = 20) {
+            if (label.length <= maxLength) return label;
             const words = label.split(' ');
             let lines = [];
             let currentLine = '';
             for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > maxLength) {
+                if ((currentLine + ' ' + word).trim().length > maxLength && currentLine.length > 0) {
                     lines.push(currentLine.trim());
                     currentLine = word;
                 } else {
                     currentLine = (currentLine + ' ' + word).trim();
                 }
             }
-            if (currentLine) {
-                lines.push(currentLine.trim());
-            }
+            if (currentLine) lines.push(currentLine.trim());
             return lines;
         }
 
@@ -218,25 +185,15 @@
                 data: {
                     labels: ['Participaram', 'Não Participaram'],
                     datasets: [{
-                        label: 'Participação Docente',
                         data: [33.3, 66.7],
-                        backgroundColor: [brilliantBluesPalette.neutral, brilliantBluesPalette.nonParticipating],
-                        borderColor: [brilliantBluesPalette.white, brilliantBluesPalette.white],
+                        backgroundColor: [appPalette.neutral, appPalette.nonParticipating],
+                        borderColor: appPalette.white,
                         borderWidth: 2
                     }]
                 },
                 options: { ...tooltipConfig,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { ...tooltipConfig.plugins,
-                        legend: {
-                            position: 'bottom',
-                        },
-                        title: {
-                            display: true,
-                            text: '33.3% de Adesão'
-                        }
-                    }
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...tooltipConfig.plugins, legend: { position: 'bottom' }, title: { display: true, text: '33.3% de Adesão' } }
                 }
             });
 
@@ -246,98 +203,69 @@
                 data: {
                     labels: ['Participaram', 'Não Participaram'],
                     datasets: [{
-                        label: 'Participação Discente',
                         data: [16.0, 84.0],
-                        backgroundColor: [brilliantBluesPalette.neutral, brilliantBluesPalette.nonParticipating],
-                        borderColor: [brilliantBluesPalette.white, brilliantBluesPalette.white],
+                        backgroundColor: [appPalette.neutral, appPalette.nonParticipating],
+                        borderColor: appPalette.white,
                         borderWidth: 2
                     }]
                 },
                 options: { ...tooltipConfig,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { ...tooltipConfig.plugins,
-                        legend: {
-                            position: 'bottom',
-                        },
-                        title: {
-                            display: true,
-                            text: '16.0% de Adesão'
-                        }
-                    }
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { ...tooltipConfig.plugins, legend: { position: 'bottom' }, title: { display: true, text: '16.0% de Adesão' } }
                 }
             });
         }
 
-        function createInfrastructureChart() {
-            const ctx = document.getElementById('infrastructureChart').getContext('2d');
-            const data = {
-                labels: [
-                    wrapLabel('Acesso à Internet (Discentes)'),
-                    wrapLabel('Condições dos Banheiros (Docentes)'),
-                    wrapLabel('Acessibilidade - PCD (Discentes)'),
-                    wrapLabel('Acessibilidade - PCD (Docentes)'),
-                    wrapLabel('Espaço da Biblioteca (Docentes)'),
-                    wrapLabel('Espaço da Biblioteca (Discentes)')
-                ],
-                datasets: [{
-                    label: 'Índice de Avaliação (-1 a 1)',
-                    data: [-0.08, 0.03, 0.14, 0.20, 0.37, 0.49],
-                    backgroundColor: (context) => {
-                        const value = context.raw;
-                        if (value < 0) return brilliantBluesPalette.problem;
-                        if (value < 0.2) return brilliantBluesPalette.attention;
-                        return brilliantBluesPalette.neutral;
-                    },
-                    borderColor: brilliantBluesPalette.text,
-                    borderWidth: 1
-                }]
-            };
-
+        function createPedagogyChart() {
+            const ctx = document.getElementById('pedagogyChart').getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
-                data: data,
+                data: {
+                    labels: [wrapLabel('Técnicas de ensino e recursos didáticos estimulantes'), wrapLabel('Incentivo à reflexão sobre os temas da disciplina')],
+                    datasets: [{
+                        label: 'Índice de Avaliação Discente (0 a 1)',
+                        data: [0.55, 0.57],
+                        backgroundColor: appPalette.attention,
+                        borderColor: appPalette.text,
+                        borderWidth: 1,
+                        barThickness: 50,
+                    }]
+                },
                 options: { ...tooltipConfig,
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            beginAtZero: false,
-                            min: -0.2,
-                            max: 0.6,
-                            title: {
-                                display: true,
-                                text: 'Índice (Negativo = Insatisfação, Positivo = Satisfação)'
-                            }
-                        },
-                        y: {
-                           ticks: {
-                             font: {
-                                size: 10
-                             }
-                           }
-                        }
-                    },
-                    plugins: { ...tooltipConfig.plugins,
-                        legend: {
-                            display: false
-                        },
-                        title: {
-                            display: true,
-                            text: 'Índices de Satisfação com a Infraestrutura',
-                            font: {
-                                size: 16
-                            }
-                        }
-                    }
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    scales: { x: { min: 0, max: 1, title: { display: true, text: 'Índice (próximo de 1 = melhor)' } } },
+                    plugins: { ...tooltipConfig.plugins, legend: { display: false }, title: { display: true, text: 'Percepção Discente sobre Práticas Pedagógicas', font: { size: 16 } } }
+                }
+            });
+        }
+
+        function createDeptInfrastructureChart() {
+            const ctx = document.getElementById('deptInfrastructureChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabel('Espaços de trabalho dos professores (Visão Docente)'), wrapLabel('Ambientes e materiais para aulas práticas (Visão Discente)')],
+                    datasets: [{
+                        label: 'Índice de Avaliação (0 a 1)',
+                        data: [0.37, 0.41],
+                        backgroundColor: appPalette.attention,
+                        borderColor: appPalette.text,
+                        borderWidth: 1,
+                        barThickness: 50,
+                    }]
+                },
+                options: { ...tooltipConfig,
+                    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                    scales: { x: { min: 0, max: 1, title: { display: true, text: 'Índice (próximo de 1 = melhor)' } } },
+                    plugins: { ...tooltipConfig.plugins, legend: { display: false }, title: { display: true, text: 'Satisfação com a Infraestrutura Departamental', font: { size: 16 } } }
                 }
             });
         }
 
         window.onload = function() {
             createParticipationCharts();
-            createInfrastructureChart();
+            createPedagogyChart();
+            createDeptInfrastructureChart();
         };
     </script>
 </body>
