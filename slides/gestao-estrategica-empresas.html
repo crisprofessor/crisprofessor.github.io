@@ -9,30 +9,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm & balanced -->
-    <!-- Application Structure Plan: The SPA is structured as a narrative scroll, starting with the course's core philosophy. It then dives into the central theoretical conflict ("Machine" vs. "Organism") using interactive charts for direct comparison. This is followed by sections detailing the theoretical underpinnings, a visual flowchart of the class activities, and a final section on the semester's main project. This top-down, narrative structure was chosen to guide the user from the abstract "why" to the concrete "what" and "how," making the complex information highly digestible and engaging, which is more effective than a simple slide-by-slide replication. -->
-    <!-- Visualization & Content Choices: 1. Core Concept (Machine vs. Organism) -> Goal: Compare -> Viz: Side-by-side Radar Charts (Chart.js) -> Justification: Radar charts are ideal for comparing multiple quantitative attributes across two subjects, providing an instant visual fingerprint of each management model. 2. Class Structure -> Goal: Organize/Show Process -> Viz: Vertical Flowchart (HTML/CSS) -> Justification: A flowchart is the most intuitive way to represent a sequence of events, guiding the user through the class plan step-by-step. 3. Semester Project -> Goal: Inform/Show Composition -> Viz: Donut Chart (Chart.js) -> Justification: A donut chart clearly shows the proportional breakdown of the project's main phases, highlighting the weight of each component. -->
+    <!-- Chosen Palette: Vibrant Academia -->
+    <!-- Application Structure Plan: The SPA is designed as a narrative journey. It starts with a hero section stating the course philosophy, then moves to an interactive dashboard comparing the "Machine" and "Organism" models side-by-side with radar charts and toggleable content for theory vs. practice. This is followed by a vertical flowchart visualizing the class schedule, and concludes with a section on the semester's project, visualized with a donut chart. This thematic, top-down structure was chosen to make the dense theoretical content more engaging and easier to synthesize than a linear slide presentation. -->
+    <!-- Visualization & Content Choices: 1. Core Concept (Machine vs. Organism) -> Goal: Compare -> Viz: Side-by-side Radar Charts (Chart.js) -> Justification: Radar charts are perfect for comparing the multi-dimensional attributes of the two management models, offering an immediate visual contrast. 2. Class Schedule -> Goal: Organize/Show Process -> Viz: Vertical Flowchart (Styled HTML/CSS) -> Justification: A flowchart is the most intuitive method to display a chronological sequence of activities, adhering to the no-SVG/Mermaid constraint. 3. Semester Project -> Goal: Inform/Show Composition -> Viz: Donut Chart (Chart.js) -> Justification: A donut chart effectively illustrates the proportional breakdown of the project's phases, providing a quick overview of the workload distribution. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F7F7F7;
-            color: #497174;
+            background-color: #F8F9FA;
+            color: #212529;
         }
         .chart-container {
             position: relative;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             margin-left: auto;
             margin-right: auto;
-            height: 45vh;
-            max-height: 380px;
+            height: 40vh;
+            max-height: 350px;
         }
         .flowchart-step {
             position: relative;
             padding-left: 3rem;
             padding-bottom: 2.5rem;
-            border-left: 3px solid #D6E4E5;
+            border-left: 3px solid #FFD166;
         }
         .flowchart-step:last-child {
             border-left: 3px solid transparent;
@@ -40,67 +40,101 @@
         }
         .flowchart-dot {
             position: absolute;
-            left: -11px;
+            left: -12px;
             top: 0;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            background-color: #EB6440;
-            border: 4px solid #F7F7F7;
+            background-color: #EF476F;
+            border: 4px solid #F8F9FA;
+        }
+        .tab-button.active {
+            background-color: #118AB2;
+            color: white;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="text-center py-16 px-4 bg-white">
+    <header class="text-center py-16 px-4 bg-white shadow-md">
         <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl md:text-6xl font-black text-[#497174] uppercase">Gestão Estratégica de Empresas</h1>
-            <p class="text-xl md:text-2xl text-[#497174] mt-4">Uma Análise Interativa da Evolução da Gestão</p>
-            <div class="mt-8 bg-[#D6E4E5] p-6 rounded-xl shadow-lg inline-block">
-                <h2 class="text-xl font-bold text-[#497174]">Nossa Filosofia</h2>
-                <p class="text-lg text-[#497174] mt-1">Protagonismo do estudante, professor como mentor.</p>
+            <h1 class="text-4xl md:text-6xl font-black text-[#073B4C] uppercase">A Evolução da Gestão</h1>
+            <p class="text-xl md:text-2xl text-[#118AB2] mt-4">Uma Jornada Interativa do Mecanicismo à Adaptação</p>
+            <div class="mt-8 bg-[#F8F9FA] p-6 rounded-xl border border-gray-200 inline-block">
+                <h2 class="text-xl font-bold text-[#073B4C]">Nossa Filosofia</h2>
+                <p class="text-lg text-[#118AB2] mt-1">Protagonismo do estudante, professor como mentor.</p>
             </div>
         </div>
     </header>
+
+    <nav class="sticky top-0 bg-white/80 backdrop-blur-sm shadow-md z-10">
+        <div class="container mx-auto flex justify-center items-center p-4 space-x-4 md:space-x-8">
+            <a href="#core-concept" class="text-sm md:text-base font-bold text-[#073B4C] hover:text-[#118AB2] transition-colors">Máquina vs. Organismo</a>
+            <a href="#class-journey" class="text-sm md:text-base font-bold text-[#073B4C] hover:text-[#118AB2] transition-colors">Roteiro da Aula</a>
+            <a href="#semester-challenge" class="text-sm md:text-base font-bold text-[#073B4C] hover:text-[#118AB2] transition-colors">O Desafio Final</a>
+        </div>
+    </nav>
 
     <main class="container mx-auto p-4 md:p-8">
 
         <section id="core-concept" class="my-16">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold">A Questão Central: Máquina ou Organismo Vivo?</h2>
-                <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Toda a teoria da gestão moderna pode ser entendida através da tensão entre duas metáforas poderosas. Esta seção permite explorar as características e os teóricos por trás de cada visão.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#073B4C]">A Tensão Central: Máquina ou Organismo Vivo?</h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Explore as duas grandes metáforas que definem a história da gestão. Use os botões para alternar entre a teoria e a aplicação prática de cada modelo.</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 
-                <div id="machine-model" class="bg-white p-6 rounded-lg shadow-xl flex flex-col">
-                    <h3 class="text-3xl font-bold text-center mb-4">Visão Mecanicista: A Empresa como MÁQUINA ⚙️</h3>
-                    <p class="text-center text-gray-600 mb-6">Nascida da Revolução Industrial, esta visão busca a máxima eficiência através do controle e da padronização.</p>
+                <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col">
+                    <h3 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">A Empresa como MÁQUINA ⚙️</h3>
                     <div class="chart-container mb-6">
                         <canvas id="machineChart"></canvas>
                     </div>
-                    <div class="flex-grow">
-                        <h4 class="font-bold text-lg mb-2 text-[#EB6440]">Fundamentos Teóricos:</h4>
+                    <div class="mb-4 flex justify-center rounded-lg bg-gray-100 p-1">
+                        <button class="tab-button w-1/2 p-2 rounded-md font-bold transition-colors active" data-target="machine-theory">Teoria</button>
+                        <button class="tab-button w-1/2 p-2 rounded-md font-bold transition-colors" data-target="machine-practice">Prática</button>
+                    </div>
+                    <div id="machine-theory" class="tab-content flex-grow">
+                        <h4 class="font-bold text-lg mb-2 text-[#EF476F]">Fundamentos Teóricos:</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li><strong>Frederick Taylor:</strong> Otimização de tempo e movimentos.</li>
-                            <li><strong>Henry Ford:</strong> Produção em massa e especialização extrema.</li>
-                            <li><strong>Max Weber:</strong> Hierarquia clara, regras formais e impessoalidade.</li>
+                            <li><strong>Frederick Taylor (Adm. Científica):</strong> Foco na "única maneira certa" de executar tarefas.</li>
+                            <li><strong>Henry Ford (Linha de Montagem):</strong> Aplicação máxima do Taylorismo para produção em massa.</li>
+                            <li><strong>Max Weber (Burocracia):</strong> Ênfase na hierarquia, regras formais e impessoalidade.</li>
+                        </ul>
+                    </div>
+                    <div id="machine-practice" class="tab-content hidden flex-grow">
+                         <h4 class="font-bold text-lg mb-2 text-[#EF476F]">Implicações Práticas:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li><strong>Estrutura:</strong> Piramidal e rígida, com comunicação Top-Down e "silos" departamentais.</li>
+                             <li><strong>Pessoas:</strong> Vistas como "recursos" substituíveis, motivadas por recompensas financeiras.</li>
+                             <li><strong>Ambiente:</strong> Excelente em mercados estáveis, mas frágil e lento perante a mudança.</li>
                         </ul>
                     </div>
                 </div>
 
-                <div id="organism-model" class="bg-white p-6 rounded-lg shadow-xl flex flex-col">
-                    <h3 class="text-3xl font-bold text-center mb-4">Visão Sistêmica: A Empresa como ORGANISMO VIVO 🌱</h3>
-                    <p class="text-center text-gray-600 mb-6">Emerge no século XX, reconhecendo a complexidade, a interconexão e a necessidade de adaptação.</p>
+                <div class="bg-white p-6 rounded-lg shadow-xl flex flex-col">
+                    <h3 class="text-3xl font-bold text-center mb-4 text-[#073B4C]">A Empresa como ORGANISMO VIVO 🌱</h3>
                     <div class="chart-container mb-6">
                         <canvas id="organismChart"></canvas>
                     </div>
-                     <div class="flex-grow">
-                        <h4 class="font-bold text-lg mb-2 text-[#EB6440]">Fundamentos Teóricos:</h4>
+                    <div class="mb-4 flex justify-center rounded-lg bg-gray-100 p-1">
+                        <button class="tab-button w-1/2 p-2 rounded-md font-bold transition-colors active" data-target="organism-theory">Teoria</button>
+                        <button class="tab-button w-1/2 p-2 rounded-md font-bold transition-colors" data-target="organism-practice">Prática</button>
+                    </div>
+                    <div id="organism-theory" class="tab-content flex-grow">
+                        <h4 class="font-bold text-lg mb-2 text-[#EF476F]">Fundamentos Teóricos:</h4>
                         <ul class="list-disc list-inside space-y-1 text-gray-700">
-                            <li><strong>Ludwig von Bertalanffy:</strong> Organizações como "sistemas abertos".</li>
-                            <li><strong>Peter Senge:</strong> Foco em organizações que aprendem e se adaptam.</li>
-                            <li><strong>Pensamento Ágil:</strong> Valoriza indivíduos, interações e resposta a mudanças.</li>
+                            <li><strong>Elton Mayo (Relações Humanas):</strong> Fatores sociais e psicológicos impactam a produtividade.</li>
+                            <li><strong>Von Bertalanffy (Teoria dos Sistemas):</strong> Organizações são "sistemas abertos" em troca com o ambiente.</li>
+                            <li><strong>Peter Senge & Pensamento Ágil:</strong> Foco na aprendizagem contínua e na adaptação rápida.</li>
+                        </ul>
+                    </div>
+                    <div id="organism-practice" class="tab-content hidden flex-grow">
+                        <h4 class="font-bold text-lg mb-2 text-[#EF476F]">Implicações Práticas:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                           <li><strong>Estrutura:</strong> Em rede e flexível, com equipas multidisciplinares e comunicação aberta.</li>
+                           <li><strong>Pessoas:</strong> Vistas como "talentos" a serem desenvolvidos, motivadas por propósito e autonomia.</li>
+                           <li><strong>Ambiente:</strong> Excelente em mercados dinâmicos, promovendo resiliência e inovação.</li>
                         </ul>
                     </div>
                 </div>
@@ -109,33 +143,33 @@
 
         <section id="class-journey" class="my-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold">A Jornada da Nossa Primeira Aula</h2>
-                <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Estruturamos nosso encontro para ser uma experiência de aprendizagem ativa e colaborativa, seguindo um roteiro claro e dinâmico.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#073B4C]">O Mapa da Nossa Primeira Aula</h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">Esta é a estrutura do nosso encontro, desenhada para uma experiência de aprendizagem ativa e colaborativa.</p>
             </div>
             <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-xl">
                 <div class="flowchart-step">
                     <div class="flowchart-dot"></div>
-                    <p class="font-bold text-lg text-[#497174]">18:00 - Boas-vindas e Quebra-Gelo (15 min)</p>
+                    <p class="font-bold text-lg text-[#073B4C]">18:00 - Partida: Boas-vindas e Quebra-Gelo (15 min)</p>
                     <p class="text-gray-600">Iniciamos com uma dinâmica para conectar os participantes e alinhar as expectativas.</p>
                 </div>
                 <div class="flowchart-step">
                     <div class="flowchart-dot"></div>
-                    <p class="font-bold text-lg text-[#497174]">18:15 - A Evolução da Gestão (30 min)</p>
-                    <p class="text-gray-600">Exposição teórica sobre as visões Mecanicista (Máquina) e Sistêmica (Organismo Vivo).</p>
+                    <p class="font-bold text-lg text-[#073B4C]">18:15 - A História de Duas Visões: Análise Teórica (30 min)</p>
+                    <p class="text-gray-600">Exposição sobre as visões Mecanicista (Máquina) e Sistêmica (Organismo Vivo).</p>
                 </div>
                 <div class="flowchart-step">
                     <div class="flowchart-dot"></div>
-                    <p class="font-bold text-lg text-[#497174]">18:45 - Reflexão Individual (15 min)</p>
+                    <p class="font-bold text-lg text-[#073B4C]">18:45 - Reflexão na Caverna: Atividade Individual (15 min)</p>
                     <p class="text-gray-600">Momento para aplicar os conceitos a uma empresa real, de escolha individual.</p>
                 </div>
                 <div class="flowchart-step">
                     <div class="flowchart-dot"></div>
-                    <p class="font-bold text-lg text-[#497174]">19:00 - Dinâmica e Apresentação em Grupo (105 min)</p>
+                    <p class="font-bold text-lg text-[#073B4C]">19:00 - A Missão em Grupo: Dinâmica e Apresentação (105 min)</p>
                     <p class="text-gray-600">Formação de grupos, discussão das reflexões e preparação de uma breve apresentação.</p>
                 </div>
                 <div class="flowchart-step">
                     <div class="flowchart-dot"></div>
-                    <p class="font-bold text-lg text-[#497174]">20:45 - Encerramento e Próximos Passos (15 min)</p>
+                    <p class="font-bold text-lg text-[#073B4C]">20:45 - O Próximo Horizonte: Encerramento e Próximos Passos (15 min)</p>
                     <p class="text-gray-600">Consolidação do aprendizado, apresentação do desafio do semestre e da próxima aula.</p>
                 </div>
             </div>
@@ -143,20 +177,20 @@
         
         <section id="semester-challenge" class="my-24 text-center">
              <div class="bg-white p-8 rounded-lg shadow-2xl max-w-4xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold">O Desafio do Semestre</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-[#073B4C]">O Grande Desafio do Semestre</h2>
                 <p class="text-lg text-gray-600 mt-4 mb-8">O nosso projeto final focará na aplicação prática dos conceitos da visão "Organismo Vivo" através de uma abordagem de sustentabilidade.</p>
                 <div class="chart-container h-64 md:h-80 max-h-[350px]">
                     <canvas id="projectChart"></canvas>
                 </div>
-                <p class="mt-8 text-sm text-gray-500">O projeto de "Produção Mais Limpa" será o foco central, dividido em etapas que vão do diagnóstico da situação atual até a análise de viabilidade da solução proposta, representando a aplicação prática da teoria.</p>
+                <p class="mt-8 text-sm text-gray-500">O projeto de "Produção Mais Limpa" exigirá um pensamento sistémico para otimizar recursos e gerar valor económico e ambiental, representando a aplicação prática da teoria.</p>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-[#497174] text-white text-center p-8 mt-16">
-        <h3 class="text-2xl font-bold">Próxima Aula</h3>
-        <p class="text-lg mt-2 text-[#D6E4E5]">Aprofundando a Sustentabilidade: "Empresas Verdes" vs. <span class="font-bold text-white">Greenwashing</span></p>
+    <footer class="bg-[#073B4C] text-white text-center p-8 mt-16">
+        <h3 class="text-2xl font-bold">Cenas do Próximo Episódio</h3>
+        <p class="text-lg mt-2 text-[#FFD166]">"Empresas Verdes" vs. <span class="font-bold text-white">Greenwashing</span></p>
         <p class="mt-6 text-sm opacity-75">Prof. Cristiano Saad Travassos do Carmo | TEC00284 | UFF</p>
     </footer>
 
@@ -179,15 +213,15 @@
             },
             scales: {
                 r: {
-                    angleLines: { color: '#D6E4E5' },
-                    grid: { color: '#D6E4E5' },
+                    angleLines: { color: 'rgba(7, 59, 76, 0.2)' },
+                    grid: { color: 'rgba(7, 59, 76, 0.2)' },
                     pointLabels: {
-                        color: '#497174',
+                        color: '#073B4C',
                         font: { size: 12, weight: 'bold' }
                     },
                     ticks: {
-                        backdropColor: 'rgba(247, 247, 247, 0.75)',
-                        color: '#497174',
+                        backdropColor: 'rgba(248, 249, 250, 0.75)',
+                        color: '#073B4C',
                         stepSize: 2
                     },
                     min: 0,
@@ -200,14 +234,14 @@
         new Chart(machineCtx, {
             type: 'radar',
             data: {
-                labels: ['Controle', 'Padronização', 'Eficiência', 'Hierarquia', 'Previsibilidade'],
+                labels: ['Controlo', 'Padronização', 'Eficiência', 'Hierarquia', 'Previsibilidade'],
                 datasets: [{
                     label: 'Modelo Máquina',
                     data: [9, 8, 9, 8, 7],
-                    backgroundColor: 'rgba(235, 100, 64, 0.2)',
-                    borderColor: '#EB6440',
+                    backgroundColor: 'rgba(239, 71, 111, 0.2)',
+                    borderColor: '#EF476F',
                     borderWidth: 2,
-                    pointBackgroundColor: '#EB6440'
+                    pointBackgroundColor: '#EF476F'
                 }]
             },
             options: commonRadarOptions
@@ -221,10 +255,10 @@
                 datasets: [{
                     label: 'Modelo Organismo',
                     data: [9, 8, 7, 9, 8],
-                    backgroundColor: 'rgba(73, 113, 116, 0.2)',
-                    borderColor: '#497174',
+                    backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                    borderColor: '#118AB2',
                     borderWidth: 2,
-                    pointBackgroundColor: '#497174'
+                    pointBackgroundColor: '#118AB2'
                 }]
             },
             options: commonRadarOptions
@@ -238,7 +272,7 @@
                 datasets: [{
                     label: 'Etapas do Projeto',
                     data: [35, 45, 20],
-                    backgroundColor: ['#497174', '#D6E4E5', '#EB6440'],
+                    backgroundColor: ['#118AB2', '#FFD166', '#EF476F'],
                     borderColor: '#FFFFFF',
                     borderWidth: 4,
                     hoverOffset: 8
@@ -250,19 +284,32 @@
                 plugins: {
                     legend: {
                         position: 'bottom',
-                         labels: { color: '#497174', font: { size: 14, weight: 'bold' } }
+                         labels: { color: '#073B4C', font: { size: 14, weight: 'bold' } }
                     },
                     tooltip: { callbacks: { title: tooltipTitleCallback } },
                     title: {
                         display: true,
                         text: 'Fases do Projeto "Produção Mais Limpa"',
                         font: { size: 16, weight: 'bold' },
-                        color: '#497174',
+                        color: '#073B4C',
                         padding: { top: 0, bottom: 20 }
                     }
                 },
                 cutout: '60%'
             }
+        });
+
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const parent = button.parentElement;
+                const grandParent = parent.parentElement;
+                
+                parent.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                grandParent.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                document.getElementById(button.dataset.target).classList.remove('hidden');
+            });
         });
     </script>
 </body>
