@@ -35,7 +35,11 @@ graph TD
             
         end
         
-        {C2_C, C2_D} --> C3("6. Execução da Superestrutura (Pavimentação) <br> • Execução da Sub-base <br> • Execução da Base <br> • Execução do Revestimento");
+        %% --- INÍCIO DA CORREÇÃO ---
+        %% Substituí a linha {C2_C, C2_D} --> C3(...) por duas linhas separadas
+        C2_C --> C3("6. Execução da Superestrutura (Pavimentação) <br> • Execução da Sub-base <br> • Execução da Base <br> • Execução do Revestimento");
+        C2_D --> C3;
+        %% --- FIM DA CORREÇÃO ---
         
         C3 --> C4("7. Acabamentos e Obras Complementares <br> • Sinalização (Horizontal e Vertical) <br> • Dispositivos de Proteção (Defensas) <br> • Paisagismo e Recuperação Ambiental");
     end
