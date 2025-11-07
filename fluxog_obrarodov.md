@@ -1,3 +1,6 @@
+### Fluxograma da Sequência Construtiva de Obras Rodoviárias
+
+```mermaid
 graph TD
     A[INÍCIO] --> B[FASE I: PRÉ-CONSTRUÇÃO <br> (PROJETO E PLANEJAMENTO)];
     
